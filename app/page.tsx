@@ -1,9 +1,11 @@
 'use client'
 
+import React from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Image from 'next/image'
-import { FaBars, FaTimes, FaWhatsapp, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa'
+import { FaWhatsapp, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa'
+import SEO_KEYWORDS, { MESSAGES_VIDEO } from '../data/seo' // On importe les deux
 import '../styles/page-acceuil.css'
 
 export default function AccueilPage() {
@@ -11,92 +13,82 @@ export default function AccueilPage() {
     <div className="acceuil-page">
       <Header />
 
-      {/* HERO VIDEO */}
+      {/* HERO VIDEO SECTION */}
       <section className="acceuil-image">
         <video
-  className="hero-video"
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="auto"
->
-  <source src="/videos/video-acceuil.mp4" type="video/mp4" />
-</video>
-
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/videos/video-acceuil.mp4" type="video/mp4" />
+        </video>
 
         <div className="class-acceuil hero-overdlay">
-          <h1>ENSEMBLE, CONSTRUISONS L’AVENIR</h1>
-          <h2>Location · Vente · Gestion · Aménagement · Conseils</h2>
+          <h1>AGENCE IMMOBILIÈRE À ABIDJAN</h1>
+          <h2 id='titre-2'>ENSEMBLE, CONSTRUISONS L’AVENIR</h2>
+          <h2>Vente · Location · Gestion Immobilière · Aménagement · Conseils</h2>
 
-          {/* Réseaux sociaux sur la même ligne avec couleurs */}
           <div className="social-icons">
-            <a href="https://youtube.com/toncompte" target="_blank" rel="noopener noreferrer" className="youtube">
+            <a href="https://youtube.com/toncompte" target="_blank" rel="noopener noreferrer" className="youtube" aria-label="YouTube">
               <FaYoutube size={28} />
             </a>
-            <a href="https://facebook.com/toncompte" target="_blank" rel="noopener noreferrer" className="facebook">
+            <a href="https://facebook.com/toncompte" target="_blank" rel="noopener noreferrer" className="facebook" aria-label="Facebook">
               <FaFacebook size={28} />
             </a>
-            <a href="https://instagram.com/toncompte" target="_blank" rel="noopener noreferrer" className="instagram">
+            <a href="https://instagram.com/toncompte" target="_blank" rel="noopener noreferrer" className="instagram" aria-label="Instagram">
               <FaInstagram size={28} />
             </a>
 
-            {/* WhatsApp isolé avec numéro */}
-            <a href="https://wa.me/0505050505" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
+            <a href="https://wa.me/2250505050505" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
               <FaWhatsapp size={28} />
               <span className="whatsapp-number">+225 05 05 05 05 05</span>
             </a>
           </div>
         </div>
 
-         
-         
-
-        {/* Messages qui défilent */}
+        {/* MESSAGES DÉFILANTS : On utilise MESSAGES_VIDEO ici */}
         <div className="video-messages">
-          <h1>VENTE</h1>
-          <h1>LOCATION</h1>
-          <h1>VENTE</h1>
-          <h1>TRAVAUX D'AMENAGEMENT</h1>
-          <h1>BTP</h1>
-          <h1>GESTION LOCATIVE</h1>
-          <h1>ARCHITECTURE D'INTERIEURE</h1>
-          
+          {MESSAGES_VIDEO.map((msg, index) => (
+            <span key={index}>{msg.toUpperCase()}</span>
+          ))}
         </div>
       </section>
 
-      {/* PRESENTATION */}
+      {/* ZONE SEO INVISIBLE : Pour le référencement Google uniquement */}
+      <div style={{ display: 'none' }}>
+        {SEO_KEYWORDS.accueil.map((mot, index) => (
+          <p key={index}>{mot}</p>
+        ))}
+      </div>
+
+      {/* PRÉSENTATION */}
       <section className="presentation-section">
         <div className="presentation-container">
           <div className="presentation-text">
-            <h2>À propos de notre agence</h2>
+            <h2>Votre Agence Immobilière de Confiance en Côte d’Ivoire</h2>
             <p>
-              Notre agence immobilière en <strong>Côte d’Ivoire</strong> accompagne
-              particuliers et investisseurs dans leurs projets de
-              <strong> vente</strong>, <strong>location</strong>,
-              <strong> gestion immobilière</strong> et <strong>conseil</strong>.
+              Spécialiste du marché <strong>immobilier à Abidjan</strong>, notre agence accompagne les particuliers et les investisseurs dans la réalisation de leurs projets fonciers. Que vous soyez à la recherche d'une <strong>location d'appartement à Abidjan</strong> ou d'une opportunité de <strong>vente de terrain en Côte d'Ivoire</strong>, nous mettons notre expertise à votre service pour garantir des transactions sécurisées.
             </p>
             <p>
-              Grâce à notre parfaite connaissance du marché immobilier d’Abidjan,
-              nous vous proposons des biens fiables et un accompagnement
-              personnalisé à chaque étape.
+              Nous offrons un service complet de <strong>gestion locative</strong> pour valoriser votre patrimoine. En tant qu'<strong>agence immobilière fiable</strong>, nous intervenons également dans le secteur du <strong>BTP à Abidjan</strong> et l'<strong>aménagement intérieur</strong>, assurant ainsi le suivi de vos travaux de construction, de la fondation jusqu'aux finitions architecturales les plus modernes.
             </p>
             <p>
-              Notre priorité :
-              <strong> confiance, transparence et satisfaction client</strong>.
+              Notre parfaite maîtrise du terrain à Bingerville, Grand-Bassam et Anyama nous permet de vous proposer le meilleur en matière d'<strong>achat de terrain</strong> avec des documents administratifs (ACD) totalement transparents.
             </p>
 
-          <div className="presentation-contact">
-            <span style={{ color: 'black' }}>📞 Contact :</span>
-            <a href="tel:0787026518">0787 026 518</a>
-          </div>
-
+            <div className="presentation-contact">
+              <span style={{ color: 'black', fontWeight: 'bold' }}>📞 Service Client :</span>
+              <a href="tel:0787026518">0787 026 518</a>
+            </div>
           </div>
 
           <div className="presentation-image">
             <Image
               src="/images/agence3.jpg"
-              alt="Agence immobilière"
+              alt="Expert conseil en immobilier Abidjan et BTP"
               fill
               style={{ objectFit: 'cover' }}
             />
@@ -104,127 +96,63 @@ export default function AccueilPage() {
         </div>
       </section>
 
-        {/* SECTION ACHAT DE TERRAIN */}
-        <section className="terrains-section">
-          
-
-          <div className="terrains-grid">
-            <div className="terrain-card">
-              <div className="terrain-image">
-                <Image
-                  src="/images/terrain1.jpg"
-                  alt="Terrain à vendre - Bingerville"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <h3>Terrain à Bingerville</h3>
+      {/* SECTION TERRAINS */}
+      <section className="terrains-section">
+        <h2 className="terrains-title">Nos Terrains et Opportunités Immobilières</h2>
+        <div className="terrains-grid">
+          <div className="terrain-card">
+            <div className="terrain-image">
+              <Image src="/images/terrain1.jpg" alt="Vente terrain avec ACD à Bingerville" fill style={{ objectFit: 'cover' }} />
             </div>
-
-            <div className="terrain-card">
-              <div className="terrain-image">
-                <Image
-                  src="/images/terrain2.jpg"
-                  alt="Terrain viabilisé - Bassam"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <h3>Terrain viabilisé à Bassam</h3>
-            </div>
-
-            <div className="terrain-card">
-              <div className="terrain-image">
-                <Image
-                  src="/images/terrain3.jpg"
-                  alt="Terrain résidentiel - Anyama"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <h3>Terrain résidentiel à Anyama</h3>
-            </div>
-
-            <div className="terrain-card">
-              <div className="terrain-image">
-                <Image
-                  src="/images/terrain3.jpg"
-                  alt="Terrain résidentiel - Anyama"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <h3>Terrain résidentiel à Anyama</h3>
-            </div>
-
-            <div className="terrain-card">
-              <div className="terrain-image">
-                <Image
-                  src="/images/terrain3.jpg"
-                  alt="Terrain résidentiel - Anyama"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <h3>Terrain résidentiel à Anyama</h3>
-            </div>
-            
-            <div className="terrain-card">
-              <div className="terrain-image">
-                <Image
-                  src="/images/terrain3.jpg"
-                  alt="Terrain résidentiel - Anyama"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <h3>Terrain résidentiel à Anyama</h3>
-            </div>
-
-           
-
-            
-
-           
-
-          </div>
-        </section>
-
-
-       
-
-
-        {/* SECTION POUR TERMINER LA PAGE */}
-        <section className="last-section-pro">
-          <h2 className="last-section-title">Pourquoi nous choisir ?</h2>
-
-          <div className="features-grid-pro">
-            <div className="feature-card-pro">
-              <span>🏠</span>
-              <h3>Biens de qualité</h3>
-              <p>Des propriétés soigneusement sélectionnées pour répondre à vos besoins.</p>
-            </div>
-            <div className="feature-card-pro">
-              <span>🧑‍💼</span>
-              <h3>Accompagnement personnalisé</h3>
-              <p>Nous vous guidons à chaque étape de votre projet immobilier.</p>
-            </div>
-            <div className="feature-card-pro">
-              <span>📍</span>
-              <h3>Connaissance du marché</h3>
-              <p>Une expertise locale pour trouver le bien parfait rapidement.</p>
-            </div>
-            <div className="feature-card-pro">
-              <span>💬</span>
-              <h3>Satisfaction client</h3>
-              <p>Notre priorité : votre confiance et votre satisfaction.</p>
-            </div>
+            <h3>Terrain à Bingerville</h3>
+            <p className="card-seo-text">Lots sécurisés pour projets résidentiels ou commerciaux dans la zone de Bingerville.</p>
           </div>
 
-          
-        </section>
+          <div className="terrain-card">
+            <div className="terrain-image">
+              <Image src="/images/terrain2.jpg" alt="Achat terrain viabilisé Bassam Côte d'Ivoire" fill style={{ objectFit: 'cover' }} />
+            </div>
+            <h3>Terrain viabilisé à Bassam</h3>
+            <p className="card-seo-text">Parcelles stratégiques à Grand-Bassam, idéales pour investissement locatif ou résidence.</p>
+          </div>
 
-      {/* FOOTER */}
+          <div className="terrain-card">
+            <div className="terrain-image">
+              <Image src="/images/terrain3.jpg" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
+            </div>
+            <h3>Terrain résidentiel à Anyama</h3>
+            <p className="card-seo-text">Terrains plats et accessibles à Anyama, parfaits pour une construction immédiate.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION POURQUOI NOUS CHOISIR */}
+      <section className="last-section-pro">
+        <h2 className="last-section-title">Pourquoi choisir notre expertise immobilière ?</h2>
+        <div className="features-grid-pro">
+          <div className="feature-card-pro">
+            <span>🏠</span>
+            <h3>Biens de Qualité</h3>
+            <p>Des terrains sécurisés et des appartements sélectionnés selon des critères rigoureux de fiabilité.</p>
+          </div>
+          <div className="feature-card-pro">
+            <span>🧑‍💼</span>
+            <h3>Accompagnement Pro</h3>
+            <p>De l'achat du terrain à la remise des clés, nous gérons toutes les étapes de votre projet.</p>
+          </div>
+          <div className="feature-card-pro">
+            <span>📍</span>
+            <h3>Expertise Locale</h3>
+            <p>Une présence forte sur le marché d'Abidjan pour dénicher les meilleures pépites foncières.</p>
+          </div>
+          <div className="feature-card-pro">
+            <span>🏗️</span>
+            <h3>BTP et Design</h3>
+            <p>Un service d'aménagement intérieur et de construction pour un projet clé en main.</p>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   )

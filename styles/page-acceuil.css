@@ -1,5 +1,5 @@
 /* ============================= */
-/* PAGE ACCUEIL */
+/* PAGE ACCUEIL GÉNÉRAL */
 /* ============================= */
 .acceuil-page {
   width: 100%;
@@ -13,11 +13,10 @@
 .acceuil-image {
   position: relative;
   width: 100%;
-  height: 50vh; /* 🔥 MOITIÉ DE L’ÉCRAN */
+  height: 50vh; 
   overflow: hidden;
 }
 
-/* VIDEO */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -27,7 +26,6 @@
   z-index: 0;
 }
 
-/* Overlay sombre */
 .acceuil-image::after {
   content: '';
   position: absolute;
@@ -36,7 +34,6 @@
   z-index: 1;
 }
 
-/* TEXTE CENTRÉ */
 .class-acceuil {
   position: absolute;
   top: 50%;
@@ -44,50 +41,93 @@
   transform: translate(-50%, -50%);
   z-index: 2;
   text-align: center;
-  color: #d61818; /* couleur principale du texte */
-  padding: 0 20px;
+  width: 90%;
 }
 
-/* TITRE avec contour blanc fin */
 .class-acceuil h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 700;
   margin-bottom: 12px;
   text-transform: uppercase;
-  white-space: nowrap;
-  color: red;
+  color: #ff0000; /* Rouge vif comme demandé */
 }
 
-/* SOUS-TITRE avec contour blanc très fin */
+.class-acceuil #titre-2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  color: #ff0000; /* Rouge vif comme demandé */
+}
+
 .class-acceuil h2 {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(1rem, 2vw, 1.4rem);
   font-weight: 500;
   letter-spacing: 3px;
-  opacity: 0.95;
-  color: red;
+  color: #ffffff;
 }
 
-/* Responsive HERO */
 @media (max-width: 768px) {
-  .acceuil-image {
-    height: 60vh;
-  }
-
-  .class-acceuil h1 {
-    white-space: normal;
-    font-size: 1.8rem;
-  }
-
-  .class-acceuil h2 {
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-  }
+  .acceuil-image { height: 60vh; }
+  .class-acceuil h1 { font-size: 1.8rem; white-space: normal; }
 }
 
 /* ============================= */
-/* PRESENTATION */
+/* MESSAGES ANIMÉS SUR VIDÉO      */
+/* ============================= */
+.video-messages {
+  position: absolute;
+  bottom: 70px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  pointer-events: none;
+  
+  /* POSITION PAR DÉFAUT (ORDINATEUR) : À GAUCHE */
+  left: 20%; 
+  transform: none;
+}
+
+/* AJUSTEMENT POUR MOBILE (Écrans inférieurs à 768px) */
+@media (max-width: 768px) {
+  .video-messages {
+    left: 50%;
+    transform: translateX(-50%); /* Centre parfaitement sur mobile */
+    width: 100%;
+  }
+}
+
+.video-messages span {
+  position: absolute;
+  color: white;
+  font-size: clamp(18px, 4vw, 45px); /* Un peu plus petit sur mobile pour éviter que ça dépasse */
+  font-weight: 600;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  opacity: 0;
+  animation: showMessage 21s steps(1) infinite;
+  white-space: nowrap;
+}
+
+/* Tes délais d'animation (Garde-les tels quels) */
+.video-messages span:nth-child(1) { animation-delay: 0s; }
+.video-messages span:nth-child(2) { animation-delay: 3s; }
+.video-messages span:nth-child(3) { animation-delay: 6s; }
+.video-messages span:nth-child(4) { animation-delay: 9s; }
+.video-messages span:nth-child(5) { animation-delay: 12s; } /* Corrigé pour suivre le rythme de 3s */
+.video-messages span:nth-child(6) { animation-delay: 15s; }
+.video-messages span:nth-child(7) { animation-delay: 18s; }
+
+@keyframes showMessage {
+  0%, 14% { opacity: 1; } /* Reste visible 3 secondes sur les 21s totales */
+  15%, 100% { opacity: 0; }
+}
+
+/* ============================= */
+/* PRÉSENTATION */
 /* ============================= */
 .presentation-section {
   padding: 80px 60px;
@@ -106,27 +146,26 @@
 .presentation-text h2 {
   font-size: 36px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: #222;
 }
 
 .presentation-text p {
   font-size: 16px;
   line-height: 1.8;
-  color: #555;
+  color: #444;
   margin-bottom: 15px;
 }
 
 .presentation-image {
   position: relative;
   width: 100%;
-  height: 380px;
+  height: 400px;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* CONTACT */
 .presentation-contact {
   margin-top: 25px;
   font-size: 18px;
@@ -135,108 +174,19 @@
   gap: 10px;
 }
 
-.presentation-contact a {
-  color: #b42323;
-  text-decoration: none;
-}
+.presentation-contact a { color: #b42323; text-decoration: none; }
 
-.presentation-contact a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive presentation */
 @media (max-width: 900px) {
-  .presentation-container {
-    grid-template-columns: 1fr;
-  }
-
-  .presentation-section {
-    padding: 60px 30px;
-  }
-
-  .presentation-image {
-    height: 300px;
-  }
-}
-
-/* ============================= */
-/* MESSAGES SUR VIDEO */
-/* ============================= */
-.video-messages {
-  position: absolute;
-  bottom: 70px;
-  left: 25%;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  pointer-events: none;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-}
-
-.video-messages h1 {
-  position: absolute;
-  color: white;
-  font-size: 50px;
-  font-weight: 500;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  opacity: 0;
-  animation: showMessage 17s steps(7) infinite;
-}
-
-.video-messages h1:nth-child(1) { animation-delay: 0s; }
-.video-messages h1:nth-child(2) { animation-delay: 3s; }
-.video-messages h1:nth-child(3) { animation-delay: 5s; }
-.video-messages h1:nth-child(4) { animation-delay: 8s; }
-.video-messages h1:nth-child(5) { animation-delay: 10s; }
-.video-messages h1:nth-child(6) { animation-delay: 13s; }
-.video-messages h1:nth-child(7) { animation-delay: 15s; }
-
-@keyframes showMessage {
-  0%, 14.28%   { opacity: 1; }
-  14.29%, 100% { opacity: 0; }
-}
-
-/* Conteneur des icônes centré */
-.social-icons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.social-icons .facebook { color: white; }
-.social-icons .youtube { color: white; }
-.social-icons .instagram { color: white; }
-.social-icons .whatsapp-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  transform: scale(1.2);
-  opacity: 0.9;
-}
-
-.whatsapp-number {
-  font-size: 1rem;
-  color: #ffffff;
+  .presentation-container { grid-template-columns: 1fr; }
+  .presentation-section { padding: 50px 25px; }
 }
 
 /* ============================= */
 /* SECTION TERRAINS */
 /* ============================= */
 .terrains-section {
-  padding: 70px 60px;
-  background-color: white;
+  padding: 80px 60px;
+  background-color: #fff;
 }
 
 .terrains-title {
@@ -244,7 +194,6 @@
   font-size: 34px;
   font-weight: 700;
   margin-bottom: 50px;
-  color: #222;
 }
 
 .terrains-grid {
@@ -255,105 +204,79 @@
 
 .terrain-card {
   background-color: #f9f9f9;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
 }
 
-.terrain-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
-}
+.terrain-card:hover { transform: translateY(-8px); }
 
-.terrain-image {
-  position: relative;
-  width: 100%;
-  padding-top: 65%;
-}
+.terrain-image { position: relative; width: 100%; padding-top: 66%; }
 
 .terrain-card h3 {
-  padding: 15px;
+  padding: 15px 15px 5px;
   font-size: 18px;
   font-weight: 600;
-  color: #222;
   text-align: center;
 }
 
-/* ============================= */
-/* RESPONSIVE TERRAIN ET AUTRES */
-/* ============================= */
-@media (max-width: 1024px) {
-  .maisons-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .features-grid-pro {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+.card-seo-text {
+  padding: 0 15px 20px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  /* Grille terrains mobile : 1 carte par ligne */
-  .terrains-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .maisons-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .features-grid-pro {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
+@media (max-width: 1024px) { .terrains-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .terrains-grid { grid-template-columns: 1fr; } .terrains-section { padding: 40px 20px; } }
 
 /* ============================= */
-/* SECTION LAST / FEATURES */
+/* FEATURES (POURQUOI NOUS) */
 /* ============================= */
 .last-section-pro {
-  padding: 60px 40px;
+  padding: 80px 40px;
   background-color: #f4f4f4;
   text-align: center;
-  color: #222;
-}
-
-.last-section-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  color: #222;
 }
 
 .features-grid-pro {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  margin-bottom: 50px;
+  margin-top: 40px;
 }
 
-.feature-card-pro {
-  padding: 30px 20px;
-  text-align: center;
-  color: #222;
+.feature-card-pro span { font-size: 45px; display: block; margin-bottom: 10px; }
+.feature-card-pro h3 { font-size: 19px; margin-bottom: 10px; }
+.feature-card-pro p { font-size: 14px; color: #555; line-height: 1.5; }
+
+@media (max-width: 1024px) { .features-grid-pro { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .features-grid-pro { grid-template-columns: 1fr; } }
+
+/* ============================= */
+/* SOCIAL ICONS */
+/* ============================= */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
 }
 
-.feature-card-pro span {
-  font-size: 40px;
-  margin-bottom: 15px;
-  display: block;
+.social-icons a { color: #fff; transition: 0.3s; }
+.social-icons a:hover { transform: scale(1.15); }
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(37, 211, 102, 0.2);
+  padding: 5px 15px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
-.feature-card-pro h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-.feature-card-pro p {
-  font-size: 15px;
-  color: #555;
-}
+.whatsapp-number { font-size: 0.95rem; font-weight: 600; }
