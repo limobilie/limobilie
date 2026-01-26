@@ -1,0 +1,150 @@
+'use client'
+
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Image from 'next/image'
+import '../../styles/impact.css'
+
+export default function LimobilieImpactPage() {
+  return (
+    <div className="impact-wrapper">
+      <Header />
+
+      <main>
+
+        {/* HERO SECTION */}
+        <section className="impact-hero">
+          <Image
+            src="/images/impact-hero.png" // Remplace par ton image
+            alt="LIMOBILIÉ Impact"
+            fill
+            priority
+            className="hero-img"
+          />
+          <div className="hero-impact">
+            <div className="hero-text-content">
+              <h1>LIMOBILIÉ IMPACT</h1>
+              <p>
+                Un programme d’immobilier à impact social, porté par LIMOBILIÉ
+                en partenariat avec TÉDIE ANGE FOUNDATION (TAF)
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* PRESENTATION */}
+        <section className="impact-container">
+          <article className="main-card2">
+            <section className="intro-section">
+              <h2>1. Présentation Générale</h2>
+              <p>
+                LIMOBILIÉ Impact est une initiative stratégique de LIMOBILIÉ,
+                visant à intégrer l’action sociale communautaire au cœur de chaque
+                transaction immobilière. Chaque acquisition devient un acte
+                d’impact social direct, mis en œuvre avec TÉDIE ANGE FOUNDATION (TAF).
+              </p>
+            </section>
+
+            <section className="vision-section">
+              <h2>2. Vision</h2>
+              <p>
+                Faire de l’immobilier un levier durable de transformation sociale.
+                LIMOBILIÉ Impact ambitionne de créer de la valeur économique tout
+                en générant un impact humain concret dans un cadre structuré et transparent.
+              </p>
+            </section>
+
+            <section className="mission-section">
+              <h2>3. Mission</h2>
+              <p>
+                La mission est de financer des actions sociales communautaires essentielles,
+                via un pourcentage prélevé sur chaque vente immobilière, exécuté par TAF.
+              </p>
+            </section>
+
+            <section className="promise-section">
+              <h2>4. Promesse du programme</h2>
+              <p>
+                Chaque bien immobilier acquis contribue directement à sauver, améliorer ou transformer des vies.
+                Chaque client devient à la fois investisseur immobilier et acteur du développement social.
+              </p>
+            </section>
+
+            <section className="mechanism-section">
+              <h2>5. Mécanisme opérationnel</h2>
+              <h3>5.1. Principe financier</h3>
+              <ul style={{ color: 'black' }}>
+                <li>5% à 10% du montant de chaque transaction affecté au Fonds LIMOBILIÉ Impact</li>
+                <li>Fonds dédié uniquement aux actions sociales</li>
+              </ul>
+              <h3>5.2. Gouvernance financière</h3>
+              <ul style={{ color: 'black' }}>
+                <li>Séparation stricte entre revenus commerciaux et fonds d’impact</li>
+                <li>Suivi financier assuré par TAF</li>
+                <li>Rapports d’utilisation périodiques</li>
+              </ul>
+            </section>
+
+            <section className="axes-section">
+              <h2>6. Axes d’impact prioritaires</h2>
+              <ul style={{ color: 'black' }}>
+                <li>Santé communautaire : soins, maternités rurales, accès aux soins de base</li>
+                <li>Eau & assainissement : forages, eau potable, sensibilisation sanitaire</li>
+                <li>Éducation & protection de l’enfance : scolarisation, fournitures, soutien éducatif</li>
+                <li>Logement social d’urgence : réhabilitation de logements précaires, assistance aux familles vulnérables</li>
+              </ul>
+            </section>
+
+            <section className="roles-section">
+              <h2>7. Rôles et responsabilités</h2>
+              <h3>7.1. Rôle de LIMOBILIÉ</h3>
+              <ul style={{ color: 'black' }}>
+                <li>Identification et commercialisation des biens immobiliers</li>
+                <li>Intégration du programme LIMOBILIÉ Impact</li>
+                <li>Communication et collecte des fonds</li>
+              </ul>
+              <h3>7.2. Rôle de TAF</h3>
+              <ul style={{ color: 'black' }}>
+                <li>Gestion opérationnelle des actions sociales</li>
+                <li>Suivi et évaluation des impacts</li>
+                <li>Respect de l’éthique et de la dignité des bénéficiaires</li>
+              </ul>
+            </section>
+
+            <section className="transparency-section">
+              <h2>8. Transparence & Traçabilité</h2>
+              <ul style={{ color: 'black' }}>
+                <li>Certificat LIMOBILIÉ Impact nominatif</li>
+                <li>Rapport d’impact simplifié</li>
+                <li>Photos, indicateurs et témoignages réguliers</li>
+                <li>Communication publique des actions réalisées</li>
+              </ul>
+            </section>
+
+            <section className="targets-section">
+              <h2>9. Cibles stratégiques</h2>
+              <ul style={{ color: 'black' }}>
+                <li>La diaspora africaine</li>
+                <li>Cadres et entrepreneurs</li>
+                <li>Investisseurs à impact</li>
+                <li>Entreprises engagées dans la RSE</li>
+                <li>Organisations et institutions partenaires</li>
+              </ul>
+            </section>
+
+            <section className="conclusion-section">
+              <h2>10. Conclusion</h2>
+              <p>
+                LIMOBILIÉ Impact incarne une nouvelle génération de projets immobiliers :
+                responsables, humains, mesurables et durables. Investir dans la terre,
+                c’est aussi investir dans la vie.
+              </p>
+            </section>
+          </article>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  )
+}

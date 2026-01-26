@@ -1,0 +1,150 @@
+.contact-page {
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* HERO IMAGE */
+.hero-image {
+  position: relative;
+  height: 50vh;
+  width: 100%;
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.hero-overlay h1 {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.hero-overlay p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  padding: 80px 20px;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* INFOS INLINE AU-DESSUS */
+.contact-info-inline {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.info-block strong {
+  color: #000; /* label noir */
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.info-block p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* FORMULAIRE */
+.contact-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #000; /* label noir */
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #b42323; /* bordure complète */
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #8f1b1b;
+  box-shadow: 0 0 6px rgba(180,35,35,0.4);
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.rgpd {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.rgpd-text {
+  font-size: 12px;
+  color: #666;
+}
+
+.contact-form button {
+  background-color: #b42323;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #8f1b1b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-info-inline {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

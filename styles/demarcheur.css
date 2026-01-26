@@ -1,0 +1,187 @@
+/* ============================= */
+/* PAGE DEMARCHEUR */
+/* ============================= */
+
+.demarcheur-page {
+  background-color: #f8f8f8;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.demarcheur-hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.demarcheur-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.demarcheur-hero-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  max-width: 850px;
+  padding: 0 20px;
+}
+
+.demarcheur-hero-overlay h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.demarcheur-hero-overlay p {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* ============================= */
+/* INTRO */
+/* ============================= */
+
+.demarcheur-intro {
+  padding: 70px 40px;
+  background-color: white;
+}
+
+.demarcheur-intro-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.demarcheur-intro h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.demarcheur-intro p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* ============================= */
+/* AVANTAGES */
+/* ============================= */
+
+.demarcheur-avantages {
+  padding: 70px 40px;
+  background-color: #f8f8f8;
+}
+
+.demarcheur-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.demarcheur-card {
+  background-color: white;
+  padding: 30px 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.demarcheur-card:hover {
+  transform: translateY(-8px);
+}
+
+.demarcheur-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.demarcheur-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ============================= */
+/* CTA */
+/* ============================= */
+
+.demarcheur-cta {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.demarcheur-cta h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.demarcheur-cta p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.demarcheur-btn {
+  background-color: red;
+  color: white;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.demarcheur-btn:hover {
+  background-color: rgb(248, 3, 3);
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 1024px) {
+  .demarcheur-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .demarcheur-hero-overlay h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .demarcheur-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .demarcheur-hero {
+    height: 40vh;
+  }
+
+  .demarcheur-hero-overlay h1 {
+    font-size: 26px;
+  }
+}

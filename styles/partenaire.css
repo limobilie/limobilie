@@ -1,0 +1,170 @@
+/* ============================= */
+/* PAGE PARTENAIRES */
+/* ============================= */
+
+.partenaires-page {
+  background-color: #f8f8f8;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.partenaires-hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.partenaires-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.partenaires-hero-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.partenaires-hero-overlay h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.partenaires-hero-overlay p {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* ============================= */
+/* SECTION PARTENAIRES */
+/* ============================= */
+
+.partenaires-section {
+  padding: 80px 40px;
+}
+
+.partenaires-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* ============================= */
+/* CARTE PARTENAIRE */
+/* ============================= */
+
+.partenaire-card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partenaire-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.partenaire-logo {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+.partenaire-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.partenaire-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ============================= */
+/* CTA */
+/* ============================= */
+
+.partenaires-cta {
+  background-color: #ffffff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.partenaires-cta h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.partenaires-cta p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.partenaires-btn {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.partenaires-btn:hover {
+  background-color: rgb(196, 4, 4);
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 1024px) {
+  .partenaires-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partenaires-hero-overlay h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .partenaires-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partenaires-hero {
+    height: 40vh;
+  }
+
+  .partenaires-hero-overlay h1 {
+    font-size: 26px;
+  }
+}

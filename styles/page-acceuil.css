@@ -1,0 +1,393 @@
+/* ============================= */
+/* PAGE ACCUEIL */
+/* ============================= */
+.acceuil-page {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============================= */
+/* HERO SECTION (50% écran) */
+/* ============================= */
+.acceuil-image {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* 🔥 MOITIÉ DE L’ÉCRAN */
+  overflow: hidden;
+}
+
+/* VIDEO */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Overlay sombre */
+.acceuil-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+/* TEXTE CENTRÉ */
+.class-acceuil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: #d61818; /* couleur principale du texte */
+  padding: 0 20px;
+}
+
+/* TITRE avec contour blanc fin */
+.class-acceuil h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+
+  color: red;
+}
+
+/* SOUS-TITRE avec contour blanc très fin */
+.class-acceuil h2 {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: 3px;
+  opacity: 0.95;
+
+
+  color: red;
+}
+
+
+/* Responsive HERO */
+@media (max-width: 768px) {
+  .acceuil-image {
+    height: 60vh;
+  }
+
+  .class-acceuil h1 {
+    white-space: normal;
+    font-size: 1.8rem;
+  }
+
+  .class-acceuil h2 {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ============================= */
+/* PRESENTATION */
+/* ============================= */
+.presentation-section {
+  padding: 80px 60px;
+  background-color: #ffffff;
+}
+
+.presentation-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.presentation-text h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.presentation-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.presentation-image {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* CONTACT */
+.presentation-contact {
+  margin-top: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+}
+
+.presentation-contact a {
+  color: #b42323;
+  text-decoration: none;
+}
+
+.presentation-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive presentation */
+@media (max-width: 900px) {
+  .presentation-container {
+    grid-template-columns: 1fr;
+  }
+
+  .presentation-section {
+    padding: 60px 30px;
+  }
+
+  .presentation-image {
+    height: 300px;
+  }
+}
+
+
+
+
+
+/* ============================= */
+/* MESSAGES SUR VIDEO */
+/* ============================= */
+/* ============================= */
+/* MESSAGES SUR VIDEO */
+/* ============================= */
+.video-messages {
+  position: absolute;
+  bottom: 70px; /* hauteur depuis le bas */
+  left: 25%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  justify-content: center; /* centrer horizontalement */
+  align-items: center;     /* centrer verticalement si besoin */
+  width: 100%;
+  pointer-events: none;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+/* Tous les messages empilés sur la même ligne */
+.video-messages h1 {
+  position: absolute; /* superposé, un seul visible à la fois */
+  color: white;
+  font-size: 50px;
+  font-weight: 500;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  opacity: 0;
+  /* Animation : apparition instantanée, un seul message visible à la fois */
+  animation: showMessage 17s steps(7) infinite; /* 7 messages sur 17s */
+}
+
+/* Décalage pour chaque message */
+.video-messages h1:nth-child(1) { animation-delay: 0s; }    /* 0s - 2.4s */
+.video-messages h1:nth-child(2) { animation-delay: 3s; }  /* 2.5s - 4.9s */
+.video-messages h1:nth-child(3) { animation-delay: 5s; }    /* 5s - 7.4s */
+.video-messages h1:nth-child(4) { animation-delay: 8s; }  /* 7.5s - 9.9s */
+.video-messages h1:nth-child(5) { animation-delay: 10s; }   /* 10s - 12.4s */
+.video-messages h1:nth-child(6) { animation-delay: 13s; } /* 12.5s - 14.9s */
+.video-messages h1:nth-child(7) { animation-delay: 15s; }   /* 15s - 17s */
+
+/* Animation avec apparition/disparition instantanée */
+@keyframes showMessage {
+  0%, 14.28%   { opacity: 1; }  /* visible */
+  14.29%, 100% { opacity: 0; }  /* invisible */
+}
+
+
+
+
+
+/* Conteneur des icônes centré */
+.social-icons {
+  display: flex;
+  gap: 20px;              /* espace entre chaque icône */
+  justify-content: center; /* centré horizontalement */
+  align-items: center;     /* alignement vertical */
+  margin-top: 20px;        /* espace depuis le h2 */
+}
+
+/* Couleurs spécifiques pour chaque réseau */
+.social-icons .facebook { color: white; }   /* bleu Facebook */
+.social-icons .youtube { color: white;; }    /* rouge YouTube */
+.social-icons .instagram { color: white; }  /* rose dégradé Instagram */
+.social-icons .whatsapp-link { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  color: white;        /* vert WhatsApp */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Hover général pour toutes les icônes */
+.social-icons a:hover {
+  transform: scale(1.2);
+  opacity: 0.9;
+}
+
+/* Style numéro WhatsApp */
+.whatsapp-number {
+  font-size: 1rem;
+  color: #ffffff; /* blanc pour se détacher du vert */
+}
+
+
+/* ============================= */
+/* SECTION TERRAINS */
+/* ============================= */
+.terrains-section {
+  padding: 70px 60px;
+  background-color: white;
+}
+
+.terrains-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #222;
+}
+
+/* Grille terrains (3 par ligne) */
+.terrains-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Carte terrain */
+.terrain-card {
+  background-color: #f9f9f9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.terrain-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Image terrain */
+.terrain-image {
+  position: relative;
+  width: 100%;
+  padding-top: 65%;
+}
+
+.terrain-card h3 {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+
+
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+@media (max-width: 1024px) {
+  .maisons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .maisons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.last-section-pro {
+  padding: 60px 40px;
+  background-color: #f4f4f4;
+  text-align: center;
+  color: #222; /* texte noir par défaut */
+}
+
+.last-section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #222; /* noir pour titre */
+}
+
+.features-grid-pro {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.feature-card-pro {
+ /* background-color: white;*/
+  padding: 30px 20px;
+ /* border-radius: 12px;*/
+ /* box-shadow: 0 8px 20px rgba(0,0,0,0.08);*/
+  text-align: center;
+  color: #222; /* noir pour tout le texte */
+}
+
+.feature-card-pro span {
+  font-size: 40px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.feature-card-pro h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222; /* force noir */
+}
+
+.feature-card-pro p {
+  font-size: 15px;
+  color: #555; /* gris foncé */
+}
+
+
+
+
+/* Responsive */
+@media(max-width:1024px){
+  .features-grid-pro {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media(max-width:768px){
+  .features-grid-pro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

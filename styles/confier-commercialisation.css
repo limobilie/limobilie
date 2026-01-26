@@ -1,0 +1,262 @@
+/* ============================= */
+/* BODY */
+body {
+  background-color: #f0f0f0; /* fond clair pour toute la page */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ============================= */
+/* HERO IMAGE */
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-overlay p {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ============================= */
+/* SECTION INTRO AVEC PHOTO (FOND SOMBRE UNIQUEMENT) */
+.section-intro {
+  background-color: white; /* fond sombre uniquement pour cette section */
+  color: #fff;               /* texte blanc */
+  padding: 60px 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.intro-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.intro-text {
+  flex: 1 1 500px;
+}
+
+.intro-text h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.intro-text p {
+  font-size: 16px;
+  color: black;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.intro-image {
+  flex: 1 1 400px;
+  text-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ============================= */
+/* SECTION EXPLICATIVE (FOND CLAIR) */
+.section-explique {
+  padding: 60px 20px;
+  background-color: #f0f0f0; /* fond clair */
+  color: #222;
+  margin: 40px auto;
+  border-radius: 12px;
+}
+
+.section-explique .container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.section-explique h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.section-explique p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.points {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.point {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1 1 250px;
+  max-width: 300px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.point h3 {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.point p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* ============================= */
+/* SECTION FINALE (FOND CLAIR) */
+.final-section {
+  background-color: #f0f0f0; /* fond clair */
+  color: #222;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.final-container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.final-container p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.cta-button {
+  background-color: #b42323;
+  color: #fff;
+  border: none;
+  padding: 15px 35px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.cta-button:hover {
+  background-color: #9a1c1c;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-overlay h1 {
+    font-size: 34px;
+  }
+
+  .section-intro .intro-text h2 {
+    font-size: 26px;
+  }
+
+  .section-explique h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    height: 40vh;
+  }
+
+  .hero-overlay h1 {
+    font-size: 28px;
+  }
+
+  .hero-overlay p {
+    font-size: 16px;
+  }
+
+  .intro-container {
+    flex-direction: column;
+  }
+
+  .intro-text, .intro-image {
+    flex: 1 1 100%;
+  }
+
+  .points {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .point {
+    max-width: 90%;
+  }
+
+  .section-explique h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-overlay h1 {
+    font-size: 24px;
+  }
+
+  .hero-overlay p {
+    font-size: 14px;
+  }
+
+  .section-intro .intro-text h2 {
+    font-size: 22px;
+  }
+
+  .section-explique h2 {
+    font-size: 22px;
+  }
+}

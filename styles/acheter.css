@@ -1,0 +1,270 @@
+/* ============================= */
+/* BODY */
+body {
+  background-color: white;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ============================= */
+/* HERO IMAGE */
+.biens-hero-image {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.biens-hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.biens-hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+.biens-hero-overlay h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.biens-hero-overlay p {
+  font-size: 18px;
+}
+
+/* ============================= */
+/* COMBO SEARCH */
+/* ============================= */
+/* HERO IMAGE (Ajustement) */
+/* ============================= */
+.biens-hero-image {
+  position: relative;
+  width: 100%;
+  height: 55vh; /* Légèrement augmenté pour l'équilibre visuel */
+  overflow: hidden;
+}
+
+.biens-hero-overlay {
+  position: absolute;
+  top: 45%; /* On remonte un peu le texte pour laisser de la place en bas */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+
+
+
+/* ============================= */
+/* COMBO SEARCH (LE CHEVAUCHEMENT) */
+/* ============================= */
+.biens-search-container {
+  position: relative;   /* Nécessaire pour le z-index */
+  z-index: 10;          /* Pour passer au-dessus de l'image Hero */
+  margin-top: -160px;    /* VALEUR CLÉ : Remonte le bloc sur l'image */
+
+padding-right: 20px; /* espace intérieur à droite */
+padding-bottom: 30px;/* espace intérieur en bas */
+padding-left: 20px;  /* espace intérieur à gauche */
+
+  display: flex;
+  justify-content: center;
+  background-color: transparent; /* On enlève le fond rouge */
+}
+
+/* On s'assure que le wrapper interne du composant ne rajoute pas trop d'espace */
+.biens-search-container .search-wrapper {
+  padding-top: 0; 
+  padding-bottom: 0;
+  width: 100%;
+}
+
+/* ============================= */
+/* GRID – GALERIE (Ajustement) */
+/* ============================= */
+.biens-grid.gallery-view {
+  padding-top: 100px; /* On augmente le padding pour laisser respirer après la barre */
+  /* ... reste de votre code ... */
+}
+
+
+
+
+
+
+
+/* ============================= */
+/* GRID – GALERIE */
+.biens-grid.gallery-view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 70px 200px;
+  background-color: #f8f8f8;
+}
+
+/* ============================= */
+/* GRID – LISTE */
+.biens-grid.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 50px 200px;
+  background-color: #f8f8f8;
+}
+
+/* ============================= */
+/* CARTE BIEN */
+.biens-card {
+  background-color: white;
+  width: 100%;
+  max-width: 680px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.biens-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================= */
+/* MODE LISTE – STRUCTURE */
+.biens-grid.list-view .biens-card {
+  display: flex;
+  max-width: 100%;
+  height: 260px;
+}
+
+.biens-grid.list-view .biens-image-container {
+  width: 35%;
+  height: 100%;
+}
+
+.biens-grid.list-view .biens-info {
+  width: 65%;
+  padding: 20px 25px;
+}
+
+/* ============================= */
+/* IMAGE */
+.biens-image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+/* ============================= */
+/* INFOS */
+.biens-info {
+  padding: 15px 20px;
+}
+
+/* PRIX */
+.biens-price {
+  font-weight: 700;
+  color: #b42323;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* TITRE (CORRIGÉ → NOIR NET) */
+.biens-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111; /* NOIR PROFOND */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TEXTE SECONDAIRE */
+.biens-info p {
+  font-size: 15px;
+  color: #666;
+  margin: 2px 0;
+}
+
+/* DETAILS */
+.biens-details {
+  font-size: 14px;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* ============================= */
+/* PAGINATION */
+.pagination {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #b42323;
+  color: white;
+  border-color: #b42323;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .biens-grid.gallery-view,
+  .biens-grid.list-view {
+    padding: 50px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .biens-grid.gallery-view {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  .biens-grid.list-view .biens-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .biens-grid.list-view .biens-image-container,
+  .biens-grid.list-view .biens-info {
+    width: 100%;
+  }
+
+  .biens-hero-image {
+    height: 40vh;
+  }
+
+  .biens-hero-overlay h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .biens-hero-overlay h1 {
+    font-size: 24px;
+  }
+}
