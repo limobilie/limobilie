@@ -4,7 +4,31 @@ import { useState, useEffect } from 'react'
 import { Search } from 'lucide-react'
 import '../../styles/ComboSearch.css'
 
-export default function ComboSearch({ filters, onChange }) {
+/* 🔹 Types MINIMAUX (pour satisfaire TypeScript) */
+type Filters = {
+  offerType: string
+  typeBien: string
+  localisation: string
+  budgetMax: string
+  surfaceMin: string
+  reference: string
+  piecesMin: string
+  chambresMin: string
+  salleBainMin: string
+  balcon: boolean
+  ascenseur: boolean
+  stationnement: boolean
+  pmr: boolean
+  piscine: boolean
+  searchText?: string
+}
+
+type Props = {
+  filters: Filters
+  onChange: (filters: Filters) => void
+}
+
+export default function ComboSearch({ filters, onChange }: Props) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [localFilters, setLocalFilters] = useState(filters)
 
@@ -12,16 +36,24 @@ export default function ComboSearch({ filters, onChange }) {
     setLocalFilters(filters)
   }, [filters])
 
-  // 🔹 Dès que l'utilisateur sélectionne "Autres", afficher immédiatement tous les biens "autres"
+  // 🔹 Dès que l'utilisateur sélectionne "Autres"
   useEffect(() => {
     if (localFilters.offerType.toLowerCase() === 'autres') {
       onChange(localFilters)
     }
   }, [localFilters.offerType])
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target
+    const checked =
+      type === 'checkbox' && e.target instanceof HTMLInputElement
+        ? e.target.checked
+        : undefined
+
     const val = type === 'checkbox' ? checked : value
+
     setLocalFilters(prev => ({ ...prev, [name]: val }))
   }
 
