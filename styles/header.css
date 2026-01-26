@@ -192,3 +192,37 @@
   margin-right: 8px;
 }
 
+
+
+/* =========================================================
+   MEDIA QUERIES POUR MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  /* Cacher le texte "Menu" */
+  .menu-button span {
+    display: none;
+  }
+
+  /* Réduire la largeur du conteneur du logo (fond blanc) */
+  .logo-container {
+    width: 240px;             /* largeur du fond blanc */
+    padding: 10px;            /* padding si nécessaire */
+    background-color: #ffffff; /* fond blanc conservé */
+  }
+
+  /* Centrer le logo à l’intérieur du fond blanc */
+  .logo-class {
+    display: flex;
+    justify-content: center;  /* centre horizontalement l’image */
+    align-items: center;      /* centre verticalement si nécessaire */
+    width: 100%;              /* prend toute la largeur du conteneur */
+  }
+
+  /* Ajuste la taille du logo Image */
+  .logo-class img {
+    width: auto;              /* garde les proportions */
+    max-width: 100%;          /* ne dépasse pas le conteneur */
+    height: auto;
+    padding-right: 50px;
+  }
+}
