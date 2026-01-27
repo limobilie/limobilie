@@ -18,7 +18,7 @@ export const biens = [
     pmr: false,
     piscine: true,
     details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/achat1.JPG",
+    image: "/images/achat1.jpg",
     offerType: "vente"
   },
   {
@@ -36,7 +36,7 @@ export const biens = [
     pmr: true,
     piscine: true,
     details: "Superbe villa moderne avec piscine...",
-    image: "/images/achat2.JPG",
+    image: "/images/achat2.jpg",
     offerType: "vente"
   },
   {
@@ -54,7 +54,7 @@ export const biens = [
     pmr: true,
     piscine: true,
     details: "Superbe villa moderne avec piscine...",
-    image: "/images/achat4.JPG",
+    image: "/images/achat4.jpg",
     offerType: "vente"
   },
 
@@ -76,7 +76,7 @@ export const biens = [
     pmr: false,
     piscine: true,
     details: "CIMENT DE QUALITE",
-    image: "/images/ciment1.JPG",
+    image: "/images/ciment1.jpg",
     offerType: "autres"
   },
 
@@ -95,7 +95,7 @@ export const biens = [
     pmr: false,
     piscine: true,
     details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/ciment2.JPG",
+    image: "/images/ciment2.jpg",
     offerType: "autres"
   },
 
@@ -114,7 +114,7 @@ export const biens = [
     pmr: false,
     piscine: true,
     details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/brique1.JPG",
+    image: "/images/brique1.jpg",
     offerType: "autres"
   },
 
@@ -133,7 +133,7 @@ export const biens = [
     pmr: false,
     piscine: true,
     details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/brique2.JPG",
+    image: "/images/brique2.jpg",
     offerType: "autres"
   },
 
@@ -152,7 +152,7 @@ export const biens = [
     pmr: false,
     piscine: true,
     details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/fer1.JPG",
+    image: "/images/fer1.jpg",
     offerType: "autres"
   },
 
@@ -171,7 +171,7 @@ export const biens = [
     pmr: false,
     piscine: true,
     details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/fer2.JPG",
+    image: "/images/fer2.jpg",
     offerType: "autres"
   },
 
@@ -194,7 +194,7 @@ export const biens = [
     pmr: true,
     piscine: false,
     details: "Appartement moderne et lumineux...",
-    image: "/images/achat5.JPG",
+    image: "/images/achat5.jpg",
     offerType: "neuf"
   },
 
