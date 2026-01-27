@@ -82,13 +82,13 @@ export default function AccueilPage() {
 
             <div className="presentation-contact">
               <span style={{ color: 'black', fontWeight: 'bold' }}>📞 Service Client :</span>
-              <a href="tel:0787026518">+225 05 45 93 56 73</a>
+              <a style={{color: 'red'}} href="tel:0787026518">+225 05 45 93 56 73</a>
             </div>
           </div>
 
           <div className="presentation-image">
             <Image
-              src="/images/agence3.jpg"
+              src="/images/agence333.png"
               alt="Expert conseil en immobilier Abidjan et BTP"
               fill
               style={{ objectFit: 'cover' }}
