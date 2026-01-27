@@ -82,7 +82,7 @@ export default function AccueilPage() {
 
             <div className="presentation-contact">
               <span style={{ color: 'black', fontWeight: 'bold' }}>📞 Service Client :</span>
-              <a href="tel:0787026518">0787 026 518</a>
+              <a href="tel:0787026518">+225 05 45 93 56 73</a>
             </div>
           </div>
 
