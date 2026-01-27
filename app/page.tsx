@@ -3,6 +3,7 @@
 import React from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Link from "next/link";
 import Image from 'next/image'
 import { FaWhatsapp, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa'
 import SEO_KEYWORDS, { MESSAGES_VIDEO } from '../data/seo' // On importe les deux
@@ -98,46 +99,60 @@ export default function AccueilPage() {
 
       {/* SECTION TERRAINS */}
       <section className="terrains-section">
-        <h2 className="terrains-title">Nos Terrains et Opportunités Immobilières</h2>
+        <h2 style={{ color: 'black'}} className="terrains-title">Nos Terrains et Opportunités Immobilières</h2>
         <div className="terrains-grid">
-          <div className="terrain-card">
-            <div className="terrain-image">
-              <Image src="/images/terrain1.jpg" alt="Vente terrain avec ACD à Bingerville" fill style={{ objectFit: 'cover' }} />
-            </div>
-            <h3>Terrain à Bingerville</h3>
-            <p className="card-seo-text">Lots sécurisés pour projets résidentiels ou commerciaux dans la zone de Bingerville.</p>
-          </div>
+              <div className="terrain-card">
+                <Link href="/acheter">
+                    <div className="terrain-image">
+                      <Image
+                        src="/images/terrain1.jpg"
+                        alt="Vente terrain avec ACD à Bingerville"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
 
-          <div className="terrain-card">
-            <div className="terrain-image">
-              <Image src="/images/terrain2.jpg" alt="Achat terrain viabilisé Bassam Côte d'Ivoire" fill style={{ objectFit: 'cover' }} />
+                    <h3 style={{ color: "black" }}>Terrain à Bingerville</h3>
+                    <p className="card-seo-text">
+                      Lots sécurisés pour projets résidentiels ou commerciaux dans la zone de Bingerville.
+                    </p>
+                </Link>
             </div>
-            <h3>Terrain viabilisé à Bassam</h3>
-            <p className="card-seo-text">Parcelles stratégiques à Grand-Bassam, idéales pour investissement locatif ou résidence.</p>
-          </div>
 
-          <div className="terrain-card">
-            <div className="terrain-image">
-              <Image src="/images/terrain3.jpg" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
+            <div className="terrain-card">
+              <Link href="/acheter">
+                <div className="terrain-image">
+                  <Image src="/images/terrain2.jpg" alt="Achat terrain viabilisé Bassam Côte d'Ivoire" fill style={{ objectFit: 'cover' }} />
+                </div>
+                <h3 style={{ color: 'black'}}>Terrain viabilisé à Bassam</h3>
+                <p className="card-seo-text">Parcelles stratégiques à Grand-Bassam, idéales pour investissement locatif ou résidence.</p>
+              </Link>
             </div>
-            <h3>Terrain résidentiel à Anyama</h3>
-            <p className="card-seo-text">Terrains plats et accessibles à Anyama, parfaits pour une construction immédiate.</p>
-          </div>
+
+            <div className="terrain-card">
+              <Link href="/acheter">
+              <div className="terrain-image">
+                <Image src="/images/terrain3.jpg" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
+              </div>
+              <h3 style={{ color: 'black'}}>Terrain résidentiel à Anyama</h3>
+              <p className="card-seo-text">Terrains plats et accessibles à Anyama, parfaits pour une construction immédiate.</p>
+              </Link>
+            </div>
         </div>
       </section>
 
       {/* SECTION POURQUOI NOUS CHOISIR */}
       <section className="last-section-pro">
-        <h2 className="last-section-title">Pourquoi choisir notre expertise immobilière ?</h2>
+        <h2 style={{ color: 'black'}}className="last-section-title">Pourquoi choisir notre expertise immobilière ?</h2>
         <div className="features-grid-pro">
           <div className="feature-card-pro">
             <span>🏠</span>
-            <h3>Biens de Qualité</h3>
+            <h3 style={{ color: 'black'}}>Biens de Qualité</h3>
             <p>Des terrains sécurisés et des appartements sélectionnés selon des critères rigoureux de fiabilité.</p>
           </div>
           <div className="feature-card-pro">
             <span>🧑‍💼</span>
-            <h3>Accompagnement Pro</h3>
+            <h3 style={{ color: 'black'}}>Accompagnement Pro</h3>
             <p>De l'achat du terrain à la remise des clés, nous gérons toutes les étapes de votre projet.</p>
           </div>
           <div className="feature-card-pro">
@@ -147,7 +162,7 @@ export default function AccueilPage() {
           </div>
           <div className="feature-card-pro">
             <span>🏗️</span>
-            <h3>BTP et Design</h3>
+            <h3 style={{ color: 'black'}}>BTP et Design</h3>
             <p>Un service d'aménagement intérieur et de construction pour un projet clé en main.</p>
           </div>
         </div>

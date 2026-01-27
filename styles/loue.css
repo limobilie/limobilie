@@ -138,7 +138,7 @@ padding-left: 20px;  /* espace intérieur à gauche */
 
 .biens-price {
   font-weight: bold;
-  color: #b42323;
+  color: red;
   font-size: 16px;
   margin-bottom: 6px;
 }
@@ -180,41 +180,111 @@ font-family: 'Lato', sans-serif;
 }
 
 .pagination button.active {
-  background-color: #b42323;
+  background-color: red;
   color: white;
-  border-color: #b42323;
+  border-color: rgb(32, 31, 31);
 }
 
 /* ============================= */
 /* RESPONSIVE */
+/* ============================= */
+/* RESPONSIVE TABLETTE */
 @media (max-width: 1024px) {
+
   .biens-grid.gallery-view,
   .biens-grid.list-view {
-    padding: 50px 40px;
+    padding: 60px 40px;
+  }
+
+  .biens-card {
+    max-width: 100%;
+  }
+
+  .biens-search-container-louer {
+    margin-top: -120px;
   }
 }
 
+/* ============================= */
+/* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
-  .biens-grid.gallery-view {
-    grid-template-columns: 1fr;
-    padding: 40px 20px;
+
+  /* HERO */
+  .biens-hero-image {
+    height: 50vh;
   }
 
+ .biens-hero-overlay {
+    top: 70%;
+    left: 5%;
+    transform: translateY(-50%); /* on enlève le centrage horizontal */
+    text-align: left;
+    width: 90%;
+  }
+
+  .biens-hero-overlay h1 {
+    font-size: 26px;
+    margin-top: -120px;
+  }
+
+  .biens-hero-overlay p {
+    font-size: 14px;
+  }
+
+  /* SEARCH */
+  .biens-search-container-louer {
+    margin-top: -200px;
+    padding: 0 12px;
+  }
+
+  /* GRID */
+  .biens-grid.gallery-view {
+    grid-template-columns: 1fr;
+    padding: 40px 15px;
+  }
+
+  .biens-grid.list-view {
+    padding: 40px 15px;
+  }
+
+  /* LIST VIEW */
   .biens-grid.list-view .biens-card {
     flex-direction: column;
     height: auto;
   }
 
-  .biens-grid.list-view .biens-image-container,
+  .biens-grid.list-view .biens-image-container {
+    width: 100%;
+    height: 220px;
+  }
+
   .biens-grid.list-view .biens-info {
     width: 100%;
+    padding: 16px;
   }
 
-  .biens-hero-image {
-    height: 40vh;
+  /* TEXT */
+  .biens-info h3 {
+    font-size: 18px;
   }
+
+  .biens-info p {
+    font-size: 14px;
+  }
+
+  
+}
+
+/* ============================= */
+/* TRÈS PETITS ÉCRANS */
+@media (max-width: 480px) {
 
   .biens-hero-overlay h1 {
-    font-size: 28px;
+    font-size: 22px;
+  }
+
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 14px;
   }
 }
