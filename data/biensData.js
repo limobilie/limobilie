@@ -1,12 +1,8 @@
 export const biens = [
-
-  // =====================
-  // ===== OFFRES VENTE ====
-  // =====================
   {
     titre: "Maison à vendre, 8 pièces - Assinie",
     prix: "950 000 000 FCFA",
-    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE",
+    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE. Magnifique propriété en bordure de lagune.",
     pieces: "8 pièces",
     surface: "1 800 m²",
     localisations: ["Assinie 01000", "Assinie Plage"],
@@ -17,14 +13,14 @@ export const biens = [
     stationnement: true,
     pmr: false,
     piscine: true,
-    details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
     image: "/images/achat1.jpg",
+    imagesGallery: ["/images/achat1.jpg", "/images/achat1.jpg", "/images/achat1.jpg", "/images/achat1.jpg"],
     offerType: "vente"
   },
   {
     titre: "Villa à vendre, 5 pièces - Abidjan Plateau",
     prix: "450 000 000 FCFA",
-    description: "A VENDRE - VILLA LUXUEUSE",
+    description: "A VENDRE - VILLA LUXUEUSE au coeur du Plateau.",
     pieces: "5 pièces",
     surface: "700 m²",
     localisations: ["Abidjan Plateau", "Plateau Centre"],
@@ -35,14 +31,14 @@ export const biens = [
     stationnement: true,
     pmr: true,
     piscine: true,
-    details: "Superbe villa moderne avec piscine...",
     image: "/images/achat2.jpg",
+    imagesGallery: ["/images/achat2.jpg", "/images/achat2.jpg", "/images/achat2.jpg"],
     offerType: "vente"
   },
   {
     titre: "Villa à vendre, 5 pièces - Abidjan PORT-BOUET",
     prix: "450 000 000 FCFA",
-    description: "A VENDRE - VILLA LUXUEUSE",
+    description: "Superbe villa moderne avec piscine proche de l'aéroport.",
     pieces: "5 pièces",
     surface: "700 m²",
     localisations: ["Abidjan PORT-BOUET", "PORT-BOUET Centre"],
@@ -53,136 +49,40 @@ export const biens = [
     stationnement: true,
     pmr: true,
     piscine: true,
-    details: "Superbe villa moderne avec piscine...",
     image: "/images/achat4.jpg",
+    imagesGallery: ["/images/achat4.jpg", "/images/achat4.jpg", "/images/achat4.jpg"],
     offerType: "vente"
   },
-
-  // =====================
-  // ===== OFFRES AUTRES ====
-  // =====================
   {
-    titre: "CIMENT DE QUALITER",
+    titre: "CIMENT DE QUALITE",
     prix: "35500F",
-    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE",
-    pieces: "12 pièces",
-    surface: "",
-    localisations: ["COCODY", "COCODY 3"],
-    chambres: 5,
-    salleBain: 4,
-    balcon: true,
-    ascenseur: false,
-    stationnement: true,
-    pmr: false,
-    piscine: true,
-    details: "CIMENT DE QUALITE",
+    description: "Ciment de haute qualité pour vos constructions.",
+    pieces: "N/A",
+    surface: "Sac 50kg",
+    localisations: ["COCODY"],
+    chambres: 0,
+    salleBain: 0,
     image: "/images/ciment1.jpg",
+    imagesGallery: ["/images/ciment1.jpg", "/images/ciment1.jpg"],
     offerType: "autres"
   },
-
-   {
+  {
     titre: "Maison à vendre, 12 pièces - COCODY",
     prix: "950 000 000 FCFA",
-    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE",
+    description: "Immense propriété idéale pour bureaux ou grande famille.",
     pieces: "12 pièces",
     surface: "1 800 m²",
     localisations: ["COCODY", "COCODY 3"],
     chambres: 5,
     salleBain: 4,
-    balcon: true,
-    ascenseur: false,
-    stationnement: true,
-    pmr: false,
-    piscine: true,
-    details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
     image: "/images/ciment2.jpg",
+    imagesGallery: ["/images/ciment2.jpg", "/images/ciment2.jpg"],
     offerType: "autres"
   },
-
-   {
-    titre: "Maison à vendre, 12 pièces - COCODY",
-    prix: "950 000 000 FCFA",
-    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE",
-    pieces: "12 pièces",
-    surface: "1 800 m²",
-    localisations: ["COCODY", "COCODY 3"],
-    chambres: 5,
-    salleBain: 4,
-    balcon: true,
-    ascenseur: false,
-    stationnement: true,
-    pmr: false,
-    piscine: true,
-    details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/brique1.jpg",
-    offerType: "autres"
-  },
-
-   {
-    titre: "Maison à vendre, 12 pièces - COCODY",
-    prix: "950 000 000 FCFA",
-    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE",
-    pieces: "12 pièces",
-    surface: "1 800 m²",
-    localisations: ["COCODY", "COCODY 3"],
-    chambres: 5,
-    salleBain: 4,
-    balcon: true,
-    ascenseur: false,
-    stationnement: true,
-    pmr: false,
-    piscine: true,
-    details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/brique2.jpg",
-    offerType: "autres"
-  },
-
-   {
-    titre: "Maison à vendre, 12 pièces - COCODY",
-    prix: "950 000 000 FCFA",
-    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE",
-    pieces: "12 pièces",
-    surface: "1 800 m²",
-    localisations: ["COCODY", "COCODY 3"],
-    chambres: 5,
-    salleBain: 4,
-    balcon: true,
-    ascenseur: false,
-    stationnement: true,
-    pmr: false,
-    piscine: true,
-    details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/fer1.jpg",
-    offerType: "autres"
-  },
-
-   {
-    titre: "Maison à vendre, 12 pièces - COCODY",
-    prix: "950 000 000 FCFA",
-    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE",
-    pieces: "12 pièces",
-    surface: "1 800 m²",
-    localisations: ["COCODY", "COCODY 3"],
-    chambres: 5,
-    salleBain: 4,
-    balcon: true,
-    ascenseur: false,
-    stationnement: true,
-    pmr: false,
-    piscine: true,
-    details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
-    image: "/images/fer2.jpg",
-    offerType: "autres"
-  },
-
-
-  // =====================
-  // ===== OFFRES NEUF ====
-  // =====================
   {
     titre: "Appartement neuf, 3 pièces - Cocody Riviera",
     prix: "250 000 000 FCFA",
-    description: "APPARTEMENT NEUF A COCOBY RIVIERA",
+    description: "Appartement moderne et lumineux avec vue dégagée.",
     pieces: "3 pièces",
     surface: "120 m²",
     localisations: ["COCODY Riviera", "COCODY"],
@@ -193,20 +93,8 @@ export const biens = [
     stationnement: true,
     pmr: true,
     piscine: false,
-    details: "Appartement moderne et lumineux...",
     image: "/images/achat5.jpg",
+    imagesGallery: ["/images/achat5.jpg", "/images/achat5.jpg", "/images/achat5.jpg"],
     offerType: "neuf"
-  },
-
-  // =====================
-  // ===== OFFRES LOCATION ====
-  // =====================
-  // Ici tu peux ajouter les biens à louer
-  // {
-  //   titre: "...",
-  //   prix: "...",
-  //   offerType: "location",
-  //   ...
-  // }
-
+  }
 ]

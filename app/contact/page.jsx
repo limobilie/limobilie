@@ -6,105 +6,83 @@ import Image from 'next/image'
 import '../../styles/contact.css'
 
 export default function ContactPage() {
+  
+  const handleWhatsApp = (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    
+    // Construction du message WhatsApp élégant
+    const text = `*NOUVEAU CONTACT SITE WEB*\n\n*👤 Nom:* ${name}\n*📌 Sujet:* ${subject}\n*💬 Message:* ${message}`;
+    const encodedText = encodeURIComponent(text);
+    
+    window.open(`https://wa.me/2250545935673?text=${encodedText}`, '_blank');
+  };
+
   return (
     <div className="contact-page">
       <Header />
-
       <main>
-        {/* SECTION HERO */}
+        {/* HERO SECTION PRO */}
         <section className="hero-image">
-          <Image
-            src="/images/contact.webp"
-            alt="Contact immobilier Abidjan"
-            fill
-            priority
-            style={{ objectFit: 'cover' }}
-          />
+          <Image src="/images/contact.webp" alt="Contact H&A Properties" fill priority style={{ objectFit: 'cover' }} />
           <div className="hero-overlay">
-            <h1>Contactez-nous</h1>
-            <p>Nous sommes là pour vous accompagner dans vos projets immobiliers</p>
+            <h1>Parlons de votre projet</h1>
+            <p>Une expertise immobilière à votre écoute pour un accompagnement sur mesure.</p>
           </div>
         </section>
 
-        {/* SECTION CONTACT */}
         <section className="contact-section">
           <div className="contact-container">
-
-            {/* BLOC INFOS AU-DESSUS */}
+            
+            {/* INFOS CARDS */}
             <div className="contact-info-inline">
               <div className="info-block">
-                <span className="info-icon">📞</span>
+                <div className="info-icon">📞</div>
                 <div>
-                  <strong>Téléphone</strong>
-                  <p>07 08 27 81 35</p>
+                  <strong>Appelez-nous</strong>
+                  <p>+225 05 45 93 56 73</p>
                 </div>
               </div>
               <div className="info-block">
-                <span className="info-icon">📍</span>
+                <div className="info-icon">📍</div>
                 <div>
                   <strong>Adresse</strong>
-                  <p>
-                    Cocody, Riviera Golf 4, Laguna Golf<br />
-                    Abidjan, Côte d'Ivoire
-                  </p>
+                  <p>Bingerville, Paris Village</p>
                 </div>
               </div>
             </div>
 
-            {/* FORMULAIRE */}
-            <form className="contact-form">
+            {/* FORMULAIRE PROFESSIONNEL */}
+            <form className="contact-form" onSubmit={handleWhatsApp}>
+              <h2 className="form-title">Envoyez-nous un message</h2>
               <div className="form-grid">
                 <div className="form-group">
                   <label htmlFor="name">Nom & Prénom *</label>
-                  <input type="text" id="name" placeholder="Votre nom complet" required />
+                  <input type="text" id="name" placeholder="Ex: Jean Kouassi" required />
                 </div>
-
                 <div className="form-group">
-                  <label htmlFor="email">Email *</label>
-                  <input type="email" id="email" placeholder="votre@email.com" required />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="phone">Téléphone</label>
-                  <input type="tel" id="phone" placeholder="Votre numéro" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="subject">Sujet</label>
-                  <input type="text" id="subject" placeholder="Sujet de votre message" />
+                  <label htmlFor="subject">Sujet de votre demande</label>
+                  <input type="text" id="subject" placeholder="Ex: Achat de terrain / Devis" required />
                 </div>
               </div>
 
               <div className="form-group">
                 <label htmlFor="message">Votre message *</label>
-                <textarea
-                  id="message"
-                  placeholder="Comment pouvons-nous vous aider ?"
-                  rows="6"
-                  required
-                ></textarea>
+                <textarea id="message" placeholder="Détaillez votre projet ici..." rows="6" required></textarea>
               </div>
 
               <div className="form-footer">
-                <div className="rgpd">
-                  <input type="checkbox" id="rgpd" required />
-                  <label htmlFor="rgpd">
-                    J'accepte le traitement de mes données personnelles conformément au RGPD.
-                  </label>
-                </div>
-
-                <p className="rgpd-text">
-                  Si vous ne souhaitez pas faire l'objet de prospection commerciale par voie téléphonique, 
-                  vous pouvez vous inscrire gratuitement sur <a href="https://www.bloctel.gouv.fr" target="_blank" rel="noopener noreferrer">www.bloctel.gouv.fr</a>.
-                </p>
-
-                <button type="submit" className="submit-btn">Envoyer le message</button>
+                <button type="submit" className="submit-btn-whatsapp">
+                   Continuer sur WhatsApp
+                </button>
+                <p className="form-note">Réponse généralement en moins de 30 minutes.</p>
               </div>
             </form>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   )

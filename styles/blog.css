@@ -1,24 +1,22 @@
 /* ============================================================ */
-/* 1. BASE & STRUCTURE (DESKTOP) */
+/* BASE & GRILLE */
 /* ============================================================ */
 .blog-page {
-  background-color: #f4f4f4;
-  font-family: 'Poppins', sans-serif;
+  background-color: #fcfcfc;
+  font-family: 'Inter', sans-serif;
 }
 
-/* HERO SECTION */
 .hero-image {
   position: relative;
   height: 50vh;
   width: 100%;
-  overflow: hidden;
 }
 
 .hero-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
   z-index: 1;
 }
 
@@ -30,46 +28,38 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
-  width: 95%;
-  max-width: 1200px;
+  width: 90%;
 }
 
 .hero-overlay h1 {
-  font-size: clamp(24px, 4vw, 42px);
-  font-weight: 700;
-  margin-bottom: 10px;
-  /* FORCE UNE SEULE LIGNE SUR PC */
-  white-space: nowrap; 
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  margin-bottom: 15px;
 }
 
-.hero-overlay p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-/* BLOG SECTION & GRID */
 .blog-section {
-  padding: 80px 20px;
-  max-width: 1300px;
+  padding: 80px 8%;
+  max-width: 1400px;
   margin: 0 auto;
+  color: black;
 }
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur grand écran */
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
 }
 
-/* BLOG CARD */
+/* CARTE */
 .blog-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: 0.4s ease;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 }
 
 .blog-card:hover {
@@ -79,89 +69,194 @@
 
 .blog-image-container {
   position: relative;
-  height: 240px; /* Hauteur ajustée pour la grille à 3 colonnes */
-  width: 100%;
+  height: 240px;
+}
+
+.blog-date-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: white;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
 }
 
 .blog-content {
   padding: 25px;
-  display: flex;
-  flex-direction: column;
   flex-grow: 1;
 }
 
 .blog-content h3 {
-  font-size: 19px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
   margin-bottom: 12px;
-  color: #222;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .blog-content p {
-  font-size: 14.5px;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.blog-link {
   font-size: 14px;
-  font-weight: 600;
-  color: #b42323; /* Votre rouge signature */
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.blog-btn {
+  background: none;
+  border: none;
+  color: #e31e24;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 
-.blog-card:hover .blog-link {
-  color: #ff0000;
-  text-decoration: underline;
+.blog-btn .arrow {
+  transition: transform 0.3s;
+}
+
+.blog-card:hover .arrow {
+  transform: translateX(5px);
 }
 
 /* ============================================================ */
-/* 2. RESPONSIVE (MEDIA QUERIES) */
+/* MODALE (POPUP) */
 /* ============================================================ */
+.blog-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
 
-/* --- TABLETTES (1024px et moins) --- */
+.blog-modal-content {
+  background: white;
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  border-radius: 25px;
+  position: relative;
+  overflow-y: auto;
+  animation: modalIn 0.4s ease-out;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* BOUTON DE FERMETURE MODALE */
+.blog-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid #e31e24; /* Bordure rouge */
+  font-size: 30px;
+  font-weight: bold;
+  color: #e31e24; /* CROIX ROUGE */
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(227, 30, 36, 0.2);
+  transition: all 0.3s ease;
+  line-height: 0;
+  padding-bottom: 4px; /* Ajustement visuel pour centrer le '×' */
+}
+
+.blog-close-btn:hover {
+  background: #e31e24;
+  color: white; /* Devient blanc quand on survol le bouton rouge */
+  transform: rotate(90deg); /* Petit effet de rotation sympa */
+}
+
+.blog-modal-header-img {
+  position: relative;
+  width: 100%;
+  height: 350px;
+}
+
+.blog-modal-info {
+  padding: 40px;
+}
+
+.blog-modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.meta-badge {
+  background: #e31e24;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.meta-date {
+  font-size: 13px;
+  color: #888;
+}
+
+.blog-modal-info h2 {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.blog-full-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.btn-whatsapp-expert {
+  width: 100%;
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-whatsapp-expert:hover {
+  background: #1eb954;
+  transform: scale(1.02);
+}
+
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .blog-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
-    gap: 20px;
-  }
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* --- MOBILES (768px et moins) --- */
 @media (max-width: 768px) {
-  .hero-image {
-    height: 50vh;
-  }
-
-  .hero-overlay h1 {
-    font-size: 26px;
-    white-space: normal; /* Permet le retour à la ligne sur mobile */
-  }
-
-  .blog-section {
-    padding: 40px 15px;
-  }
-
-  .blog-grid {
-    grid-template-columns: 1fr; /* 1 seule colonne sur mobile */
-  }
-
-  .blog-image-container {
-    height: 220px;
-  }
-}
-
-/* --- TRÈS PETITS MOBILES (480px) --- */
-@media (max-width: 480px) {
-  .hero-overlay h1 {
-    font-size: 22px;
-  }
-  
-  .blog-content {
-    padding: 20px;
-  }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-modal-header-img { height: 220px; }
+  .blog-modal-info { padding: 25px; }
+  .blog-section { padding: 50px 20px; }
 }
