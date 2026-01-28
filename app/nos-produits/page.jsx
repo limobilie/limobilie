@@ -11,7 +11,7 @@ export default function LimobilieTontinePage() {
       <Header />
 
       <main>
-        {/* HERO SECTION - Haute Définition */}
+        {/* HERO SECTION */}
         <section className="tontine-hero">
           <Image
             src="/images/tontine3.png" 
@@ -39,14 +39,15 @@ export default function LimobilieTontinePage() {
                 Vous investissez collectivement dans la puissance technique (machine D7) nécessaire à la création de valeur foncière.
               </p>
               <div className="result-badge">
-                <span>👉</span> Résultat : au bout de 10 mois, chaque souscripteur reçoit un lot de terrain approuvé.
+                <span className="badge-icon">👉</span> 
+                <span className="badge-text">Résultat : au bout de 10 mois, chaque souscripteur reçoit un lot de terrain approuvé.</span>
               </div>
             </section>
 
             <div className="details-grid">
               <section className="info-box">
                 <h3>💰 Conditions</h3>
-                <ul style={{ color: 'black' }}>
+                <ul>
                   <li><strong>1.000.000 FCFA</strong> par personne</li>
                   <li>Cycle court de <strong>10 mois</strong></li>
                   <li>Transparence totale des flux</li>
@@ -54,8 +55,8 @@ export default function LimobilieTontinePage() {
               </section>
 
               <section className="info-box">
-                <h3>La Machine D7</h3>
-                <ul style={{ color: 'black' }}>
+                <h3>🚜 La Machine D7</h3>
+                <ul>
                   <li>Décapage et ouverture de voies</li>
                   <li>Viabilisation aux normes</li>
                   <li>Accélération administrative</li>
@@ -65,7 +66,7 @@ export default function LimobilieTontinePage() {
 
             <section className="delivery-section">
               <h2>Ce que vous recevez</h2>
-              <div style={{ color: 'black' }} className="check-list">
+              <div className="check-list">
                 <div className="check-item">✅ 1 lot de terrain approuvé</div>
                 <div className="check-item">✅ Localisation stratégique</div>
                 <div className="check-item">✅ Documents juridiques conformes</div>
@@ -73,16 +74,16 @@ export default function LimobilieTontinePage() {
               </div>
             </section>
 
-            <section style={{ color: 'black' }} className="security-section">
+            <section className="security-section">
               <h2>Sécurité & Transparence</h2>
               <div className="security-cards">
                 <div className="s-card">
                   <h4>Contrat Notarié</h4>
-                  <p>Sécurité juridique totale pour chaque membre.</p>
+                  <p>Sécurité juridique totale pour chaque membre du groupe.</p>
                 </div>
                 <div className="s-card">
                   <h4>Reporting Mensuel</h4>
-                  <p>Suivez l'avancement réel sur le terrain.</p>
+                  <p>Suivez l'avancement réel des travaux sur le terrain.</p>
                 </div>
               </div>
             </section>

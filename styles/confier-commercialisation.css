@@ -1,5 +1,5 @@
 /* ============================================================ */
-/* 1. BASE & STRUCTURE (DESKTOP FIRST) */
+/* 1. DESIGN PC (BASE & STRUCTURE) */
 /* ============================================================ */
 body {
   background-color: #f8f9fa;
@@ -8,44 +8,51 @@ body {
   color: #333;
 }
 
-/* HERO SECTION */
-.hero-image {
+.hero-commercial {
   position: relative;
   width: 100%;
   height: 60vh;
   overflow: hidden;
 }
 
-.hero-image::after {
+.hero-img-bg {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-commercial::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
-.hero-overlay {
+.hero-overlay-commercial {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
   z-index: 2;
+  display: flex;
+  align-items: center; /* Centre verticalement sur PC */
+  justify-content: center; /* Centre horizontalement sur PC */
+  padding: 0 40px;
+}
+
+.hero-title-container {
+  max-width: 1400px;
+  width: 100%;
   text-align: center;
-  color: white;
-  width: 90%;
-  max-width: 900px;
 }
 
-.hero-overlay h1 {
-  font-size: clamp(28px, 5vw, 48px);
+.hero-overlay-commercial h1 {
+  /* clamp ajusté pour PC pour rester sur une ligne */
+  font-size: clamp(32px, 4.5vw, 54px);
   font-weight: 800;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.hero-overlay p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  color: white;
+  margin: 0;
+  line-height: 1.1;
+  white-space: nowrap; /* FORCE LE TEXTE SUR UNE LIGNE SUR PC */
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
 /* SECTION INTRO */
@@ -64,13 +71,19 @@ body {
   gap: 60px;
 }
 
-.intro-text { flex: 1; }
-.intro-image { flex: 1; border-radius: 12px; overflow: hidden; }
+.intro-text { flex: 1.2; }
+.intro-image { flex: 0.8; border-radius: 12px; overflow: hidden; }
 
-.intro-text h2 { font-size: 32px; color: #222; margin-bottom: 25px; font-weight: 700; }
+.img-responsive-team {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.intro-text h2 { font-size: 32px; color: #222; margin-bottom: 25px; font-weight: 700; border-left: 5px solid #e31e24; padding-left: 15px; }
 .intro-text p { font-size: 17px; line-height: 1.7; color: #555; margin-bottom: 15px; }
 
-/* SECTION EXPLIQUE & POINTS */
+/* POINTS */
 .section-explique {
   padding: 80px 20px;
   max-width: 1200px;
@@ -97,7 +110,7 @@ body {
 }
 
 .point:hover { transform: translateY(-5px); }
-.point h3 { font-size: 20px; margin-bottom: 15px; color: #e31e24; }
+.point h3 { font-size: 20px; margin-bottom: 15px; color: #e31e24; font-weight: 700; }
 .point p { font-size: 15px; color: #666; line-height: 1.5; }
 
 /* SECTION FINALE */
@@ -121,7 +134,6 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3);
-  margin-top: 20px;
 }
 
 .cta-button:hover {
@@ -130,38 +142,60 @@ body {
 }
 
 /* ============================================================ */
-/* 2. RESPONSIVE (MEDIA QUERIES) */
+/* 2. RESPONSIVE (TABLETTE & MOBILE) */
 /* ============================================================ */
 
-/* --- TABLETTES (1024px) --- */
 @media (max-width: 1024px) {
+  .hero-overlay-commercial h1 {
+    white-space: normal; /* Autorise le retour à la ligne sur petits écrans */
+  }
   .intro-container { gap: 30px; }
   .points { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* --- MOBILES (768px) --- */
 @media (max-width: 768px) {
-  .hero-image { height: 50vh; }
-  
-  .hero-overlay {
-    text-align: left;
-    left: 5%;
-    transform: translateY(-50%);
-    width: 90%;
+  /* --- HERO MOBILE AJUSTEMENT --- */
+  .hero-commercial {
+    height: 55vh;
   }
 
-  .intro-container { flex-direction: column; }
-  .intro-image { order: 2; width: 100%; }
-  .intro-text { order: 1; }
+  .hero-overlay-commercial {
+    align-items: flex-end; /* Descend le texte en bas */
+    justify-content: flex-start; /* Aligne le contenu à gauche */
+    padding-bottom: 130px; /* Décalage du bas */
+    padding-left: 20px;   /* Décalage de la gauche */
+  }
 
-  .section-intro { padding: 40px 20px; margin: 20px 10px; }
+  .hero-title-container {
+    text-align: left; /* Texte aligné à gauche */
+  }
+
+  .hero-overlay-commercial h1 {
+    font-size: 30px;
+    white-space: normal;
+    line-height: 1.3;
+    max-width: 90%;
+  }
+
+  /* --- CONTENU MOBILE --- */
+  .intro-container { flex-direction: column; }
+  .intro-image { width: 100%; order: 2; }
+  .intro-text { order: 1; text-align: left; }
+
+  .section-intro { 
+    margin: 20px 15px; 
+    padding: 35px 20px; 
+    border-radius: 12px;
+  }
+
   .intro-text h2 { font-size: 24px; }
 
   .points { grid-template-columns: 1fr; }
+  .point { text-align: left; }
 }
 
-/* --- PETITS MOBILES (480px) --- */
 @media (max-width: 480px) {
-  .hero-overlay h1 { font-size: 24px; }
-  .cta-button { width: 100%; padding: 15px; }
+  .hero-overlay-commercial h1 { font-size: 26px; }
+  .hero-overlay-commercial { padding-bottom: 40px; }
+  .cta-button { width: 100%; padding: 16px; }
 }

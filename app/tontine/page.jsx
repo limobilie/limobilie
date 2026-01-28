@@ -9,9 +9,7 @@ export default function LimobilieTontinePage() {
   return (
     <div className="tontine-wrapper">
       <Header />
-
       <main>
-        {/* HERO SECTION - Haute Définition */}
         <section className="tontine-hero">
           <Image
             src="/images/tontine13.png" 
@@ -28,9 +26,7 @@ export default function LimobilieTontinePage() {
           </div>
         </section>
 
-        {/* SECTION CONTENU */}
         <div className="tontine-container">
-          
           <article className="main-card">
             <section className="intro-section">
               <h2>Le principe, simplement</h2>
@@ -93,19 +89,15 @@ export default function LimobilieTontinePage() {
               </blockquote>
               <p className="signature">L'équipe LIMOBILIÉ</p>
             </section>
-                {/* BOUTON SOUSCRIRE */}
-                <div className="subscribe-section">
-                  <button className="subscribe-btn" onClick={() => alert('Page de souscription')}>
-                    Souscrire
-                  </button>
-                </div>
-          </article>
 
+            <div className="subscribe-section">
+              <button className="subscribe-btn" onClick={() => alert('Page de souscription')}>
+                Souscrire
+              </button>
+            </div>
+          </article>
         </div>
       </main>
-
-        
-
       <Footer />
     </div>
   )

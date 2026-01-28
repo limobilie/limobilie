@@ -11,11 +11,10 @@ export default function LimobilieImpactPage() {
       <Header />
 
       <main>
-
         {/* HERO SECTION */}
         <section className="impact-hero">
           <Image
-            src="/images/impact-hero.png" // Remplace par ton image
+            src="/images/impact-hero.png" 
             alt="LIMOBILIÉ Impact"
             fill
             priority
@@ -73,12 +72,12 @@ export default function LimobilieImpactPage() {
             <section className="mechanism-section">
               <h2>5. Mécanisme opérationnel</h2>
               <h3>5.1. Principe financier</h3>
-              <ul style={{ color: 'black' }}>
+              <ul className="impact-list">
                 <li>5% à 10% du montant de chaque transaction affecté au Fonds LIMOBILIÉ Impact</li>
                 <li>Fonds dédié uniquement aux actions sociales</li>
               </ul>
               <h3>5.2. Gouvernance financière</h3>
-              <ul style={{ color: 'black' }}>
+              <ul className="impact-list">
                 <li>Séparation stricte entre revenus commerciaux et fonds d’impact</li>
                 <li>Suivi financier assuré par TAF</li>
                 <li>Rapports d’utilisation périodiques</li>
@@ -87,7 +86,7 @@ export default function LimobilieImpactPage() {
 
             <section className="axes-section">
               <h2>6. Axes d’impact prioritaires</h2>
-              <ul style={{ color: 'black' }}>
+              <ul className="impact-list">
                 <li>Santé communautaire : soins, maternités rurales, accès aux soins de base</li>
                 <li>Eau & assainissement : forages, eau potable, sensibilisation sanitaire</li>
                 <li>Éducation & protection de l’enfance : scolarisation, fournitures, soutien éducatif</li>
@@ -98,13 +97,13 @@ export default function LimobilieImpactPage() {
             <section className="roles-section">
               <h2>7. Rôles et responsabilités</h2>
               <h3>7.1. Rôle de LIMOBILIÉ</h3>
-              <ul style={{ color: 'black' }}>
+              <ul className="impact-list">
                 <li>Identification et commercialisation des biens immobiliers</li>
                 <li>Intégration du programme LIMOBILIÉ Impact</li>
                 <li>Communication et collecte des fonds</li>
               </ul>
               <h3>7.2. Rôle de TAF</h3>
-              <ul style={{ color: 'black' }}>
+              <ul className="impact-list">
                 <li>Gestion opérationnelle des actions sociales</li>
                 <li>Suivi et évaluation des impacts</li>
                 <li>Respect de l’éthique et de la dignité des bénéficiaires</li>
@@ -113,7 +112,7 @@ export default function LimobilieImpactPage() {
 
             <section className="transparency-section">
               <h2>8. Transparence & Traçabilité</h2>
-              <ul style={{ color: 'black' }}>
+              <ul className="impact-list">
                 <li>Certificat LIMOBILIÉ Impact nominatif</li>
                 <li>Rapport d’impact simplifié</li>
                 <li>Photos, indicateurs et témoignages réguliers</li>
@@ -123,7 +122,7 @@ export default function LimobilieImpactPage() {
 
             <section className="targets-section">
               <h2>9. Cibles stratégiques</h2>
-              <ul style={{ color: 'black' }}>
+              <ul className="impact-list">
                 <li>La diaspora africaine</li>
                 <li>Cadres et entrepreneurs</li>
                 <li>Investisseurs à impact</li>
