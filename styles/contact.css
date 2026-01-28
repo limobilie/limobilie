@@ -1,20 +1,24 @@
+/* ============================================================ */
+/* 1. BASE & STRUCTURE (DESKTOP) */
+/* ============================================================ */
 .contact-page {
   background-color: #f5f5f5;
   font-family: 'Poppins', sans-serif;
 }
 
-/* HERO IMAGE */
+/* HERO SECTION */
 .hero-image {
   position: relative;
   height: 50vh;
   width: 100%;
+  overflow: hidden;
 }
 
 .hero-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.5);
   z-index: 1;
 }
 
@@ -26,16 +30,20 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
+  width: 90%;
 }
 
 .hero-overlay h1 {
-  font-size: 42px;
-  font-weight: 700;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  margin-bottom: 10px;
+  /* FORCE UNE SEULE LIGNE SUR PC */
+  white-space: nowrap;
 }
 
 .hero-overlay p {
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: clamp(16px, 2vw, 20px);
+  opacity: 0.9;
 }
 
 /* CONTACT SECTION */
@@ -44,51 +52,71 @@
 }
 
 .contact-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
 }
 
-/* INFOS INLINE AU-DESSUS */
+/* INFOS INLINE */
 .contact-info-inline {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background: #fff;
-  padding: 20px 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.info-icon {
+  font-size: 24px;
+  background: #fdf2f2;
+  padding: 10px;
+  border-radius: 50%;
 }
 
 .info-block strong {
-  color: #000; /* label noir */
-  font-size: 14px;
+  color: #1a1a1a;
+  font-size: 15px;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .info-block p {
   font-size: 14px;
-  color: #555;
+  color: #666;
+  margin: 0;
 }
 
 /* FORMULAIRE */
 .contact-form {
   background: #fff;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
   display: flex;
   flex-direction: column;
+  gap: 25px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: 600;
-  color: #000; /* label noir */
+  color: #1a1a1a;
   font-size: 14px;
 }
 
@@ -96,55 +124,112 @@
 .contact-form textarea {
   width: 100%;
   padding: 14px 18px;
-  border: 2px solid #b42323; /* bordure complète */
-  border-radius: 8px;
+  border: 2px solid #eee;
+  border-radius: 10px;
   font-size: 14px;
   transition: all 0.3s ease;
+  background-color: #fafafa;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: #8f1b1b;
-  box-shadow: 0 0 6px rgba(180,35,35,0.4);
+  border-color: #b42323;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(180,35,35,0.1);
 }
 
-.contact-form textarea {
-  resize: none;
-}
-
+/* RGPD & FOOTER FORM */
 .rgpd {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
   font-size: 13px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.rgpd input {
+  width: 18px !important;
+  height: 18px;
+  margin-top: 2px;
 }
 
 .rgpd-text {
   font-size: 12px;
-  color: #666;
+  color: #888;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
-.contact-form button {
+.submit-btn {
   background-color: #b42323;
   color: white;
   border: none;
-  padding: 14px 30px;
-  border-radius: 30px;
-  font-size: 15px;
-  font-weight: 600;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  width: fit-content;
+  align-self: center;
 }
 
-.contact-form button:hover {
+.submit-btn:hover {
   background-color: #8f1b1b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(180,35,35,0.3);
 }
 
-/* RESPONSIVE */
+/* ============================================================ */
+/* 2. RESPONSIVE (MEDIA QUERIES) */
+/* ============================================================ */
+
+/* --- TABLETTES & PETITS PC (900px) --- */
 @media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr; /* Une seule colonne pour les inputs */
+  }
+
   .contact-info-inline {
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
+    align-items: flex-start;
+  }
+}
+
+/* --- MOBILES (768px et moins) --- */
+@media (max-width: 768px) {
+  .hero-image {
+    height: 50vh;
+  }
+
+  .hero-overlay h1 {
+    font-size: 30px;
+    white-space: normal; /* Autorise le retour à la ligne sur mobile */
+  }
+
+  .contact-section {
+    padding: 40px 15px;
+  }
+
+  .contact-form {
+    padding: 30px 20px;
+  }
+
+  .submit-btn {
+    width: 100%; /* Bouton pleine largeur sur mobile */
+  }
+}
+
+/* --- TRÈS PETITS MOBILES (480px) --- */
+@media (max-width: 480px) {
+  .info-block {
+    flex-direction: row;
+  }
+  
+  .info-icon {
+    display: none; /* Cache les icônes pour gagner de la place */
   }
 }

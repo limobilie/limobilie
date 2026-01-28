@@ -1,20 +1,18 @@
-/* ============================= */
-/* PAGE DEMARCHEUR */
-/* ============================= */
-
+/* ============================================================ */
+/* 1. BASE & STRUCTURE (DESKTOP) */
+/* ============================================================ */
 .demarcheur-page {
   background-color: #f8f8f8;
   font-family: 'Poppins', sans-serif;
+  color: #333;
 }
 
-/* ============================= */
-/* HERO */
-/* ============================= */
-
+/* HERO SECTION */
 .demarcheur-hero {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 55vh;
+  min-height: 450px;
   overflow: hidden;
 }
 
@@ -22,7 +20,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 
@@ -34,27 +32,29 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  max-width: 850px;
-  padding: 0 20px;
+  width: 95%;
+  max-width: 1200px;
 }
 
 .demarcheur-hero-overlay h1 {
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: clamp(26px, 4.5vw, 44px);
+  font-weight: 800;
+  margin-bottom: 15px;
+  /* --- FORCE UNE SEULE LIGNE SUR PC --- */
+  white-space: nowrap; 
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .demarcheur-hero-overlay p {
-  font-size: 18px;
+  font-size: 1.2rem;
   opacity: 0.95;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
-/* ============================= */
-/* INTRO */
-/* ============================= */
-
+/* INTRO SECTION */
 .demarcheur-intro {
-  padding: 70px 40px;
+  padding: 100px 20px;
   background-color: white;
 }
 
@@ -65,123 +65,140 @@
 }
 
 .demarcheur-intro h2 {
-  font-size: 32px;
+  font-size: clamp(24px, 3vw, 34px);
   font-weight: 700;
-  color: #222;
-  margin-bottom: 20px;
+  color: #1a1a1a;
+  margin-bottom: 25px;
 }
 
 .demarcheur-intro p {
-  font-size: 16px;
+  font-size: 17px;
   color: #555;
   line-height: 1.8;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-/* ============================= */
-/* AVANTAGES */
-/* ============================= */
-
+/* AVANTAGES GRID */
 .demarcheur-avantages {
-  padding: 70px 40px;
-  background-color: #f8f8f8;
+  padding: 80px 20px;
+  background-color: #f4f4f4;
 }
 
 .demarcheur-grid {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes sur PC */
+  gap: 30px;
 }
 
 .demarcheur-card {
   background-color: white;
-  padding: 30px 20px;
-  border-radius: 14px;
+  padding: 40px 25px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
 }
 
 .demarcheur-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .demarcheur-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 12px;
-}
-
-.demarcheur-card p {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* ============================= */
-/* CTA */
-/* ============================= */
-
-.demarcheur-cta {
-  padding: 80px 20px;
-  background-color: #ffffff;
-  text-align: center;
-}
-
-.demarcheur-cta h2 {
-  font-size: 32px;
+  font-size: 19px;
   font-weight: 700;
   color: #222;
   margin-bottom: 15px;
 }
 
-.demarcheur-cta p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 30px;
+.demarcheur-card p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* CTA SECTION */
+.demarcheur-cta {
+  padding: 100px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.demarcheur-cta h2 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
 .demarcheur-btn {
-  background-color: red;
+  display: inline-block;
+  background-color: #e31e24; /* Votre rouge */
   color: white;
-  padding: 14px 36px;
-  border-radius: 8px;
+  padding: 18px 45px;
+  border-radius: 50px;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.3s ease;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
+  margin-top: 20px;
 }
 
 .demarcheur-btn:hover {
-  background-color: rgb(248, 3, 3);
+  background-color: #b31419;
+  transform: scale(1.05);
 }
 
-/* ============================= */
-/* RESPONSIVE */
-/* ============================= */
+/* ============================================================ */
+/* 2. RESPONSIVE (MEDIA QUERIES) */
+/* ============================================================ */
 
+/* --- TABLETTES (1024px et moins) --- */
 @media (max-width: 1024px) {
   .demarcheur-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .demarcheur-hero-overlay h1 {
-    font-size: 32px;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
   }
 }
 
-@media (max-width: 600px) {
-  .demarcheur-grid {
-    grid-template-columns: 1fr;
-  }
-
+/* --- MOBILES (768px et moins) --- */
+@media (max-width: 768px) {
   .demarcheur-hero {
-    height: 40vh;
+    height: 50vh;
   }
 
   .demarcheur-hero-overlay h1 {
     font-size: 26px;
+    /* --- AUTORISE LE RETOUR À LA LIGNE SUR MOBILE --- */
+    white-space: normal; 
+    line-height: 1.3;
+  }
+
+  .demarcheur-intro {
+    padding: 60px 20px;
+  }
+
+  .demarcheur-grid {
+    grid-template-columns: 1fr; /* 1 seule colonne sur mobile */
+    gap: 20px;
+  }
+}
+
+/* --- PETITS MOBILES (480px) --- */
+@media (max-width: 480px) {
+  .demarcheur-btn {
+    width: 100%;
+    padding: 16px 20px;
   }
 }

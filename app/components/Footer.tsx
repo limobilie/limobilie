@@ -23,7 +23,7 @@ export default function Footer() {
 
         {/* Droite : icônes réseaux */}
         <div className="footer-right">
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="icon-circle">
+          <a href="https://www.facebook.com/share/1DEKHno3b9/" target="_blank" rel="noopener noreferrer" className="icon-circle">
             <FaFacebookF />
           </a>
           <a href="https://wa.me/2250545935673" target="_blank" rel="noopener noreferrer" className="icon-circle">

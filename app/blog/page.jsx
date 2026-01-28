@@ -44,45 +44,48 @@ export default function BlogPage() {
     <div className="blog-page">
       <Header />
 
-      {/* HERO IMAGE */}
-      <div className="hero-image">
-        <Image
-          src="/images/acceuil1.png"
-          alt="Abidjan"
-          fill
-          priority
-          style={{ objectFit: 'cover' }}
-        />
-        <div className="hero-overlay">
-          <h1>Actualités & Conseils immobiliers</h1>
-         <p>Tout savoir pour réussir vos projets en Côte d’Ivoire</p>
+      <main>
+        {/* SECTION HERO */}
+        <section className="hero-image">
+          <Image
+            src="/images/acceuil1.png"
+            alt="Actualités immobilières Abidjan"
+            fill
+            priority
+            style={{ objectFit: 'cover' }}
+          />
+          <div className="hero-overlay">
+            <h1>Actualités & Conseils immobiliers</h1>
+            <p>Tout savoir pour réussir vos projets en Côte d’Ivoire</p>
+          </div>
+        </section>
 
-        </div>
-      </div>
+        {/* SECTION GRILLE DE BLOG */}
+        <section className="blog-section">
+          <div className="blog-grid">
+            {articles.map((article, index) => (
+              <article className="blog-card" key={index}>
+                <div className="blog-image-container">
+                  <Image
+                    src={article.image}
+                    alt={article.titre}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
 
-      {/* BLOG CARDS */}
-      <section className="blog-section">
-        <div className="blog-grid">
-          {articles.map((article, index) => (
-            <div className="blog-card" key={index}>
-              <div className="blog-image">
-                <Image
-                  src={article.image}
-                  alt={article.titre}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-
-              <div className="blog-content">
-                <h3>{article.titre}</h3>
-                <p>{article.extrait}</p>
-                <span className="blog-link">Lire l’article →</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+                <div className="blog-content">
+                  <h3>{article.titre}</h3>
+                  <p>{article.extrait}</p>
+                  <div className="blog-footer">
+                    <span className="blog-link">Lire l’article →</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

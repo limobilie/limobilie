@@ -1,20 +1,18 @@
-/* ============================= */
-/* PAGE PARTENAIRES */
-/* ============================= */
-
+/* ============================================================ */
+/* 1. BASE & STRUCTURE (DESKTOP) */
+/* ============================================================ */
 .partenaires-page {
-  background-color: #f8f8f8;
+  background-color: #f8f9fa;
   font-family: 'Poppins', sans-serif;
+  color: #333;
 }
 
-/* ============================= */
-/* HERO */
-/* ============================= */
-
+/* HERO SECTION */
 .partenaires-hero {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 55vh;
+  min-height: 400px;
   overflow: hidden;
 }
 
@@ -22,7 +20,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 
@@ -34,137 +32,166 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  max-width: 800px;
-  padding: 0 20px;
+  width: 95%;
+  max-width: 1200px;
 }
 
 .partenaires-hero-overlay h1 {
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: clamp(26px, 4.5vw, 44px);
+  font-weight: 800;
+  margin-bottom: 15px;
+  /* FORCE UNE SEULE LIGNE SUR ORDINATEUR */
+  white-space: nowrap; 
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .partenaires-hero-overlay p {
-  font-size: 18px;
+  font-size: 1.2rem;
   opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* ============================= */
-/* SECTION PARTENAIRES */
-/* ============================= */
-
+/* GRILLE PARTENAIRES */
 .partenaires-section {
-  padding: 80px 40px;
+  padding: 100px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .partenaires-grid {
-  max-width: 1200px;
-  margin: auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes sur PC */
   gap: 30px;
 }
 
-/* ============================= */
-/* CARTE PARTENAIRE */
-/* ============================= */
-
+/* CARTES PARTENAIRES */
 .partenaire-card {
   background: white;
-  border-radius: 14px;
-  padding: 30px 20px;
+  border-radius: 20px;
+  padding: 40px 25px;
   text-align: center;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .partenaire-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-.partenaire-logo {
+.partenaire-logo-container {
   position: relative;
   width: 100%;
-  height: 120px;
-  margin-bottom: 20px;
+  height: 100px;
+  margin-bottom: 25px;
 }
 
 .partenaire-card h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  color: #222;
-  margin-bottom: 10px;
+  color: #1a1a1a;
+  margin-bottom: 12px;
 }
 
 .partenaire-card p {
-  font-size: 14px;
-  color: #555;
+  font-size: 15px;
+  color: #666;
   line-height: 1.6;
 }
 
-/* ============================= */
-/* CTA */
-/* ============================= */
-
+/* SECTION CTA */
 .partenaires-cta {
-  background-color: #ffffff;
-  padding: 70px 20px;
+  background-color: white;
+  padding: 100px 20px;
   text-align: center;
 }
 
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .partenaires-cta h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 15px;
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
 .partenaires-cta p {
-  font-size: 16px;
+  font-size: 17px;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .partenaires-btn {
   display: inline-block;
-  background-color: red;
+  background-color: #e31e24; /* Votre Rouge */
   color: white;
-  padding: 14px 36px;
-  border-radius: 8px;
+  padding: 18px 45px;
+  border-radius: 50px;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.3s ease;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
 }
 
 .partenaires-btn:hover {
-  background-color: rgb(196, 4, 4);
+  background-color: #b31419;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(227, 30, 36, 0.4);
 }
 
-/* ============================= */
-/* RESPONSIVE */
-/* ============================= */
+/* ============================================================ */
+/* 2. RESPONSIVE (MEDIA QUERIES) */
+/* ============================================================ */
 
+/* --- TABLETTES (1024px et moins) --- */
 @media (max-width: 1024px) {
   .partenaires-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .partenaires-hero-overlay h1 {
-    font-size: 32px;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    gap: 25px;
   }
 }
 
-@media (max-width: 600px) {
-  .partenaires-grid {
-    grid-template-columns: 1fr;
-  }
-
+/* --- MOBILES (768px et moins) --- */
+@media (max-width: 768px) {
   .partenaires-hero {
-    height: 40vh;
+    height: 50vh;
   }
 
   .partenaires-hero-overlay h1 {
+    font-size: 28px;
+    /* AUTORISE LE RETOUR À LA LIGNE SUR MOBILE */
+    white-space: normal; 
+    line-height: 1.3;
+  }
+
+  .partenaires-section {
+    padding: 60px 20px;
+  }
+
+  .partenaires-cta h2 {
     font-size: 26px;
+  }
+}
+
+/* --- PETITS MOBILES (500px et moins) --- */
+@media (max-width: 500px) {
+  .partenaires-grid {
+    grid-template-columns: 1fr; /* 1 seule colonne */
+  }
+
+  .partenaires-btn {
+    width: 100%; /* Bouton pleine largeur */
+    padding: 16px 20px;
+  }
+
+  .partenaire-card {
+    padding: 30px 20px;
   }
 }

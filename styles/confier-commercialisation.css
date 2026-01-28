@@ -1,17 +1,18 @@
-/* ============================= */
-/* BODY */
+/* ============================================================ */
+/* 1. BASE & STRUCTURE (DESKTOP FIRST) */
+/* ============================================================ */
 body {
-  background-color: #f0f0f0; /* fond clair pour toute la page */
+  background-color: #f8f9fa;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #333;
 }
 
-/* ============================= */
-/* HERO IMAGE */
+/* HERO SECTION */
 .hero-image {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   overflow: hidden;
 }
 
@@ -19,7 +20,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
@@ -31,249 +32,136 @@ body {
   z-index: 2;
   text-align: center;
   color: white;
-  max-width: 800px;
-  padding: 0 20px;
+  width: 90%;
+  max-width: 900px;
 }
 
 .hero-overlay h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 15px;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .hero-overlay p {
-  font-size: 18px;
-  line-height: 1.6;
-  opacity: 0.95;
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
-/* ============================= */
-/* SECTION INTRO AVEC PHOTO (FOND SOMBRE UNIQUEMENT) */
+/* SECTION INTRO */
 .section-intro {
-  background-color: white; /* fond sombre uniquement pour cette section */
-  color: #fff;               /* texte blanc */
-  padding: 60px 20px;
-  border-radius: 12px;
+  background-color: white;
+  padding: 80px 20px;
   margin: 40px auto;
   max-width: 1200px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .intro-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 60px;
 }
 
-.intro-text {
-  flex: 1 1 500px;
-}
+.intro-text { flex: 1; }
+.intro-image { flex: 1; border-radius: 12px; overflow: hidden; }
 
-.intro-text h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
+.intro-text h2 { font-size: 32px; color: #222; margin-bottom: 25px; font-weight: 700; }
+.intro-text p { font-size: 17px; line-height: 1.7; color: #555; margin-bottom: 15px; }
 
-.intro-text p {
-  font-size: 16px;
-  color: black;
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.intro-image {
-  flex: 1 1 400px;
-  text-align: center;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.intro-image img {
-  width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-/* ============================= */
-/* SECTION EXPLICATIVE (FOND CLAIR) */
+/* SECTION EXPLIQUE & POINTS */
 .section-explique {
-  padding: 60px 20px;
-  background-color: #f0f0f0; /* fond clair */
-  color: #222;
-  margin: 40px auto;
-  border-radius: 12px;
-}
-
-.section-explique .container {
+  padding: 80px 20px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
-.section-explique h2 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #222;
-}
-
-.section-explique p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 40px;
-}
+.section-explique h2 { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+.intro-p { color: #666; margin-bottom: 50px; }
 
 .points {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 .point {
-  background-color: #fff;
-  padding: 20px;
+  background: white;
+  padding: 30px;
   border-radius: 12px;
-  flex: 1 1 250px;
-  max-width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   text-align: left;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
 }
 
-.point h3 {
-  font-size: 18px;
-  color: #222;
-  margin-bottom: 10px;
-}
+.point:hover { transform: translateY(-5px); }
+.point h3 { font-size: 20px; margin-bottom: 15px; color: #e31e24; }
+.point p { font-size: 15px; color: #666; line-height: 1.5; }
 
-.point p {
-  font-size: 14px;
-  color: #555;
-}
-
-/* ============================= */
-/* SECTION FINALE (FOND CLAIR) */
+/* SECTION FINALE */
 .final-section {
-  background-color: #f0f0f0; /* fond clair */
-  color: #222;
-  padding: 60px 20px;
   text-align: center;
-  border-radius: 12px;
-  margin: 40px auto;
-  max-width: 1200px;
+  padding: 100px 20px;
+  background: #f0f0f0;
+  margin-top: 60px;
 }
 
-.final-container h2 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.final-container p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 40px;
-}
+.final-container h2 { font-size: 34px; font-weight: 700; margin-bottom: 20px; }
 
 .cta-button {
-  background-color: red;
-  color: #fff;
+  background-color: #e31e24;
+  color: white;
   border: none;
-  padding: 15px 35px;
-  font-size: 16px;
-  border-radius: 8px;
+  padding: 18px 45px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.25s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3);
+  margin-top: 20px;
 }
 
 .cta-button:hover {
-  background-color: #9a1c1c;
+  background-color: #b31419;
+  transform: scale(1.05);
 }
 
-/* ============================= */
-/* RESPONSIVE MOBILE AMÉLIORÉ */
+/* ============================================================ */
+/* 2. RESPONSIVE (MEDIA QUERIES) */
+/* ============================================================ */
+
+/* --- TABLETTES (1024px) --- */
+@media (max-width: 1024px) {
+  .intro-container { gap: 30px; }
+  .points { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- MOBILES (768px) --- */
 @media (max-width: 768px) {
-
-  /* HERO */
-  .hero-image {
-    height: 45vh;
-  }
-
+  .hero-image { height: 50vh; }
+  
   .hero-overlay {
-    top: 55%;
-    left: 0;
-    transform: translateY(-50%);
     text-align: left;
-    padding: 0 16px;
-    max-width: 100%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 90%;
   }
 
-  .hero-overlay h1 {
-    font-size: 26px;
-    line-height: 1.3;
-  }
+  .intro-container { flex-direction: column; }
+  .intro-image { order: 2; width: 100%; }
+  .intro-text { order: 1; }
 
-  .hero-overlay p {
-    font-size: 15px;
-    line-height: 1.5;
-  }
+  .section-intro { padding: 40px 20px; margin: 20px 10px; }
+  .intro-text h2 { font-size: 24px; }
 
-  /* SECTION INTRO */
-  .section-intro {
-    padding: 40px 16px;
-    margin: 20px 12px;
-  }
+  .points { grid-template-columns: 1fr; }
+}
 
-  .intro-text h2 {
-    font-size: 22px;
-    line-height: 1.3;
-  }
-
-  .intro-text p {
-    font-size: 15px;
-  }
-
-  .intro-image {
-    margin-top: 20px;
-  }
-
-  /* SECTION EXPLICATIVE */
-  .section-explique {
-    padding: 40px 16px;
-    margin: 20px 12px;
-  }
-
-  .section-explique h2 {
-    font-size: 22px;
-  }
-
-  .section-explique p {
-    font-size: 15px;
-  }
-
-  .point {
-    padding: 18px;
-  }
-
-  /* SECTION FINALE */
-  .final-section {
-    padding: 40px 16px;
-    margin: 20px 12px;
-  }
-
-  .final-container h2 {
-    font-size: 24px;
-  }
-
-  .final-container p {
-    font-size: 15px;
-  }
-
-  .cta-button {
-    width: 100%;
-    padding: 16px;
-    font-size: 16px;
-  }
+/* --- PETITS MOBILES (480px) --- */
+@media (max-width: 480px) {
+  .hero-overlay h1 { font-size: 24px; }
+  .cta-button { width: 100%; padding: 15px; }
 }

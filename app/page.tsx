@@ -33,13 +33,13 @@ export default function AccueilPage() {
           <h2>Vente · Location · Gestion Immobilière · Aménagement · Conseils</h2>
 
           <div className="social-icons">
-            <a href="https://youtube.com/toncompte" target="_blank" rel="noopener noreferrer" className="youtube" aria-label="YouTube">
+            <a href="https://youtube.com/@limobilie?si=Q_G4FCcjsH08d3xi" target="_blank" rel="noopener noreferrer" className="youtube" aria-label="YouTube">
               <FaYoutube size={28} />
             </a>
-            <a href="https://facebook.com/toncompte" target="_blank" rel="noopener noreferrer" className="facebook" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1DEKHno3b9/" target="_blank" rel="noopener noreferrer" className="facebook" aria-label="Facebook">
               <FaFacebook size={28} />
             </a>
-            <a href="https://instagram.com/toncompte" target="_blank" rel="noopener noreferrer" className="instagram" aria-label="Instagram">
+            <a href="https://www.instagram.com/limobilie?igsh=MWVnbjhsMHBid2Noag==" target="_blank" rel="noopener noreferrer" className="instagram" aria-label="Instagram">
               <FaInstagram size={28} />
             </a>
 
