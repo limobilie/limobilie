@@ -29,7 +29,7 @@ export default function Header() {
       </div>
 
       {/* LOGO */}
-      <div className="logo-container">
+      <div style={{backgroundColor: 'white'}} className="logo-container">
         <div className="logo-class">
           <Image
             id="logo-image"
