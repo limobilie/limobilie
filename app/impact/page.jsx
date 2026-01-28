@@ -21,7 +21,7 @@ export default function LimobilieImpactPage() {
             className="hero-img"
           />
           <div className="hero-impact">
-            <div className="hero-text-content">
+            <div className="hero-text-impact">
               <h1>LIMOBILIÉ IMPACT</h1>
               <p>
                 Un programme d’immobilier à impact social, porté par LIMOBILIÉ

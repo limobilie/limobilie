@@ -38,7 +38,7 @@
   padding: 20px;
 }
 
-.hero-text-content h1 {
+.hero-text-impact h1 {
   color: var(--white);
   font-size: clamp(28px, 5vw, 48px);
   margin-bottom: 15px;
@@ -46,7 +46,7 @@
   font-weight: 800;
 }
 
-.hero-text-content p {
+.hero-text-impact p {
   color: #edf2f4;
   font-size: clamp(16px, 2vw, 22px);
   font-weight: 300;
@@ -114,6 +114,24 @@ p {
     height: 50vh;
   }
 
+
+  .hero-text-impact {
+    top: auto;
+    bottom: 70px; /* Positionné en bas */
+    left: 20px;
+    transform: none; /* Annule le centrage */
+    text-align: left; /* Aligné à gauche */
+    width: calc(100% - 40px);
+  }
+
+  .hero-text-impact h1 {
+    font-size: 32px;
+  }
+
+  .hero-text-impact p {
+    margin: 0; /* Annule le auto pour rester à gauche */
+  }
+
   .impact-container {
     margin: -30px 10px 40px; /* Plus d'espace sur les côtés sur mobile */
     padding: 10px 10px;
@@ -134,7 +152,7 @@ p {
 }
 
 @media (max-width: 480px) {
-  .hero-text-content h1 {
+  .hero-text-impact h1 {
     font-size: 24px;
   }
   

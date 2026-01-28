@@ -19,7 +19,7 @@ export default function LimobilieTontinePage() {
             className="hero-img"
           />
           <div className="hero-tontine">
-            <div className="hero-text-content">
+            <div className="hero-text-tontine">
               <h1>LIMOBILIÉ TONTINE FONCIÈRE</h1>
               <p>Transformez votre contribution mensuelle en un patrimoine immobilier concret.</p>
             </div>
