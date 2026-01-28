@@ -27,6 +27,7 @@ export default function BiensPage() {
     searchText: ''
   })
 
+  const [selectedBien, setSelectedBien] = useState(null) // Pour la modale
   const itemsPerPage = 10
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -35,66 +36,28 @@ export default function BiensPage() {
     setCurrentPage(1)
   }
 
-  // 🔹 FILTRAGE
+  // --- FILTRAGE ---
   const filteredBiens = biens.filter(bien => {
     const prix = parseInt(bien.prix.replace(/[^0-9]/g, '')) || 0
     const surface = parseInt(bien.surface.replace(/[^0-9]/g, '')) || 0
     const pieces = parseInt(bien.pieces.replace(/[^0-9]/g, '')) || 0
 
-    const matchOfferType =
-      !filters.offerType
-        ? true
-        : filters.offerType.toLowerCase() === 'autres'
-          ? bien.offerType.toLowerCase() === 'autres'
-          : bien.offerType.toLowerCase() === filters.offerType.toLowerCase()
-
+    const matchOfferType = !filters.offerType ? true : bien.offerType.toLowerCase() === filters.offerType.toLowerCase()
     const matchLocalisation = !filters.localisation || bien.localisations.includes(filters.localisation)
     const matchTypeBien = !filters.typeBien || bien.titre.toLowerCase().includes(filters.typeBien.toLowerCase())
     const matchBudget = !filters.budgetMax || prix <= parseInt(filters.budgetMax)
     const matchSurface = !filters.surfaceMin || surface >= parseInt(filters.surfaceMin)
-    const matchPieces = !filters.piecesMin || pieces >= parseInt(filters.piecesMin)
-    const matchChambres = !filters.chambresMin || bien.chambres >= parseInt(filters.chambresMin)
-    const matchSalleBain = !filters.salleBainMin || bien.salleBain >= parseInt(filters.salleBainMin)
+    const matchSearchText = !filters.searchText || bien.titre.toLowerCase().includes(filters.searchText.toLowerCase())
 
-    const matchBalcon = filters.balcon ? bien.balcon : true
-    const matchAscenseur = filters.ascenseur ? bien.ascenseur : true
-    const matchStationnement = filters.stationnement ? bien.stationnement : true
-    const matchPMR = filters.pmr ? bien.pmr : true
-    const matchPiscine = filters.piscine ? bien.piscine : true
-
-    const matchReference = !filters.reference || bien.titre.toLowerCase().includes(filters.reference.toLowerCase())
-    const matchSearchText =
-      !filters.searchText ||
-      bien.titre.toLowerCase().includes(filters.searchText.toLowerCase()) ||
-      bien.description.toLowerCase().includes(filters.searchText.toLowerCase())
-
-    return (
-      matchOfferType &&
-      matchLocalisation &&
-      matchTypeBien &&
-      matchBudget &&
-      matchSurface &&
-      matchPieces &&
-      matchChambres &&
-      matchSalleBain &&
-      matchBalcon &&
-      matchAscenseur &&
-      matchStationnement &&
-      matchPMR &&
-      matchPiscine &&
-      matchReference &&
-      matchSearchText
-    )
+    return matchOfferType && matchLocalisation && matchTypeBien && matchBudget && matchSurface && matchSearchText
   })
 
   const totalPages = Math.ceil(filteredBiens.length / itemsPerPage)
-  const indexOfLastItem = currentPage * itemsPerPage
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentBiens = filteredBiens.slice(indexOfFirstItem, indexOfLastItem)
+  const currentBiens = filteredBiens.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 
-  const goToPage = (pageNumber) => {
-    setCurrentPage(pageNumber)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  const openWhatsApp = (bien) => {
+    const message = encodeURIComponent(`Bonjour H&A Properties, je suis intéressé par le bien : ${bien.titre} (${bien.prix})`);
+    window.open(`https://wa.me/2250545935673?text=${message}`, '_blank');
   }
 
   return (
@@ -102,16 +65,10 @@ export default function BiensPage() {
       <Header />
 
       <div className="biens-hero-image">
-        <Image
-          src="/images/acheter.png"
-          alt="Biens en vente"
-          fill
-          style={{ objectFit: 'cover' }}
-          priority
-        />
+        <Image src="/images/acheter.png" alt="Biens" fill style={{ objectFit: 'cover' }} priority />
         <div className="biens-hero-overlay">
           <h1>Biens en vente</h1>
-          <p>Découvrez notre portefeuille.</p>
+          <p>Trouvez la propriété de vos rêves avec H&A Properties.</p>
         </div>
       </div>
 
@@ -120,41 +77,79 @@ export default function BiensPage() {
       </div>
 
       {filteredBiens.length === 0 ? (
-        <div style={{ textAlign: 'center', color: 'red', fontSize: '24px', padding: '100px 0' }}>
-          ⚠️ Aucun bien ne correspond à votre recherche.
-        </div>
+        <div className="no-results">⚠️ Aucun bien ne correspond à votre recherche.</div>
       ) : (
         <>
-          <div className="biens-grid gallery-view">
+          <div className="biens-grid">
             {currentBiens.map((bien, index) => (
-              <div key={index} className="biens-card">
+              <div key={index} className="biens-card" onClick={() => setSelectedBien(bien)}>
                 <div className="biens-image-container">
-                  <Image src={bien.image} alt={bien.titre} fill />
+                  <Image src={bien.image} alt={bien.titre} fill style={{ objectFit: 'cover' }} />
+                  <div className="card-badge">{bien.offerType}</div>
                 </div>
                 <div className="biens-info">
                   <div className="biens-price">{bien.prix}</div>
                   <h3>{bien.titre}</h3>
-                  <p>{bien.description}</p>
-                  <p>{bien.pieces} | {bien.surface} | {bien.localisations.join(', ')}</p>
-                  <p>
-                    {bien.balcon && 'Balcon • '}
-                    {bien.ascenseur && 'Ascenseur • '}
-                    {bien.stationnement && 'Stationnement • '}
-                    {bien.pmr && 'PMR • '}
-                    {bien.piscine && 'Piscine'}
-                  </p>
+                  <p className="locat"><i className="pin"></i> {bien.localisations.join(', ')}</p>
+                  <div className="biens-specs">
+                    <span>{bien.pieces} p.</span>
+                    <span>{bien.surface}</span>
+                    <span>{bien.chambres} ch.</span>
+                  </div>
+                  <button className="btn-view-more">Voir les détails</button>
                 </div>
               </div>
             ))}
           </div>
 
+          {/* MODALE DE DÉTAILS */}
+          {selectedBien && (
+            <div className="details-modal-overlay" onClick={() => setSelectedBien(null)}>
+              <div className="details-modal-content" onClick={e => e.stopPropagation()}>
+                <button className="close-modal" onClick={() => setSelectedBien(null)}>&times;</button>
+                
+                <div className="modal-grid">
+                  <div className="modal-gallery">
+                    <div className="main-img-modal">
+                        <Image src={selectedBien.image} alt={selectedBien.titre} fill style={{objectFit: 'cover'}} />
+                    </div>
+                  </div>
+                  
+                  <div className="modal-info-side">
+                    <span className="modal-price">{selectedBien.prix}</span>
+                    <h2>{selectedBien.titre}</h2>
+                    <p className="modal-loc">{selectedBien.localisations.join(', ')}</p>
+                    
+                    <div className="modal-features">
+                        <div><strong>Surface:</strong> {selectedBien.surface}</div>
+                        <div><strong>Pièces:</strong> {selectedBien.pieces}</div>
+                        <div><strong>Chambres:</strong> {selectedBien.chambres}</div>
+                    </div>
+
+                    <div className="modal-description">
+                        <h4>Description</h4>
+                        <p>{selectedBien.description}</p>
+                    </div>
+
+                    <div className="modal-amenities">
+                        {selectedBien.piscine && <span>🏊 Piscine</span>}
+                        {selectedBien.ascenseur && <span>🛗 Ascenseur</span>}
+                        {selectedBien.stationnement && <span>🚗 Parking</span>}
+                    </div>
+
+                    <button className="btn-whatsapp-bien" onClick={() => openWhatsApp(selectedBien)}>
+                      Contacter l'agent sur WhatsApp
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* PAGINATION */}
           <div className="pagination">
             {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => goToPage(i + 1)}
-                className={currentPage === i + 1 ? 'active' : ''}
-              >
+              <button key={i} onClick={() => { setCurrentPage(i + 1); window.scrollTo(0, 500); }} className={currentPage === i + 1 ? 'active' : ''}>
                 {i + 1}
               </button>
             ))}

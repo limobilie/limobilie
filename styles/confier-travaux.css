@@ -1,7 +1,58 @@
-/* ================= SERVICES ================= */
+/* ============================================================ */
+/* 1. HERO SECTION */
+/* ============================================================ */
+.hero-image-confier {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Centré verticalement sur PC */
+  justify-content: center; /* Centré horizontalement sur PC */
+}
+
+.hero-img {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-confier {
+  position: relative;
+  z-index: 2; /* Pour passer au-dessus de l'overlay */
+  width: 90%;
+  max-width: 1300px;
+  color: white;
+  text-align: center;
+}
+
+.hero-confier h1 {
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 800;
+  margin-bottom: 20px;
+  white-space: nowrap; /* Titre sur une ligne sur PC */
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-confier p {
+  font-size: clamp(16px, 2vw, 22px);
+  opacity: 0.95;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================================ */
+/* 2. SERVICES SECTION */
+/* ============================================================ */
 .services-section {
-  padding: 90px 20px;
-  background: #fff;
+  padding: 100px 20px;
+  background: #fdfdfd;
 }
 
 .services-section h2 {
@@ -9,9 +60,9 @@
   font-size: 34px;
   margin-bottom: 60px;
   color: #222;
+  font-weight: 700;
 }
 
-/* 3 cartes par ligne */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -23,60 +74,55 @@
 /* ================= CARD ================= */
 .service-card {
   background: #fff;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
 }
 
 /* ================= SLIDER ================= */
 .service-slider {
   position: relative;
-  height: 260px; /* cadre plus grand */
+  height: 280px;
   overflow: hidden;
+  background: #eee;
 }
 
 .slide {
   position: absolute;
   inset: 0;
-  animation: slideShow 12s infinite;
+  animation: slideShow 12s infinite ease-in-out;
   opacity: 0;
 }
 
-.slide img {
-  object-fit: cover;
+/* Animation slider avec fondu */
+@keyframes slideShow {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  33% { opacity: 1; }
+  41% { opacity: 0; }
+  100% { opacity: 0; }
 }
 
-/* Décalage des images */
 .slide:nth-child(1) { animation-delay: 0s; }
 .slide:nth-child(2) { animation-delay: 4s; }
 .slide:nth-child(3) { animation-delay: 8s; }
 
-/* Animation slider */
-@keyframes slideShow {
-  0%   { opacity: 0; }
-  10%  { opacity: 1; }
-  30%  { opacity: 1; }
-  40%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-/* ================= TEXTE ================= */
 .service-content {
-  padding: 30px 25px;
+  padding: 35px 25px;
   text-align: center;
 }
 
 .service-content h3 {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 12px;
-  color: #111;
+  color: #e31e24; /* Couleur d'accentuation pour les titres */
 }
 
 .service-content p {
@@ -85,35 +131,54 @@
   line-height: 1.7;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ============================================================ */
+/* 3. RESPONSIVE */
+/* ============================================================ */
+
+/* TABLETTES */
 @media (max-width: 1024px) {
+  .hero-confier h1 {
+    white-space: normal; /* Autorise le retour à la ligne */
+  }
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
+/* MOBILES */
+@media (max-width: 768px) {
+  .hero-image-confier {
+    height: 55vh;
+    align-items: flex-end; /* Texte vers le bas */
+    justify-content: flex-start; /* Texte vers la gauche */
+  }
+
+  .hero-confier {
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 40px;
+  }
+
+  .hero-confier h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .hero-confier p {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .services-section {
+    padding: 60px 20px;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
-}
-
-
-
-
-/* ============================= */
-/* HERO IMAGE */
-.hero-image-confier {
-  position: relative;
-  width: 100%;
-  height: 50vh;
-  overflow: hidden;
-}
-
-.hero-image-confier::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 1;
+  
+  .service-slider {
+    height: 240px;
+  }
 }

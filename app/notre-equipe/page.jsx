@@ -78,10 +78,10 @@ export default function NotreEquipePage() {
       </section>
 
       {/* SECTION FINALE */}
-      <section className="final-section">
-        <div className="final-container">
-          <h2 style={{ color: 'white'}}>Notre engagement</h2>
-          <p style={{ color: 'white'}}>
+      <section className="equipe-section">
+        <div className="equipe-container">
+          <h2 style={{ color: 'black'}}>Notre engagement</h2>
+          <p style={{ color: 'black'}}>
             Chez notre agence, nous plaçons la satisfaction de nos clients au cœur de notre métier.
           </p>
 

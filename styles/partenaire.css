@@ -129,7 +129,7 @@
 
 .partenaires-btn {
   display: inline-block;
-  background-color: #e31e24; /* Votre Rouge */
+  background-color: red; /* Votre Rouge */
   color: white;
   padding: 18px 45px;
   border-radius: 50px;
@@ -141,7 +141,7 @@
 }
 
 .partenaires-btn:hover {
-  background-color: #b31419;
+  background-color: red;
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(227, 30, 36, 0.4);
 }

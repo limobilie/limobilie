@@ -19,7 +19,7 @@ export const biens = [
     piscine: true,
     details: "A VENDRE - RESIDENCE HOTELIERE A ASSOUINDE...",
     image: "/images/achat1.JPG",
-    offerType: "vente"
+    offerType: "location"
   },
   {
     titre: "Villa à vendre, 5 pièces - Abidjan Plateau",
@@ -37,7 +37,7 @@ export const biens = [
     piscine: true,
     details: "Superbe villa moderne avec piscine...",
     image: "/images/achat2.JPG",
-    offerType: "vente"
+    offerType: "location"
   },
   {
     titre: "Villa à vendre, 5 pièces - Abidjan PORT-BOUET",
@@ -55,7 +55,7 @@ export const biens = [
     piscine: true,
     details: "Superbe villa moderne avec piscine...",
     image: "/images/achat4.JPG",
-    offerType: "vente"
+    offerType: "location"
   },
 
   // =====================

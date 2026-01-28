@@ -43,9 +43,9 @@ export default function AccueilPage() {
               <FaInstagram size={28} />
             </a>
 
-            <a href="https://wa.me/2250505050505" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
+            <a href="https://wa.me/2250545935673" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
               <FaWhatsapp size={28} />
-              <span className="whatsapp-number">+225 05 05 05 05 05</span>
+              <span className="whatsapp-number">+225 0545935673</span>
             </a>
           </div>
         </div>

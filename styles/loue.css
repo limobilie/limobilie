@@ -1,290 +1,98 @@
 /* ============================= */
-/* BODY */
-body {
-  background-color: white;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+/* BASE */
+body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: #333; }
 
 /* ============================= */
 /* HERO */
-.biens-hero-image {
-  position: relative;
-  width: 100%;
-  height: 50vh;
-  overflow: hidden;
-}
-
-.biens-hero-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 1;
-}
-
-.biens-hero-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  text-align: center;
-  color: white;
-}
-
-.biens-hero-overlay h1 {
-  font-size: 42px;
-  font-weight: 700;
-}
-
-.biens-hero-overlay p {
-  font-size: 18px;
-  margin-top: 10px;
-}
+.biens-hero-image { position: relative; height: 50vh; overflow: hidden; }
+.biens-hero-image::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); }
+.biens-hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2; width: 90%; }
+.biens-hero-overlay h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; margin-bottom: 10px; }
 
 /* ============================= */
-/* COMBO SEARCH (LE CHEVAUCHEMENT) */
-/* ============================= */
+/* COMBO SEARCH OVERLAP */
 .biens-search-container-louer {
-  position: relative;   /* Nécessaire pour le z-index */
-  z-index: 10;          /* Pour passer au-dessus de l'image Hero */
-  margin-top: -160px;    /* VALEUR CLÉ : Remonte le bloc sur l'image */
-
-padding-right: 20px; /* espace intérieur à droite */
-padding-bottom: 30px;/* espace intérieur en bas */
-padding-left: 20px;  /* espace intérieur à gauche */
-
-  display: flex;
-  justify-content: center;
-  background-color: transparent; /* On enlève le fond rouge */
-}
-
-/* On s'assure que le wrapper interne du composant ne rajoute pas trop d'espace */
-.biens-search-container-louer .search-wrapper {
-  padding-top: 0; 
-  padding-bottom: 0;
-  width: 100%;
-}
-
-/* ============================= */
-/* GRID – GALERIE */
-.biens-grid.gallery-view {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 70px 200px;
-  background-color: #f8f8f8;
-}
-
-/* ============================= */
-/* GRID – LISTE */
-.biens-grid.list-view {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 50px 200px;
-  background-color: #f8f8f8;
-}
-
-/* ============================= */
-/* CARTE */
-.biens-card {
-  background-color: white;
-  width: 100%;
-  max-width: 680px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.biens-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* ============================= */
-/* LIST VIEW STRUCTURE */
-.biens-grid.list-view .biens-card {
-  display: flex;
-  max-width: 100%;
-  height: 260px;
-}
-
-.biens-grid.list-view .biens-image-container {
-  width: 35%;
-  height: 100%;
-}
-
-.biens-grid.list-view .biens-info {
-  width: 65%;
-  padding: 20px 25px;
-}
-
-/* ============================= */
-/* IMAGE */
-.biens-image-container {
   position: relative;
-  width: 100%;
-  height: 300px;
+  z-index: 10;
+  margin-top: -150px; /* Chevauchement sur le Hero */
+  padding: 0 8%;
 }
 
 /* ============================= */
-/* INFO */
-.biens-info {
-  padding: 15px 20px;
-}
+/* GRID & CARDS */
+.biens-grid { padding: 80px 8% 60px; display: grid; gap: 30px; }
+.biens-grid.gallery-view { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
 
-.biens-price {
-  font-weight: bold;
-  color: red;
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-.biens-info h3 {
-  font-size: 20px;
-  margin-bottom: 6px;
-}
-
-.biens-info p {
-  font-size: 15px;
-  color: rgb(54, 52, 52);
-  margin: 2px 0;
-font-family: 'Lato', sans-serif;
-
-
-}
-
-.biens-details {
-  font-size: 14px;
-  color: #555;
-  margin-top: 8px;
-}
-
-/* ============================= */
-/* PAGINATION */
-.pagination {
-  text-align: center;
-  margin: 30px 0;
-}
-
-.pagination button {
-  margin: 0 5px;
-  padding: 8px 12px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.biens-card {
   background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s;
   cursor: pointer;
 }
+.biens-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
 
-.pagination button.active {
-  background-color: red;
-  color: white;
-  border-color: rgb(32, 31, 31);
+.biens-image-container { position: relative; height: 280px; }
+.card-badge { position: absolute; top: 15px; left: 15px; background: #e31e24; color: white; padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: bold; text-transform: uppercase; z-index: 2; }
+
+.biens-info { padding: 25px; }
+.biens-price { font-size: 24px; font-weight: 800; color: #e31e24; margin-bottom: 10px; }
+.biens-info h3 { font-size: 20px; margin-bottom: 10px; color: #1a1a1a; }
+.biens-specs { display: flex; gap: 15px; margin: 15px 0; color: #666; font-size: 14px; border-top: 1px solid #eee; padding-top: 15px; }
+
+.btn-view-more { width: 100%; padding: 12px; border: 1px solid #e31e24; background: transparent; color: #e31e24; border-radius: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+.btn-view-more:hover { background: #e31e24; color: white; }
+
+/* ============================= */
+/* NO RESULTS */
+.no-results {
+  margin: 0px; 
+  padding: 150px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #e31e24;
+  font-size: 24px;
+  font-weight: 700;
+  background-color: #f8f8f8;
+  width: 100%;
 }
+
+/* ============================= */
+/* MODALE PRO (Identique Acheter) */
+.details-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999;
+  display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px);
+}
+.details-modal-content {
+  background: white; width: 100%; max-width: 1100px; max-height: 90vh; border-radius: 24px;
+  position: relative; overflow-y: auto; animation: slideUp 0.4s ease;
+}
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.close-modal { position: absolute; top: 20px; right: 20px; font-size: 40px; background: white; border: none; cursor: pointer; z-index: 10; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.modal-grid { display: grid; grid-template-columns: 1.2fr 1fr; }
+.main-img-modal { position: relative; height: 600px; width: 100%; }
+.modal-info-side { padding: 50px; }
+.modal-price { font-size: 32px; font-weight: 800; color: #e31e24; display: block; margin-bottom: 10px; }
+.modal-features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; background: #f9f9f9; padding: 20px; border-radius: 15px; }
+.modal-amenities { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.modal-amenities span { background: #eee; padding: 8px 15px; border-radius: 50px; font-size: 14px; }
+.btn-whatsapp-bien { width: 100%; background: #25d366; color: white; border: none; padding: 18px; border-radius: 15px; font-size: 18px; font-weight: 700; cursor: pointer; transition: 0.3s; }
 
 /* ============================= */
 /* RESPONSIVE */
-/* ============================= */
-/* RESPONSIVE TABLETTE */
 @media (max-width: 1024px) {
-
-  .biens-grid.gallery-view,
-  .biens-grid.list-view {
-    padding: 60px 40px;
-  }
-
-  .biens-card {
-    max-width: 100%;
-  }
-
-  .biens-search-container-louer {
-    margin-top: -120px;
-  }
+  .modal-grid { grid-template-columns: 1fr; }
+  .main-img-modal { height: 350px; }
+  .biens-grid { padding: 80px 20px; grid-template-columns: 1fr 1fr; }
 }
 
-/* ============================= */
-/* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
-
-  /* HERO */
-  .biens-hero-image {
-    height: 50vh;
-  }
-
- .biens-hero-overlay {
-    top: 70%;
-    left: 5%;
-    transform: translateY(-50%); /* on enlève le centrage horizontal */
-    text-align: left;
-    width: 90%;
-  }
-
-  .biens-hero-overlay h1 {
-    font-size: 26px;
-    margin-top: -120px;
-  }
-
-  .biens-hero-overlay p {
-    font-size: 14px;
-  }
-
-  /* SEARCH */
-  .biens-search-container-louer {
-    margin-top: -200px;
-    padding: 0 12px;
-  }
-
-  /* GRID */
-  .biens-grid.gallery-view {
-    grid-template-columns: 1fr;
-    padding: 40px 15px;
-  }
-
-  .biens-grid.list-view {
-    padding: 40px 15px;
-  }
-
-  /* LIST VIEW */
-  .biens-grid.list-view .biens-card {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .biens-grid.list-view .biens-image-container {
-    width: 100%;
-    height: 220px;
-  }
-
-  .biens-grid.list-view .biens-info {
-    width: 100%;
-    padding: 16px;
-  }
-
-  /* TEXT */
-  .biens-info h3 {
-    font-size: 18px;
-  }
-
-  .biens-info p {
-    font-size: 14px;
-  }
-
-  
-}
-
-/* ============================= */
-/* TRÈS PETITS ÉCRANS */
-@media (max-width: 480px) {
-
-  .biens-hero-overlay h1 {
-    font-size: 22px;
-  }
-
-  .pagination button {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
+  .biens-grid { grid-template-columns: 1fr; }
+  .biens-hero-overlay h1 { font-size: 28px; }
+  .biens-search-container-louer { margin-top: -150px; }
+  .modal-info-side { padding: 30px 20px; }
 }

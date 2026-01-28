@@ -34,7 +34,7 @@ export default function Footer() {
 
       {/* Texte centré en dessous */}
       <div className="footer-bottom">
-        <p style={{ color: 'white'}}>© 2026 HA-IMMO. Tous droits réservés.</p>
+        <p style={{ color: 'white'}}>© 2026 LIMOBILIE. Tous droits réservés.</p>
         <p style={{ color: 'white'}}>✉ limobilie2025@gmail.com</p>
       </div>
     </footer>

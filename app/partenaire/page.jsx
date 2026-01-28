@@ -75,7 +75,7 @@ export default function PartenairesPage() {
           <div className="cta-container">
             <h2>Vous souhaitez devenir partenaire ?</h2>
             <p>Rejoignez notre réseau et construisons ensemble des projets durables en Côte d'Ivoire.</p>
-            <a href="tel:0787026518" className="partenaires-btn">
+            <a href="tel:2250545935673" className="partenaires-btn">
               Nous contacter maintenant
             </a>
           </div>
