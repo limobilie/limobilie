@@ -86,7 +86,7 @@ export default function BlogPage() {
             priority
             style={{ objectFit: 'cover' }}
           />
-          <div className="hero-overlay">
+          <div className="hero-blog2">
             <h1>Actualités & Conseils immobiliers</h1>
             <p>Tout savoir pour réussir vos projets en Côte d’Ivoire</p>
           </div>

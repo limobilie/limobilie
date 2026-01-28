@@ -383,8 +383,32 @@ body {
 }
 
 @media (max-width: 768px) {
-    .biens-grid { grid-template-columns: 1fr; }
-    .biens-hero-overlay h1 { font-size: 32px; }
-    .modal-info-side { padding: 30px 20px; }
-    .biens-search-container { margin-top: -80px; }
+    .biens-grid { 
+        grid-template-columns: 1fr;
+     }
+
+     .biens-hero-overlay { 
+       top: auto;
+        bottom: 80px; /* Positionné en bas */
+        left: 20px;
+        transform: none; /* Annule le centrage */
+        text-align: left; /* Aligné à gauche */
+        width: calc(100% - 40px);
+    }
+    .biens-hero-overlay h1 { 
+        font-size: 32px;
+    padding-top: 90px;
+    }
+    .biens-hero-overlay p { 
+      font-size: 14px;
+    color: white;
+    }
+
+    .modal-info-side { 
+        padding: 30px 20px; 
+    }
+
+    .biens-search-container {
+         margin-top: -80px; 
+    }
 }

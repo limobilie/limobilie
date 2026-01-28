@@ -117,7 +117,7 @@ p {
 
   .hero-text-impact {
     top: auto;
-    bottom: 70px; /* Positionné en bas */
+    bottom: 40px; /* Positionné en bas */
     left: 20px;
     transform: none; /* Annule le centrage */
     text-align: left; /* Aligné à gauche */
@@ -126,6 +126,8 @@ p {
 
   .hero-text-impact h1 {
     font-size: 32px;
+    padding-top: 90px;
+
   }
 
   .hero-text-impact p {

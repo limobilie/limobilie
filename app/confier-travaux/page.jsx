@@ -53,7 +53,7 @@ export default function ConfierTravauxPage() {
           <div className="hero-confier">
             <div className="hero-content-wrapper">
               <h1>Confiez-nous vos travaux</h1>
-              <p>
+              <p style={{color: 'white'}}> 
                 BTP, décoration et rénovation réalisés par des professionnels qualifiés.
               </p>
             </div>

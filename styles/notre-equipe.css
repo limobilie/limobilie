@@ -166,14 +166,17 @@ body {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    text-align: left;
   }
 
   .hero-equipe h1 {
     font-size: 24px;
+
   }
 
   .hero-equipe p {
     font-size: 14px;
+    color: white;
   }
 
   .photo-wrapper {
