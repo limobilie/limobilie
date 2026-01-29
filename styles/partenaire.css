@@ -87,8 +87,11 @@
 .partenaire-logo-container {
   position: relative;
   width: 100%;
-  height: 100px;
+  height: 160px; /* Augmenté de 100px à 160px */
   margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .partenaire-card h3 {

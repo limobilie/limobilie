@@ -43,7 +43,7 @@ export default function ConfierTravauxPage() {
         {/* SECTION HERO */}
         <section className="hero-image-confier">
           <Image
-            src="/images/confie-com.png"
+            src="/images/confie-tr3.png"
             alt="Travaux professionnels"
             fill
             className="hero-img"

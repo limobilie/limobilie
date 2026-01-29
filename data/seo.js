@@ -4,7 +4,7 @@ export const MESSAGES_VIDEO = [
   "Location",
   "Vente",
   "Travaux d'amenagement",
-  "ABtp",
+  "Btp",
   "Gestion locative",
   "Architecture d'interieure"
  

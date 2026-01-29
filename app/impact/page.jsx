@@ -3,6 +3,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Image from 'next/image'
+import Link from 'next/link'
 import '../../styles/impact.css'
 
 export default function LimobilieImpactPage() {
@@ -14,7 +15,7 @@ export default function LimobilieImpactPage() {
         {/* HERO SECTION */}
         <section className="impact-hero">
           <Image
-            src="/images/impact-hero.png" 
+            src="/images/impact-img.png" 
             alt="LIMOBILIÉ Impact"
             fill
             priority
@@ -129,6 +130,26 @@ export default function LimobilieImpactPage() {
                 <li>Entreprises engagées dans la RSE</li>
                 <li>Organisations et institutions partenaires</li>
               </ul>
+            </section>
+
+            {/* --- SECTION APPEL À L'ACTION (CTA) --- */}
+            <section className="impact-cta-area">
+              <div className="cta-card">
+                <div className="cta-content">
+                  <h3>Prêt à faire la différence ?</h3>
+                  <p>
+                    Ne vous contentez pas d'acheter un terrain. Participez au changement. 
+                    Chaque achat chez LIMOBILIÉ finance directement un projet social concret.
+                  </p>
+                  <Link href="/acheter" className="impact-btn">
+                    Voir nos terrains et acheter
+                  </Link>
+                </div>
+                <div className="cta-badge">
+                  <span>5% à 10%</span>
+                  <small>reversés à la TAF</small>
+                </div>
+              </div>
             </section>
 
             <section className="conclusion-section">

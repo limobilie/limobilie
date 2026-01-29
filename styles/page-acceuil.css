@@ -84,6 +84,13 @@
   left: 20%; 
 }
 
+@keyframes showMessage {
+  0% { opacity: 0; transform: translateY(10px); }
+  2% { opacity: 1; transform: translateY(0); }
+  12% { opacity: 1; transform: translateY(0); }
+  14%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+
 .video-messages span {
   position: absolute;
   color: white;
@@ -91,7 +98,7 @@
   font-weight: 600;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
   opacity: 0;
-  animation: showMessage 21s steps(1) infinite;
+  animation: showMessage 21s linear infinite; 
   white-space: nowrap;
 }
 
@@ -103,13 +110,8 @@
 .video-messages span:nth-child(6) { animation-delay: 15s; }
 .video-messages span:nth-child(7) { animation-delay: 18s; }
 
-@keyframes showMessage {
-  0%, 14% { opacity: 1; }
-  15%, 100% { opacity: 0; }
-}
-
 /* ============================= */
-/* PRÉSENTATION */
+/* PRÉSENTATION & IMPACT STYLES */
 /* ============================= */
 .presentation-section {
   padding: 80px 60px;
@@ -126,37 +128,72 @@
 }
 
 .presentation-text h2 {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 25px;
   color: #222;
+  line-height: 1.2;
 }
 
 .presentation-text p {
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.7;
   color: #444;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+}
+
+/* Style de la liste ACD */
+.impact-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.impact-feature-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #222;
+}
+
+.impact-feature-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Style du bandeau de conclusion Impact */
+.impact-conclusion {
+  background: rgba(255, 0, 0, 0.05);
+  padding: 20px;
+  border-left: 5px solid #ff0000;
+  border-radius: 4px;
+  margin-top: 25px !important;
+  font-style: italic;
 }
 
 .presentation-image {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 550px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
 .presentation-contact {
-  margin-top: 25px;
+  margin-top: 30px;
   font-size: 18px;
   font-weight: 600;
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
-.presentation-contact a { color: #b42323; text-decoration: none; }
+.presentation-contact a { color: #ff0000; text-decoration: none; }
 
 /* ============================= */
 /* SECTION TERRAINS */
@@ -188,23 +225,9 @@
 }
 
 .terrain-card:hover { transform: translateY(-8px); }
-
 .terrain-image { position: relative; width: 100%; padding-top: 66%; }
-
-.terrain-card h3 {
-  padding: 15px 15px 5px;
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.card-seo-text {
-  padding: 0 15px 20px;
-  font-size: 14px;
-  color: #666;
-  text-align: center;
-  line-height: 1.4;
-}
+.terrain-card h3 { padding: 15px 15px 5px; font-size: 18px; font-weight: 600; text-align: center; }
+.card-seo-text { padding: 0 15px 20px; font-size: 14px; color: #666; text-align: center; line-height: 1.4; }
 
 /* ============================= */
 /* FEATURES (POURQUOI NOUS) */
@@ -252,67 +275,32 @@
 
 .whatsapp-number { font-size: 0.95rem; font-weight: 600; }
 
-
-
-
 /* ============================================================ */
-/* RESPONSIVE - DESIGN ADAPTATIF */
+/* RESPONSIVE */
 /* ============================================================ */
-
-/* --- TABLETTES & GRANDS MOBILES (1024px) --- */
 @media (max-width: 1024px) {
-  .terrains-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .features-grid-pro {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .terrains-grid, .features-grid-pro { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* --- TABLETTES (900px) --- */
 @media (max-width: 900px) {
-  .presentation-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .presentation-section {
-    padding: 50px 25px;
-  }
+  .presentation-container { grid-template-columns: 1fr; }
+  .presentation-section { padding: 50px 25px; }
+  .presentation-image { height: 400px; }
 }
 
-/* --- SMARTPHONES (768px) --- */
 @media (max-width: 768px) {
-  /* Hero Adaptation */
   .acceuil-image {
-    height: 100vh;
+    height: 70vh; 
+    background-image: url('/images/Abidjan_de_nuit.jpg');
+    background-size: cover;
+    background-position: center;
   }
-
-  .class-acceuil h1 {
-    font-size: 1.8rem;
-    white-space: normal;
-  }
-
-  /* Messages Centering */
-  .video-messages {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-  }
-
-  /* Terrains Adaptation */
-  .terrains-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .terrains-section {
-    padding: 40px 20px;
-  }
+  .hero-video { display: none; }
+  .class-acceuil h1 { font-size: 1.6rem; }
+  .video-messages { left: 50%; transform: translateX(-50%); width: 100%; bottom: 40px; }
+  .terrains-grid { grid-template-columns: 1fr; }
 }
 
-/* --- PETITS MOBILES (600px) --- */
 @media (max-width: 600px) {
-  .features-grid-pro {
-    grid-template-columns: 1fr;
-  }
+  .features-grid-pro { grid-template-columns: 1fr; }
 }

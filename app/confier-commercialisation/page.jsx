@@ -14,7 +14,7 @@ export default function ConfierCommercialisationPage() {
         {/* SECTION HERO */}
         <section className="hero-commercial">
           <Image
-            src="/images/confie-com.webp"
+            src="/images/confie-bien.png"
             alt="Confier la commercialisation"
             fill
             className="hero-img-bg"

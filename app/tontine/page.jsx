@@ -47,7 +47,7 @@ export default function LimobilieTontinePage() {
       <main>
         <section className="tontine-hero">
           <Image
-            src="/images/tontine13.png" 
+            src="/images/tontine133.png" 
             alt="Infrastructure et Tontine Foncière"
             fill
             priority

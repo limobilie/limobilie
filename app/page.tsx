@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 import Link from "next/link";
 import Image from 'next/image'
 import { FaWhatsapp, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa'
-import SEO_KEYWORDS, { MESSAGES_VIDEO } from '../data/seo' // On importe les deux
+import SEO_KEYWORDS, { MESSAGES_VIDEO } from '../data/seo'
 import '../styles/page-acceuil.css'
 
 export default function AccueilPage() {
@@ -50,7 +50,7 @@ export default function AccueilPage() {
           </div>
         </div>
 
-        {/* MESSAGES DÉFILANTS : On utilise MESSAGES_VIDEO ici */}
+        {/* MESSAGES DÉFILANTS */}
         <div className="video-messages">
           {MESSAGES_VIDEO.map((msg, index) => (
             <span key={index}>{msg.toUpperCase()}</span>
@@ -58,31 +58,48 @@ export default function AccueilPage() {
         </div>
       </section>
 
-      {/* ZONE SEO INVISIBLE : Pour le référencement Google uniquement */}
+      {/* ZONE SEO INVISIBLE */}
       <div style={{ display: 'none' }}>
         {SEO_KEYWORDS.accueil.map((mot, index) => (
           <p key={index}>{mot}</p>
         ))}
       </div>
 
-      {/* PRÉSENTATION */}
+      {/* PRÉSENTATION MISE À JOUR (LIMOBILIÉ IMPACT) */}
       <section className="presentation-section">
         <div className="presentation-container">
           <div className="presentation-text">
             <h2>Votre Agence Immobilière de Confiance en Côte d’Ivoire</h2>
+            
             <p>
-              Spécialiste du marché <strong>immobilier à Abidjan</strong>, notre agence accompagne les particuliers et les investisseurs dans la réalisation de leurs projets fonciers. Que vous soyez à la recherche d'une <strong>location d'appartement à Abidjan</strong> ou d'une opportunité de <strong>vente de terrain en Côte d'Ivoire</strong>, nous mettons notre expertise à votre service pour garantir des transactions sécurisées.
+              Au-delà de l’investissement, <strong>LIMOBILIÉ</strong> a créé <strong>LIMOBILIÉ Impact</strong>, 
+              un programme d’aide sociale intégré à chaque vente de terrain.
             </p>
+            
             <p>
-              Nous offrons un service complet de <strong>gestion locative</strong> pour valoriser votre patrimoine. En tant qu'<strong>agence immobilière fiable</strong>, nous intervenons également dans le secteur du <strong>BTP à Abidjan</strong> et l'<strong>aménagement intérieur</strong>, assurant ainsi le suivi de vos travaux de construction, de la fondation jusqu'aux finitions architecturales les plus modernes.
+              Grâce à ce programme, une partie de chaque transaction est consacrée à des actions sociales concrètes, 
+              notamment le soutien aux <strong>enfants atteints de cancer</strong>, en partenariat avec 
+              la <strong>TÉDIE ANGE FOUNDATION (TAF)</strong>.
             </p>
+
             <p>
-              Notre parfaite maîtrise du terrain à Bingerville, Grand-Bassam et Anyama nous permet de vous proposer le meilleur en matière d'<strong>achat de terrain</strong> avec des documents administratifs (ACD) totalement transparents.
+              LIMOBILIÉ exerce dans le <strong>Grand Abidjan</strong> ainsi qu’à <strong>Yamoussoukro</strong>, 
+              et propose des lots sécurisés, disposant de documents administratifs transparents, incluant :
+            </p>
+            
+            <ul className="impact-feature-list">
+              <li>Approbation administrative</li>
+              <li>ACD (Arrêté de Concession Définitive)</li>
+            </ul>
+
+            <p className="impact-conclusion">
+              👉 <strong>Acheter un terrain devient ainsi un acte utile et responsable</strong>, 
+              qui contribue à sauver des vies tout en sécurisant votre avenir foncier.
             </p>
 
             <div className="presentation-contact">
               <span style={{ color: 'black', fontWeight: 'bold' }}>📞 Service Client :</span>
-              <a style={{color: 'red'}} href="tel:0787026518">+225 05 45 93 56 73</a>
+              <a style={{color: 'red'}} href="tel:2250545935673">+225 05 45 93 56 73</a>
             </div>
           </div>
 
@@ -101,7 +118,7 @@ export default function AccueilPage() {
       <section className="terrains-section">
         <h2 style={{ color: 'black'}} className="terrains-title">Nos Terrains et Opportunités Immobilières</h2>
         <div className="terrains-grid">
-              <div className="terrain-card">
+            <div className="terrain-card">
                 <Link href="/acheter">
                     <div className="terrain-image">
                       <Image
@@ -111,7 +128,6 @@ export default function AccueilPage() {
                         style={{ objectFit: "cover" }}
                       />
                     </div>
-
                     <h3 style={{ color: "black" }}>Terrain à Bingerville</h3>
                     <p className="card-seo-text">
                       Lots sécurisés pour projets résidentiels ou commerciaux dans la zone de Bingerville.
@@ -131,11 +147,11 @@ export default function AccueilPage() {
 
             <div className="terrain-card">
               <Link href="/acheter">
-              <div className="terrain-image">
-                <Image src="/images/terrain3.jpg" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
-              </div>
-              <h3 style={{ color: 'black'}}>Terrain résidentiel à Anyama</h3>
-              <p className="card-seo-text">Terrains plats et accessibles à Anyama, parfaits pour une construction immédiate.</p>
+                <div className="terrain-image">
+                  <Image src="/images/terrain3.jpg" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
+                </div>
+                <h3 style={{ color: 'black'}}>Terrain résidentiel à Anyama</h3>
+                <p className="card-seo-text">Terrains plats et accessibles à Anyama, parfaits pour une construction immédiate.</p>
               </Link>
             </div>
         </div>
@@ -143,7 +159,7 @@ export default function AccueilPage() {
 
       {/* SECTION POURQUOI NOUS CHOISIR */}
       <section className="last-section-pro">
-        <h2 style={{ color: 'black'}}className="last-section-title">Pourquoi choisir notre expertise immobilière ?</h2>
+        <h2 style={{ color: 'black'}} className="last-section-title">Pourquoi choisir notre expertise immobilière ?</h2>
         <div className="features-grid-pro">
           <div className="feature-card-pro">
             <span>🏠</span>
@@ -157,7 +173,7 @@ export default function AccueilPage() {
           </div>
           <div className="feature-card-pro">
             <span>📍</span>
-            <h3>Expertise Locale</h3>
+            <h3 style={{ color: 'black'}}>Expertise Locale</h3>
             <p>Une présence forte sur le marché d'Abidjan pour dénicher les meilleures pépites foncières.</p>
           </div>
           <div className="feature-card-pro">

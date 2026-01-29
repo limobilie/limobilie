@@ -9,26 +9,24 @@ export default function PartenairesPage() {
 
   const partenaires = [
     {
-      nom: 'Banque Atlantique',
+      nom: 'Storiz',
       description: 'Partenaire financier pour vos projets immobiliers.',
       logo: '/images/partenaire1.png'
     },
     {
-      nom: 'Entreprise BTP CI',
-      description: 'Construction et rénovation de biens immobiliers.',
+      nom: 'Limobilié impact',
+      description: 'Limobilié impact pour le bien de tous.',
       logo: '/images/partenaire2.png'
     },
     {
-      nom: 'Notaire Conseil',
-      description: 'Sécurisation juridique de vos transactions.',
+      nom: 'TAF',
+      description: 'TEDIE ANGE FONDATION.',
       logo: '/images/partenaire3.png'
-    },
-    {
-      nom: 'Architecte Design',
-      description: 'Architecture et aménagement intérieur.',
-      logo: '/images/partenaire4.png'
     }
   ]
+
+  // Le message est encodé pour l'URL (espaces = %20)
+  const whatsappMessage = "Bonjour,%20je%20souhaiterais%20obtenir%20des%20informations%20pour%20devenir%20partenaire%20de%20LIMOBILIÉ."
 
   return (
     <div className="partenaires-page">
@@ -75,7 +73,13 @@ export default function PartenairesPage() {
           <div className="cta-container">
             <h2>Vous souhaitez devenir partenaire ?</h2>
             <p>Rejoignez notre réseau et construisons ensemble des projets durables en Côte d'Ivoire.</p>
-            <a href="tel:2250545935673" className="partenaires-btn">
+            {/* LIEN WHATSAPP AVEC MESSAGE AUTOMATIQUE */}
+            <a 
+              href={`https://wa.me/2250545935673?text=${whatsappMessage}`} 
+              className="partenaires-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Nous contacter maintenant
             </a>
           </div>
