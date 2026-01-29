@@ -48,10 +48,91 @@
 
 .hero-text-impact p {
   color: #edf2f4;
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 300;
-  max-width: 800px;
+  
 }
+
+/* --- SECTION VIDÉOS --- */
+.impact-video-top-section {
+  max-width: 1100px;
+  margin: 50px auto 20px;
+  padding: 0 20px;
+}
+
+.video-story-item {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Vidéo plus large que le texte */
+  gap: 40px;
+  background: #ffffff;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  align-items: center;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.video-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  display: flex;
+  background: #f1f1f1; /* Un gris clair au lieu du noir */
+}
+
+.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+   background: #f1f1f1;
+}
+
+.video-desc {
+  padding: 40px;
+}
+
+
+
+
+
+.impact-tag {
+  color: var(--primary-red);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.video-desc h3 {
+  margin: 0 0 15px 0;
+  color: var(--dark-navy);
+  font-size: 24px;
+  border-left: none; /* On retire la bordure rouge des titres ici pour le style vidéo */
+  padding-left: 0;
+}
+
+.video-desc p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 850px) {
+  .video-story-item {
+    grid-template-columns: 1fr; /* Pile vidéo sur texte sur mobile */
+    gap: 0;
+  }
+  
+  .video-desc {
+    padding: 25px;
+    text-align: center;
+  }
+}
+
+
 
 /* CONTAINER */
 .impact-container {
@@ -189,6 +270,9 @@ p {
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .impact-hero { height: 50vh; }
+  .hero-impact {
+    align-items: flex-end; justify-content: flex-start; padding: 30px 20px;
+  }
 
   .hero-text-impact {
     bottom: 40px;
@@ -208,7 +292,7 @@ p {
 
   .impact-btn { width: 100%; }
 
-  .impact-container { margin: -30px 10px 40px; padding: 10px 10px; }
+  .impact-container { margin: 30px 10px 40px; padding: 10px 10px; }
 
   .main-card2 { padding: 30px 20px; }
 }

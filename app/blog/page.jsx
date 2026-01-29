@@ -80,7 +80,7 @@ export default function BlogPage() {
         {/* HERO SECTION */}
         <section className="hero-image">
           <Image
-            src="/images/acceuil1.png"
+            src="/images/blog1235.png"
             alt="Actualités immobilières Abidjan"
             fill
             priority

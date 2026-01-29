@@ -34,7 +34,7 @@ export default function DevenirDemarcheurPage() {
         {/* SECTION HERO */}
         <section className="demarcheur-hero">
           <Image
-            src="/images/contact.webp"
+            src="/images/demarcheur.png"
             alt="Devenir démarcheur immobilier"
             fill
             priority
@@ -86,8 +86,8 @@ export default function DevenirDemarcheurPage() {
               Contactez-nous dès maintenant et commencez à collaborer
               avec une agence immobilière de confiance.
             </p>
-            <a href="tel:0787026518" className="demarcheur-btn">
-              Postuler par téléphone
+            <a href="https://wa.me/2250545935673" className="demarcheur-btn">
+              Continuer sur WhatsApp
             </a>
           </div>
         </section>

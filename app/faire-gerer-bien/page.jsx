@@ -14,21 +14,21 @@ export default function NotreEquipePage() {
     {
       id: 1,
       titre: 'Gestion locative complète',
-      image: '/images/bien1.jpg',
+      image: '/images/bien1.png',
       description: 'Nous prenons en charge l’ensemble de la gestion de vos biens locatifs : recherche de locataires, rédaction des contrats, encaissement des loyers et suivi administratif.',
       details: 'Notre expertise inclut : \n• Étude de solvabilité des locataires.\n• État des lieux rigoureux.\n• Gestion des impayés et contentieux.\n• Rapports de gérance mensuels.'
     },
     {
       id: 2,
       titre: 'Gestion d’immeubles',
-      image: '/images/bien2.jpg',
+      image: '/images/bien2.png',
       description: 'Confiez-nous la gestion technique et financière de vos immeubles. Nous assurons l’entretien, le suivi des charges et la valorisation de votre patrimoine.',
       details: 'Nous gérons pour vous : \n• Entretien des parties communes.\n• Coordination des travaux de rénovation.\n• Négociation des contrats d’assurance.\n• Optimisation des charges de copropriété.'
     },
     {
       id: 3,
       titre: 'Biens commerciaux',
-      image: '/images/bien3.jpg',
+      image: '/images/bien3.png',
       description: 'Nous accompagnons les propriétaires de locaux commerciaux avec une gestion adaptée aux exigences professionnelles et à la rentabilité du bien.',
       details: 'Services spécifiques : \n• Rédaction de baux commerciaux.\n• Révision des loyers selon les indices.\n• Gestion des dépôts de garantie.\n• Conseil en stratégie immobilière.'
     },

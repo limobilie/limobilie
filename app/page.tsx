@@ -105,7 +105,7 @@ export default function AccueilPage() {
 
           <div className="presentation-image">
             <Image
-              src="/images/agence333.png"
+              src="/images/agence334.png"
               alt="Expert conseil en immobilier Abidjan et BTP"
               fill
               style={{ objectFit: 'cover' }}

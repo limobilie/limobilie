@@ -31,8 +31,8 @@ export default function RapportsImmobiliersPage() {
       {/* HERO SECTION */}
       <div className="hero-image">
         <Image
-          src="/images/acheter.png" 
-          alt="Rapports Immobiliers H&A"
+          src="/images/rapport123.png" 
+          alt="Rapports Limobilié"
           fill
           style={{ objectFit: 'cover' }}
           priority

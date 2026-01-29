@@ -32,6 +32,75 @@ export default function LimobilieImpactPage() {
           </div>
         </section>
 
+
+
+
+
+          {/* --- SECTION VIDÉOS D'IMPACT (Vidéo à gauche, Texte à droite) --- */}
+            <section className="impact-video-top-section">
+              
+              {/* Vidéo 1 - Santé */}
+              <div className="video-story-item">
+                <div className="video-box">
+                  <video 
+                    controls 
+                    preload="metadata" 
+                    poster="/images/poster-sante.jpg"
+                    playsInline
+                  >
+                    <source src="/videos/impac1.mp4#t=0.5" type="video/mp4" />
+                  </video>
+                </div>
+                <div className="video-desc">
+                  <span className="impact-tag">Action Santé</span>
+                  <h3>Soutien Médical TAF</h3>
+                  <p>Financement direct des soins pour les enfants de la fondation. Chaque terrain vendu participe à ce combat pour la vie.</p>
+                </div>
+              </div>
+
+              {/* Vidéo 2 - Eau */}
+              <div className="video-story-item">
+                <div className="video-box">
+                  <video 
+                    controls 
+                    preload="metadata" 
+                    poster="/images/poster-eau.jpg"
+                    playsInline
+                  >
+                    <source src="/videos/impac2.mp4#t=0.5" type="video/mp4" />
+                  </video>
+                </div>
+                <div className="video-desc">
+                  <span className="impact-tag">Infrastructure</span>
+                  <h3>Forages et Eau Potable</h3>
+                  <p>Inauguration de points d'eau essentiels pour les populations locales à proximité de nos sites fonciers.</p>
+                </div>
+              </div>
+
+              {/* Vidéo 3 - Éducation */}
+              <div className="video-story-item">
+                <div className="video-box">
+                  <video 
+                    controls 
+                    preload="metadata" 
+                    poster="/images/poster-edu.jpg"
+                    playsInline
+                  >
+                    <source src="/videos/impac3.mp4#t=0.5" type="video/mp4" />
+                  </video>
+                </div>
+                <div className="video-desc">
+                  <span className="impact-tag">Éducation</span>
+                  <h3>Kits Scolaires & Écoles</h3>
+                  <p>Parce que l'avenir se construit dès l'école, nous accompagnons la scolarisation des enfants en zone rurale.</p>
+                </div>
+              </div>
+
+            </section>
+
+
+
+
         {/* PRESENTATION */}
         <section className="impact-container">
           <article className="main-card2">
@@ -146,7 +215,7 @@ export default function LimobilieImpactPage() {
                   </Link>
                 </div>
                 <div className="cta-badge">
-                  <span>5% à 10%</span>
+                  <span>10%</span>
                   <small>reversés à la TAF</small>
                 </div>
               </div>

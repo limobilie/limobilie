@@ -26,7 +26,7 @@ export default function ContactPage() {
       <main>
         {/* HERO SECTION PRO */}
         <section className="hero-image">
-          <Image src="/images/contact.webp" alt="Contact H&A Properties" fill priority style={{ objectFit: 'cover' }} />
+          <Image src="/images/contact.png" alt="Contact Limobilié" fill priority style={{ objectFit: 'cover' }} />
           <div className="hero-overlay">
             <h1>Parlons de votre projet</h1>
             <p>Une expertise immobilière à votre écoute pour un accompagnement sur mesure.</p>
