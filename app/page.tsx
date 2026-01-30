@@ -122,15 +122,15 @@ export default function AccueilPage() {
                 <Link href="/acheter">
                     <div className="terrain-image">
                       <Image
-                        src="/images/terrain1.jpg"
+                        src="/images/terrain11.png"
                         alt="Vente terrain avec ACD à Bingerville"
                         fill
                         style={{ objectFit: "cover" }}
                       />
                     </div>
-                    <h3 style={{ color: "black" }}>Terrain à Bingerville</h3>
-                    <p className="card-seo-text">
-                      Lots sécurisés pour projets résidentiels ou commerciaux dans la zone de Bingerville.
+                    <h3 style={{ color: "black" }}>Terrain à Azaguié</h3>
+                    <p style={{color: 'black'}} className="card-seo-text">
+                      LOTS APPROUVÉS  DE 500 m² à 3.000.000f CFA PAR LOT.
                     </p>
                 </Link>
             </div>
@@ -138,17 +138,17 @@ export default function AccueilPage() {
             <div className="terrain-card">
               <Link href="/acheter">
                 <div className="terrain-image">
-                  <Image src="/images/terrain2.jpg" alt="Achat terrain viabilisé Bassam Côte d'Ivoire" fill style={{ objectFit: 'cover' }} />
+                  <Image src="/images/terrain222.png" alt="Achat terrain viabilisé Bassam Côte d'Ivoire" fill style={{ objectFit: 'cover' }} />
                 </div>
-                <h3 style={{ color: 'black'}}>Terrain viabilisé à Bassam</h3>
-                <p className="card-seo-text">Parcelles stratégiques à Grand-Bassam, idéales pour investissement locatif ou résidence.</p>
+                <h3 style={{ color: 'black'}}>Terrain AZAGUIÉ AHOUA  -ROUTE D’ADZOPÉ  BORDURE DE VOIE AVEC POTEAUX</h3>
+                <p className="card-seo-text">43 LOTS APPROUVÉS DE 500 m²  À 3.500.000f CFA PAR LOT.</p>
               </Link>
             </div>
 
             <div className="terrain-card">
               <Link href="/acheter">
                 <div className="terrain-image">
-                  <Image src="/images/terrain3.jpg" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
+                  <Image src="/images/terrain333.png" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
                 </div>
                 <h3 style={{ color: 'black'}}>Terrain résidentiel à Anyama</h3>
                 <p className="card-seo-text">Terrains plats et accessibles à Anyama, parfaits pour une construction immédiate.</p>

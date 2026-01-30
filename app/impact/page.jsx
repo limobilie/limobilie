@@ -45,7 +45,7 @@ export default function LimobilieImpactPage() {
                   <video 
                     controls 
                     preload="metadata" 
-                    poster="/images/poster-sante.jpg"
+                    poster="/images/poster-sante.jpg"         
                     playsInline
                   >
                     <source src="/videos/impac1.mp4#t=0.5" type="video/mp4" />

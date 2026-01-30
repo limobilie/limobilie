@@ -40,7 +40,6 @@
   font-size: clamp(26px, 4.5vw, 44px);
   font-weight: 800;
   margin-bottom: 15px;
-  /* FORCE UNE SEULE LIGNE SUR ORDINATEUR */
   white-space: nowrap; 
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
@@ -50,7 +49,7 @@
   opacity: 0.95;
   max-width: 700px;
   margin: 0 auto;
-   color: white;
+  color: white;
 }
 
 /* GRILLE PARTENAIRES */
@@ -62,7 +61,7 @@
 
 .partenaires-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 colonnes sur PC */
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes pour vos 3 partenaires */
   gap: 30px;
 }
 
@@ -77,6 +76,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .partenaire-card:hover {
@@ -87,11 +87,12 @@
 .partenaire-logo-container {
   position: relative;
   width: 100%;
-  height: 160px; /* Augmenté de 100px à 160px */
+  height: 160px;
   margin-bottom: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 }
 
 .partenaire-card h3 {
@@ -105,6 +106,137 @@
   font-size: 15px;
   color: #666;
   line-height: 1.6;
+}
+
+/* ACTIONS DANS LA CARTE */
+.card-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-top: 25px;
+}
+
+.btn-see-more {
+  background: transparent;
+  border: 2px solid #e31e24;
+  color: #e31e24;
+  padding: 8px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-see-more:hover {
+  background: #e31e24;
+  color: white;
+}
+
+.fb-link {
+  width: 38px;
+  height: 38px;
+  background: #1877F2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.fb-link:hover {
+  transform: rotate(360deg) scale(1.1);
+}
+
+/* MODALE / POPUP STYLES */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: white;
+  max-width: 550px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 25px;
+  position: relative;
+  animation: modalPop 0.3s ease-out;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-logo {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-body h2 {
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.modal-desc-full {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  text-align: left;
+  white-space: pre-line; /* Respecte les sauts de ligne */
+}
+
+.modal-footer {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.btn-fb-modal {
+  display: inline-block;
+  background: #1877F2;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-fb-modal:hover {
+  background: #145dbf;
+  transform: translateY(-2px);
 }
 
 /* SECTION CTA */
@@ -133,7 +265,7 @@
 
 .partenaires-btn {
   display: inline-block;
-  background-color: red; /* Votre Rouge */
+  background-color: #e31e24;
   color: white;
   padding: 18px 45px;
   border-radius: 50px;
@@ -145,66 +277,27 @@
 }
 
 .partenaires-btn:hover {
-  background-color: red;
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(227, 30, 36, 0.4);
 }
 
 /* ============================================================ */
-/* 2. RESPONSIVE (MEDIA QUERIES) */
+/* 2. RESPONSIVE */
 /* ============================================================ */
 
-/* --- TABLETTES (1024px et moins) --- */
 @media (max-width: 1024px) {
   .partenaires-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* --- MOBILES (768px et moins) --- */
 @media (max-width: 768px) {
-  .partenaires-hero {
-    height: 50vh;
-  }
-   .partenaires-hero-overlay {
-    top: auto;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: left;
-   }
-  .partenaires-hero-overlay h1 {
-   font-size: 24px;
-  }
-
-  .partenaires-hero-overlay p{
-    color: white;
-    font-size: 14px;
-    
-  }
-
-  .partenaires-section {
-    padding: 60px 20px;
-  }
-
-  .partenaires-cta h2 {
-    font-size: 26px;
-  }
+  .partenaires-hero { height: 50vh; }
+  .partenaires-hero-overlay h1 { font-size: 24px; white-space: normal; }
+  .partenaires-section { padding: 60px 20px; }
+  .modal-content { padding: 30px 20px; width: 95%; }
 }
 
-/* --- PETITS MOBILES (500px et moins) --- */
 @media (max-width: 500px) {
-  .partenaires-grid {
-    grid-template-columns: 1fr; /* 1 seule colonne */
-  }
-
-  .partenaires-btn {
-    width: 100%; /* Bouton pleine largeur */
-    padding: 16px 20px;
-  }
-
-  .partenaire-card {
-    padding: 30px 20px;
-  }
+  .partenaires-grid { grid-template-columns: 1fr; }
 }

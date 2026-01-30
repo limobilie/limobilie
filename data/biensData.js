@@ -13,8 +13,8 @@ export const biens = [
     stationnement: true,
     pmr: false,
     piscine: true,
-    image: "/images/achat1.jpg",
-    imagesGallery: ["/images/achat1.jpg", "/images/achat1.jpg", "/images/achat1.jpg", "/images/achat1.jpg"],
+    image: "/images/terrain11.png",
+    imagesGallery: ["/images/terrain11.png"],
     offerType: "vente"
   },
   {
@@ -31,8 +31,26 @@ export const biens = [
     stationnement: true,
     pmr: true,
     piscine: true,
-    image: "/images/achat2.jpg",
-    imagesGallery: ["/images/achat2.jpg", "/images/achat2.jpg", "/images/achat2.jpg"],
+    image: "/images/terrain222.png",
+    imagesGallery: ["/images/terrain222.png"],
+    offerType: "vente"
+  },
+   {
+    titre: "Maison à vendre, 8 pièces - Assinie",
+    prix: "950 000 000 FCFA",
+    description: "A VENDRE - RESIDENCE HOTELIERE - ASSOUINDE. Magnifique propriété en bordure de lagune.",
+    pieces: "8 pièces",
+    surface: "1 800 m²",
+    localisations: ["Assinie 01000", "Assinie Plage"],
+    chambres: 5,
+    salleBain: 4,
+    balcon: true,
+    ascenseur: false,
+    stationnement: true,
+    pmr: false,
+    piscine: true,
+    image: "/images/duplex1.png",
+    imagesGallery: ["/images/duplex1.png", "/images/duplex-inter.png"],
     offerType: "vente"
   },
   {
@@ -49,8 +67,8 @@ export const biens = [
     stationnement: true,
     pmr: true,
     piscine: true,
-    image: "/images/achat4.jpg",
-    imagesGallery: ["/images/achat4.jpg", "/images/achat4.jpg", "/images/achat4.jpg"],
+    image: "/images/villa1.png",
+    imagesGallery: ["/images/villa1.png", "/images/villa-salon.png", "/images/villa-chambre.png", "/images/villa-douche.png", "/images/villa-cusine.png"],
     offerType: "vente"
   },
   {
