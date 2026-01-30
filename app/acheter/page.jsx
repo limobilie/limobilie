@@ -48,7 +48,7 @@ export default function BiensPage() {
   const openWhatsApp = (bien) => {
     const isOther = bien.offerType === 'autres';
     const actionText = isOther ? "commander" : "obtenir des détails sur";
-    const message = encodeURIComponent(`Bonjour H&A Properties, je souhaite ${actionText} : ${bien.titre} (${bien.prix})`);
+    const message = encodeURIComponent(`Bonjour Limobilié, je souhaite ${actionText} : ${bien.titre} (${bien.prix})`);
     window.open(`https://wa.me/2250545935673?text=${message}`, '_blank');
   }
 
@@ -60,7 +60,7 @@ export default function BiensPage() {
         <Image src="/images/acheter.png" alt="Biens" fill style={{ objectFit: 'cover' }} priority />
         <div className="biens-hero-overlay">
           <h1>Biens immobiliers</h1>
-          <p>La sélection exclusive H&A Properties.</p>
+          <p>La sélection exclusive Limobilié.</p>
         </div>
       </div>
 

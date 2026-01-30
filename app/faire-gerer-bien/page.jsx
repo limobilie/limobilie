@@ -37,7 +37,7 @@ export default function NotreEquipePage() {
   // Fonction pour envoyer sur WhatsApp
   const handleWhatsApp = (serviceTitre) => {
     const phone = "2250545935673"
-    const message = encodeURIComponent(`Bonjour H&A Properties, je souhaite avoir plus d'informations concernant le service : ${serviceTitre}`)
+    const message = encodeURIComponent(`Bonjour Limobilié, je souhaite avoir plus d'informations concernant le service : ${serviceTitre}`)
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank')
   }
 

@@ -47,7 +47,7 @@ export default function LouerPage() {
   const currentBiens = filteredBiens.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 
   const openWhatsApp = (bien) => {
-    const message = encodeURIComponent(`Bonjour H&A Properties, je suis intéressé par la location de : ${bien.titre} (${bien.prix})`);
+    const message = encodeURIComponent(`Bonjour Limobilié, je suis intéressé par la location de : ${bien.titre} (${bien.prix})`);
     window.open(`https://wa.me/2250545935673?text=${message}`, '_blank');
   }
 
@@ -59,7 +59,7 @@ export default function LouerPage() {
         <Image src="/images/acheter.png" alt="Louer" fill style={{ objectFit: 'cover' }} priority />
         <div className="biens-hero-overlay">
           <h1>Biens à louer</h1>
-          <p>Découvrez nos opportunités de location exclusives avec H&A Properties.</p>
+          <p>Découvrez nos opportunités de location exclusives avec Limobilié.</p>
         </div>
       </div>
 

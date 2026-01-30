@@ -41,13 +41,13 @@ export default function BlogPage() {
       id: 4,
       titre: "Pourquoi confier la gestion locative ?",
       extrait: "Gagnez du temps et sécurisez vos revenus locatifs grâce à un accompagnement professionnel.",
-      contenu: "Confier votre bien à H&A Properties, c'est l'assurance d'une tranquillité d'esprit. Nous nous occupons de la sélection rigoureuse des locataires via une étude de solvabilité.\n\nNous gérons la rédaction des baux, le recouvrement des loyers et le suivi technique des travaux. En moyenne, un bien géré par nos soins présente un taux d'impayés inférieur à 2%.",
+      contenu: "Confier votre bien à Limobilié, c'est l'assurance d'une tranquillité d'esprit. Nous nous occupons de la sélection rigoureuse des locataires via une étude de solvabilité.\n\nNous gérons la rédaction des baux, le recouvrement des loyers et le suivi technique des travaux. En moyenne, un bien géré par nos soins présente un taux d'impayés inférieur à 2%.",
       image: "/images/bien1.png"
     }
   ]
 
   const openWhatsApp = (titre) => {
-    const message = encodeURIComponent(`Bonjour H&A Properties, j'ai lu votre article "${titre}" et j'aimerais avoir plus de conseils.`);
+    const message = encodeURIComponent(`Bonjour Limobilié, j'ai lu votre article "${titre}" et j'aimerais avoir plus de conseils.`);
     window.open(`https://wa.me/2250545935673?text=${message}`, '_blank');
   }
 

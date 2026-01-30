@@ -101,7 +101,7 @@ export default function RapportsImmobiliersPage() {
       <section className="intro-section">
         <div className="container">
           <h2>Votre boussole sur le marché immobilier</h2>
-          <p>Chez <strong>H&A Properties</strong>, nous transformons les données en opportunités.</p>
+          <p>Chez <strong>Limobilié</strong>, nous transformons les données en opportunités.</p>
         </div>
       </section>
 
