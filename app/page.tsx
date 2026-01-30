@@ -150,8 +150,11 @@ export default function AccueilPage() {
                 <div className="terrain-image">
                   <Image src="/images/terrain333.png" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
                 </div>
-                <h3 style={{ color: 'black'}}>Terrain résidentiel à Anyama</h3>
-                <p className="card-seo-text">Terrains plats et accessibles à Anyama, parfaits pour une construction immédiate.</p>
+                <h3 style={{ color: 'black' }}>Opportunité : Terrains en préfinancement à Yamoussoukro</h3>
+                <p className="card-seo-text">
+                  Investissez dans des lots viabilisés au cœur de la capitale politique. 
+                  Terrains plats, sécurisés et prêts pour une mise en valeur immédiate.
+                </p>
               </Link>
             </div>
         </div>

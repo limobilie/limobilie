@@ -12,7 +12,7 @@ export default function RapportsImmobiliersPage() {
   const rapports = [
     {
       id: 1,
-      titre: "Analyse du Marché - Abidjan 2026",
+      titre: "Analyse du Marché - Abidjan 2025",
       description: "Étude complète sur l'évolution des prix au m² à Cocody, Marcory et Assinie.",
       icon: "📊",
       pdfUrl: "/documents/analyse-marche-2026.pdf",

@@ -49,7 +49,7 @@ export default function ContactPage() {
                 <div className="info-icon">📍</div>
                 <div>
                   <strong>Adresse</strong>
-                  <p>Bingerville, Paris Village</p>
+                  <p>Côte d’Ivoire, Abidjan, Bingerville, Paris-Village</p>
                 </div>
               </div>
             </div>

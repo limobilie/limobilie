@@ -14,8 +14,8 @@ export const biens = [
     stationnement: true,
     pmr: false,
     piscine: true,
-    image: "/images/achat1.jpg",
-    imagesGallery: ["/images/achat1.jpg", "/images/achat1.jpg", "/images/achat1.jpg", "/images/achat1.jpg"],
+    image: "/images/louer-loca1.png",
+    imagesGallery: ["/images/louer-loca1.png", "/images/louer-loca2.png", "/images/louer-loca3.png"],
     offerType: "location"
   },
   {
@@ -33,8 +33,8 @@ export const biens = [
     stationnement: true,
     pmr: true,
     piscine: true,
-    image: "/images/achat2.jpg",
-    imagesGallery: ["/images/achat2.jpg", "/images/achat2.jpg", "/images/achat2.jpg"],
+    image: "/images/louer-vil1.png",
+    imagesGallery: ["/images/louer-vil1.png", "/images/louer-vil2.png"],
     offerType: "location"
   },
   {
@@ -52,8 +52,8 @@ export const biens = [
     stationnement: true,
     pmr: true,
     piscine: true,
-    image: "/images/achat4.jpg",
-    imagesGallery: ["/images/achat4.jpg", "/images/achat4.jpg"],
+    image: "/images/louer-p1.png",
+    imagesGallery: ["/images/louer-p1.png", "/images/louer-p2.png"],
     offerType: "location"
   }
   // Ajoute tes autres biens ici sur le même modèle

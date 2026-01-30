@@ -52,9 +52,14 @@ export default function LimobilieImpactPage() {
                   </video>
                 </div>
                 <div className="video-desc">
-                  <span className="impact-tag">Action Santé</span>
-                  <h3>Soutien Médical TAF</h3>
-                  <p>Financement direct des soins pour les enfants de la fondation. Chaque terrain vendu participe à ce combat pour la vie.</p>
+                  <span className="impact-tag">Action Cœur</span>
+                  <h3>Limobilié soutient la lutte contre le cancer infantile</h3>
+                  <p>
+                    Parce que chaque vie est précieuse, <strong>Limobilié</strong> s'engage : une partie des commissions de chaque transaction est reversée pour financer les soins et les traitements des enfants atteints de cancer. 
+                  </p>
+                  <p className="impact-slogan">
+                    Ensemble, transformons l'immobilier en un espoir de guérison.
+                  </p>
                 </div>
               </div>
 
@@ -71,9 +76,14 @@ export default function LimobilieImpactPage() {
                   </video>
                 </div>
                 <div className="video-desc">
-                  <span className="impact-tag">Infrastructure</span>
-                  <h3>Forages et Eau Potable</h3>
-                  <p>Inauguration de points d'eau essentiels pour les populations locales à proximité de nos sites fonciers.</p>
+                  <span className="impact-tag">Engagement Social</span>
+                  <h3>Don à l'Orphelinat de Bingerville</h3>
+                  <p>
+                    Plus qu'une entreprise, <strong>Limobilié</strong> est un acteur du cœur. Nous avons récemment soutenu l'Orphelinat de Bingerville par un don de vivres et de matériel essentiel pour améliorer le quotidien des enfants.
+                  </p>
+                  <p className="impact-slogan">
+                    Parce que chaque achat chez nous contribue à offrir un sourire et un avenir à ceux qui en ont le plus besoin.
+                  </p>
                 </div>
               </div>
 
@@ -201,6 +211,17 @@ export default function LimobilieImpactPage() {
               </ul>
             </section>
 
+
+            <section className="conclusion-section">
+              <h2>10. Conclusion</h2>
+              <p>
+                LIMOBILIÉ Impact incarne une nouvelle génération de projets immobiliers :
+                responsables, humains, mesurables et durables. Investir dans la terre,
+                c’est aussi investir dans la vie.
+              </p>
+            </section>
+
+
             {/* --- SECTION APPEL À L'ACTION (CTA) --- */}
             <section className="impact-cta-area">
               <div className="cta-card">
@@ -221,14 +242,6 @@ export default function LimobilieImpactPage() {
               </div>
             </section>
 
-            <section className="conclusion-section">
-              <h2>10. Conclusion</h2>
-              <p>
-                LIMOBILIÉ Impact incarne une nouvelle génération de projets immobiliers :
-                responsables, humains, mesurables et durables. Investir dans la terre,
-                c’est aussi investir dans la vie.
-              </p>
-            </section>
           </article>
         </section>
       </main>

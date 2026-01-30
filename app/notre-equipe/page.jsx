@@ -8,9 +8,9 @@ import '../../styles/notre-equipe.css'
 export default function NotreEquipePage() {
   const equipe = [
     {
-      nom: 'TEDIE ANGE',
+      nom: 'TÉDIE ANGE',
       poste: 'DIRECTEUR',
-      numero: '+225 07 87 02 34 56',
+      numero: '+225 07 87 02 65 18',
       photo: '/images/photo1.jpeg'
     },
     {

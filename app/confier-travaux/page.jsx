@@ -24,8 +24,14 @@ export default function ConfierTravauxPage() {
       description: 'Carrelage moderne, précis et résistant.'
     },
     {
-      titre: 'Staff & enduit',
-      images: ['/images/staff1.jpg', '/images/staff2.jpg', '/images/staff3.jpg'],
+      titre: 'Staff',
+      images: ['/images/staff1.jpg', '/images/staff3.jpg', '/images/staff1.jpg'],
+      description: 'Plafonds et finitions haut de gamme.'
+    },
+
+    {
+      titre: 'Enduit',
+      images: ['/images/staff3.jpg', '/images/staff2.jpg', '/images/staff3.jpg'],
       description: 'Plafonds et finitions haut de gamme.'
     },
     {

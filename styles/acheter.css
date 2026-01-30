@@ -412,3 +412,40 @@ body {
          margin-top: -80px; 
     }
 }
+
+
+
+
+
+
+
+
+
+
+/* Ajoutez ou modifiez ces lignes dans votre fichier CSS existant */
+
+.details-modal-content {
+    /* ... vos propriétés existantes ... */
+    max-height: 95vh;
+    overflow-y: auto; /* Permet de scroller si le contenu est grand */
+}
+
+@media (max-width: 1024px) {
+    .modal-layout-grid {
+        display: block; /* Empile la photo et les infos sur mobile */
+    }
+    .modal-gallery-side {
+        height: 300px; /* Hauteur fixe pour la photo sur mobile */
+    }
+    .modal-info-side {
+        padding: 25px;
+    }
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 100px 0;
+    font-size: 1.2rem;
+    color: #666;
+}

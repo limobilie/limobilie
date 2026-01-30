@@ -19,11 +19,10 @@ export default function BiensPage() {
   })
 
   const [selectedBien, setSelectedBien] = useState(null)
-  const [activeImg, setActiveImg] = useState(0) // État pour l'image active dans le modal
+  const [activeImg, setActiveImg] = useState(0)
   const itemsPerPage = 10
   const [currentPage, setCurrentPage] = useState(1)
 
-  // Reset de l'image quand on change de bien
   useEffect(() => {
     setActiveImg(0)
   }, [selectedBien])
@@ -47,7 +46,9 @@ export default function BiensPage() {
   const currentBiens = filteredBiens.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 
   const openWhatsApp = (bien) => {
-    const message = encodeURIComponent(`Bonjour H&A Properties, je suis intéressé par : ${bien.titre} (${bien.prix})`);
+    const isOther = bien.offerType === 'autres';
+    const actionText = isOther ? "commander" : "obtenir des détails sur";
+    const message = encodeURIComponent(`Bonjour H&A Properties, je souhaite ${actionText} : ${bien.titre} (${bien.prix})`);
     window.open(`https://wa.me/2250545935673?text=${message}`, '_blank');
   }
 
@@ -68,33 +69,38 @@ export default function BiensPage() {
       </div>
 
       <div className="biens-grid">
-        {currentBiens.map((bien, index) => (
-          <div key={index} className="biens-card" onClick={() => setSelectedBien(bien)}>
-            <div className="biens-image-container">
-              <Image src={bien.image} alt={bien.titre} fill style={{ objectFit: 'cover' }} />
-              <div className="card-badge">{bien.offerType}</div>
-            </div>
-            <div className="biens-info">
-              <div className="biens-price">{bien.prix}</div>
-              <h3>{bien.titre}</h3>
-              <p className="locat">📍 {bien.localisations.join(', ')}</p>
-              <div className="biens-specs">
-                <span>{bien.pieces}</span> • <span>{bien.surface}</span>
+        {currentBiens.length > 0 ? (
+          currentBiens.map((bien, index) => (
+            <div key={index} className="biens-card" onClick={() => setSelectedBien(bien)}>
+              <div className="biens-image-container">
+                <Image src={bien.image} alt={bien.titre} fill style={{ objectFit: 'cover' }} />
+                <div className="card-badge">{bien.offerType}</div>
               </div>
-              <button className="btn-view-more">Voir les détails</button>
+              <div className="biens-info">
+                <div className="biens-price">{bien.prix}</div>
+                <h3>{bien.titre}</h3>
+                <p className="locat">📍 {bien.localisations.filter(l => l !== "").join(', ')}</p>
+                <div className="biens-specs">
+                  {bien.pieces && <span>{bien.pieces}</span>}
+                  {bien.pieces && <span> • </span>}
+                  <span>{bien.surface}</span>
+                </div>
+                <button className="btn-view-more">Voir les détails</button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="no-results">Aucun bien ne correspond à votre recherche.</p>
+        )}
       </div>
 
-      {/* MODALE DE DÉTAILS AGRANDIE AVEC GALERIE */}
       {selectedBien && (
         <div className="details-modal-overlay" onClick={() => setSelectedBien(null)}>
           <div className="details-modal-content" onClick={e => e.stopPropagation()}>
             <button className="close-modal" onClick={() => setSelectedBien(null)}>&times;</button>
             
             <div className="modal-layout-grid">
-              {/* GAUCHE : Galerie Photos */}
+              {/* GAUCHE : Galerie */}
               <div className="modal-gallery-side">
                 <div className="main-display-image">
                   <Image 
@@ -104,7 +110,7 @@ export default function BiensPage() {
                     style={{objectFit: 'cover'}} 
                   />
                 </div>
-                {selectedBien.imagesGallery && (
+                {selectedBien.imagesGallery && selectedBien.imagesGallery.length > 1 && (
                   <div className="modal-thumbnails-list">
                     {selectedBien.imagesGallery.map((img, idx) => (
                       <div 
@@ -119,38 +125,54 @@ export default function BiensPage() {
                 )}
               </div>
 
-              {/* DROITE : Informations */}
+              {/* DROITE : Infos adaptatives */}
               <div className="modal-info-side">
                 <div className="sticky-info-header">
                   <span className="modal-price">{selectedBien.prix}</span>
                   <h2>{selectedBien.titre}</h2>
-                  <p className="modal-loc">📍 {selectedBien.localisations.join(', ')}</p>
+                  {selectedBien.localisations.some(l => l !== "") && (
+                    <p className="modal-loc">📍 {selectedBien.localisations.filter(l => l !== "").join(', ')}</p>
+                  )}
                 </div>
 
                 <div className="modal-features-grid">
-                  <div className="feat"><strong>Surface</strong> {selectedBien.surface}</div>
-                  <div className="feat"><strong>Pièces</strong> {selectedBien.pieces}</div>
-                  <div className="feat"><strong>Chambres</strong> {selectedBien.chambres}</div>
-                  <div className="feat"><strong>Salle de bain</strong> {selectedBien.salleBain || 1}</div>
+                  <div className="feat">
+                    <strong>{selectedBien.offerType === 'autres' ? 'Quantité / Taille' : 'Surface'}</strong> 
+                    {selectedBien.surface}
+                  </div>
+                  {/* On n'affiche pièces/chambres que si elles existent (Habitations) */}
+                  {selectedBien.pieces && selectedBien.pieces !== "" && selectedBien.pieces !== "N/A" && (
+                    <div className="feat"><strong>Pièces</strong> {selectedBien.pieces}</div>
+                  )}
+                  {selectedBien.chambres > 0 && (
+                    <div className="feat"><strong>Chambres</strong> {selectedBien.chambres}</div>
+                  )}
+                  {selectedBien.salleBain > 0 && (
+                    <div className="feat"><strong>Douche</strong> {selectedBien.salleBain}</div>
+                  )}
                 </div>
 
                 <div className="modal-desc-box">
-                  <h4>Description du bien</h4>
+                  <h4>Description</h4>
                   <p>{selectedBien.description}</p>
                 </div>
 
-                <div className="modal-amenities-tags">
-                  <h4>Équipements & Services</h4>
-                  <div className="tags-container">
-                    {selectedBien.piscine && <span>🏊 Piscine</span>}
-                    {selectedBien.ascenseur && <span>🛗 Ascenseur</span>}
-                    {selectedBien.stationnement && <span>🚗 Parking</span>}
-                    <span>🛡️ Sécurité 24h/7</span>
+                {/* Équipements : uniquement si c'est une habitation avec au moins un équipement */}
+                {selectedBien.offerType !== 'autres' && (selectedBien.piscine || selectedBien.ascenseur || selectedBien.stationnement || selectedBien.balcon) && (
+                  <div className="modal-amenities-tags">
+                    <h4>Équipements & Services</h4>
+                    <div className="tags-container">
+                      {selectedBien.piscine && <span>🏊 Piscine</span>}
+                      {selectedBien.ascenseur && <span>🛗 Ascenseur</span>}
+                      {selectedBien.stationnement && <span>🚗 Parking</span>}
+                      {selectedBien.balcon && <span>🏙️ Balcon</span>}
+                      <span>🛡️ Sécurité 24h/7</span>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <button className="btn-whatsapp-full" onClick={() => openWhatsApp(selectedBien)}>
-                  Contacter l'agent sur WhatsApp
+                  {selectedBien.offerType === 'autres' ? 'Commander sur WhatsApp' : "Contacter l'agent sur WhatsApp"}
                 </button>
               </div>
             </div>
@@ -158,7 +180,6 @@ export default function BiensPage() {
         </div>
       )}
 
-      {/* PAGINATION */}
       <div className="pagination">
         {Array.from({ length: totalPages }, (_, i) => (
           <button 
