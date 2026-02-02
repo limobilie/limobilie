@@ -226,3 +226,92 @@
     padding-right: 50px;
   }
 }
+
+
+
+/* Style spécial pour le lien Dashboard dans le menu rouge */
+.admin-link-special {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  margin-bottom: 15px !important;
+  padding: 10px !important;
+}
+
+.logout-btn {
+  color: #ffcccc !important;
+  font-weight: bold;
+  margin-top: 30px !important;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 15px !important;
+}
+
+/* Style de la popup de connexion */
+.login-popup {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 280px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.login-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #333;
+}
+
+.login-popup h3 {
+  text-align: center;
+  color: red;
+}
+
+.login-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.close-popup-pro {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.admin-access-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+
+/* FORCE LE ROUGE UNIQUEMENT SUR DASHBOARD */
+.header.dashboard-mode .menu-button {
+  color: red !important;
+}
+
+/* Force la couleur de l'icône FaBars en rouge également */
+.header.dashboard-mode .menu-button svg {
+  color: red !important;
+}
+
+/* Optionnel : Assure que le fond blanc reste propre sur le dashboard */
+.header.dashboard-mode {
+  background-color: transparent;
+}

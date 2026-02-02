@@ -1,0 +1,338 @@
+/* Container principal */
+.dashboard-container {
+  padding: 150px 50px 80px 50px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-title {
+  color: #ff0000;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+}
+
+.dashboard-subtitle {
+  margin-bottom: 30px;
+  color: #666;
+}
+
+/* Grille des cartes */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Style des cartes */
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.stat-title {
+  color: #555;
+  font-size: 18px;
+  margin: 0 0 15px 0;
+  font-weight: 500;
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: bold;
+  color: #ff0000;
+  margin: 0;
+}
+
+.stat-hint {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+  display: block;
+}
+
+/* Responsivité mobile */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 120px 20px 50px 20px;
+  }
+  .dashboard-title {
+    font-size: 1.8rem;
+  }
+}
+
+
+
+
+/* Section Tableau */
+.table-section {
+  margin-top: 50px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-left: 4px solid red;
+}
+
+.table-wrapper {
+  overflow-x: auto; /* Important pour le mobile */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f8f9fa;
+  padding: 15px;
+  font-weight: 600;
+  color: #666;
+  border-bottom: 2px solid #eee;
+}
+
+.data-table td {
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+  font-size: 14px;
+}
+
+.data-table tr:hover {
+  background-color: #fff9f9;
+}
+
+.font-bold {
+  font-weight: bold;
+  color: #000;
+}
+
+/* Badges de Statut */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.status-badge.en_attente {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.valide {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+
+.dashboard-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.filter-select {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.filter-select:focus {
+  border-color: #ff0000;
+}
+
+.stat-card.highlighted {
+  border-bottom: 4px solid #ff0000;
+}
+
+
+.visits-section-bottom {
+  margin-top: 40px;
+  padding: 30px;
+  background: #fdfdfd;
+  border-top: 2px solid #eee;
+  border-radius: 12px;
+}
+
+.filters-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filters-bar select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 150px;
+}
+
+.stat-card-visit {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.stat-number-large {
+  font-size: 48px;
+  font-weight: 800;
+  color: red;
+  margin-bottom: 5px;
+}
+
+
+/* --- SECTION VISITES (Bas de page) --- */
+.visits-section-bottom {
+  margin-top: 40px;
+  padding: 30px;
+  background: #ffffff; /* Fond blanc pur pour plus de clarté */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+/* Rendre les textes des labels et titres en bas bien noirs */
+.visits-section-bottom .section-title {
+  color: #000000 !important; 
+  font-weight: 700;
+}
+
+.filters-bar select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #000000; /* Bordure noire pour plus de visibilité */
+  min-width: 150px;
+  color: #000000; /* Texte des options en noir */
+  font-weight: 500;
+  background-color: #fff;
+}
+
+.stat-card-visit {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+/* Texte sous le gros chiffre en noir */
+.stat-card-visit p:not(.stat-number-large) {
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.stat-number-large {
+  font-size: 60px; /* Un peu plus grand */
+  font-weight: 800;
+  color: #ff0000; /* Le chiffre reste rouge pour l'alerte */
+  margin-bottom: 5px;
+}
+
+/* Forcer les textes des cartes du haut aussi en noir */
+.stat-title {
+  color: #000000; /* Titre de la carte en noir */
+  font-weight: 700;
+}
+
+.stat-hint {
+  color: #333333; /* Sous-titre en gris très foncé */
+  font-weight: 500;
+}
+
+
+
+/* --- Nouveaux styles pour textes noirs et calendrier --- */
+
+.black-select, .black-date-input {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid #000000 !important; /* Bordure noire marquée */
+  background-color: #ffffff;
+  color: #000000 !important;            /* Texte noir pur */
+  font-size: 14px;
+  font-weight: 700;                     /* Texte gras pour lisibilité */
+  outline: none;
+  cursor: pointer;
+}
+
+.black-date-input {
+  cursor: text;
+  font-family: sans-serif;
+}
+
+.filter-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Texte de la carte de visite en bas */
+.stat-label-black {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.stat-number-large {
+  font-size: 65px;
+  font-weight: 900;
+  color: #ff0000; /* Le chiffre reste rouge pour ressortir */
+  text-shadow: 1px 1px 0px #fff;
+}
+
+.visits-section-bottom .section-title {
+  color: #000000 !important;
+  border-left-color: #000000; /* On change la barre en noir */
+}
+
+
+.search-input {
+  min-width: 220px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  padding-left: 35px !important;
+}
+
+.black-select:disabled {
+  background-color: #f0f0f0;
+  border-color: #ccc !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

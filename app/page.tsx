@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 import Link from "next/link";
 import Image from 'next/image'
 import { FaWhatsapp, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa'
-import SEO_KEYWORDS, { MESSAGES_VIDEO } from '../data/seo'
+
 import '../styles/page-acceuil.css'
 
 export default function AccueilPage() {
@@ -50,20 +50,10 @@ export default function AccueilPage() {
           </div>
         </div>
 
-        {/* MESSAGES DÉFILANTS */}
-        <div className="video-messages">
-          {MESSAGES_VIDEO.map((msg, index) => (
-            <span key={index}>{msg.toUpperCase()}</span>
-          ))}
-        </div>
+        
       </section>
 
-      {/* ZONE SEO INVISIBLE */}
-      <div style={{ display: 'none' }}>
-        {SEO_KEYWORDS.accueil.map((mot, index) => (
-          <p key={index}>{mot}</p>
-        ))}
-      </div>
+    
 
       {/* PRÉSENTATION MISE À JOUR (LIMOBILIÉ IMPACT) */}
       <section className="presentation-section">
