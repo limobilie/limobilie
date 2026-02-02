@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
@@ -7,32 +8,27 @@ import { PAYS_VILLES } from '@/data/countries'
 import '@/styles/dashboard.css' 
 
 export default function Dashboard() {
+  const router = useRouter()
   const [souscriptions, setSouscriptions] = useState([])
   const [totalVisites, setTotalVisites] = useState(0)
   const [loading, setLoading] = useState(true)
 
-  // États pour les filtres
   const [filtreDate, setFiltreDate] = useState('all')
   const [dateSpecifique, setDateSpecifique] = useState('')
   const [filtrePays, setFiltrePays] = useState('all')
   const [filtreVille, setFiltreVille] = useState('all')
 
-  // Gérer la recherche de pays
-  const handlePaysSearch = (e) => {
-    const valeur = e.target.value
-    // Si la valeur existe dans notre liste, on met à jour, sinon on reste sur "all"
-    if (PAYS_VILLES[valeur]) {
-      setFiltrePays(valeur)
-      setFiltreVille('all')
-    } else if (valeur === "") {
-      setFiltrePays('all')
-      setFiltreVille('all')
-    }
-  }
-
   useEffect(() => {
-    async function fetchData() {
+    async function checkAuthAndFetch() {
       setLoading(true)
+      
+      // SECURITÉ : Vérifier si l'utilisateur est connecté avant de charger les données
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        router.push('/')
+        return
+      }
+
       try {
         const resSous = await supabase
           .from('souscriptions')
@@ -66,13 +62,23 @@ export default function Dashboard() {
         setLoading(false)
       }
     }
-    fetchData()
-  }, [filtreDate, dateSpecifique, filtrePays, filtreVille])
+    checkAuthAndFetch()
+  }, [filtreDate, dateSpecifique, filtrePays, filtreVille, router])
+
+  const handlePaysSearch = (e) => {
+    const valeur = e.target.value
+    if (PAYS_VILLES[valeur]) {
+      setFiltrePays(valeur)
+      setFiltreVille('all')
+    } else if (valeur === "") {
+      setFiltrePays('all')
+      setFiltreVille('all')
+    }
+  }
 
   return (
     <>
       <Header isDashboard={true} />
-      
       <main className="dashboard-container">
         <div className="dashboard-content">
           <h1 className="dashboard-title">Tableau de Bord Limobilié</h1>
@@ -85,6 +91,7 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* ... reste de ton code de table et filtres inchangé ... */}
           <div className="table-section">
             <h2 className="section-title">Liste des Souscripteurs Tontine</h2>
             <div className="table-wrapper">
@@ -115,9 +122,7 @@ export default function Dashboard() {
 
           <div className="visits-section-bottom">
             <h2 className="section-title">Statistiques des Visites</h2>
-            
             <div className="filters-bar search-mode">
-               {/* FILTRE DATE */}
                <div className="filter-group">
                   <select className="black-select" value={filtreDate} onChange={(e) => setFiltreDate(e.target.value)}>
                     <option value="all">Toutes les dates</option>
@@ -128,46 +133,29 @@ export default function Dashboard() {
                     <input type="date" className="black-date-input" value={dateSpecifique} onChange={(e) => setDateSpecifique(e.target.value)} />
                   )}
                </div>
-
-               {/* RECHERCHE PAYS */}
                <div className="filter-group">
-                  <input 
-                    list="list-pays" 
-                    className="black-select search-input" 
-                    placeholder="🔍 Rechercher un pays..."
-                    onChange={handlePaysSearch}
-                  />
+                  <input list="list-pays" className="black-select search-input" placeholder="🔍 Rechercher un pays..." onChange={handlePaysSearch} />
                   <datalist id="list-pays">
                     <option value="Toutes les destinations" />
                     {Object.keys(PAYS_VILLES).map(p => <option key={p} value={p} />)}
                   </datalist>
                </div>
-
-               {/* RECHERCHE VILLE */}
                <div className="filter-group">
-                  <input 
-                    list="list-villes" 
-                    className="black-select search-input" 
-                    placeholder="🔍 Rechercher une ville..."
-                    disabled={filtrePays === 'all'}
+                  <input list="list-villes" className="black-select search-input" placeholder="🔍 Rechercher une ville..." disabled={filtrePays === 'all'} 
                     onChange={(e) => {
                        const v = e.target.value;
                        if (v === "" || PAYS_VILLES[filtrePays]?.includes(v)) setFiltreVille(v === "" ? 'all' : v)
-                    }}
+                    }} 
                   />
                   <datalist id="list-villes">
                     {filtrePays !== 'all' && PAYS_VILLES[filtrePays]?.map(v => <option key={v} value={v} />)}
                   </datalist>
                </div>
             </div>
-
             <div className="stat-card-visit">
               <p className="stat-number-large">{loading ? '...' : totalVisites}</p>
               <p className="stat-label-black">
-                {filtrePays === 'all' 
-                  ? "Visiteurs (Monde Entier)" 
-                  : `Visiteurs : ${filtrePays} ${filtreVille !== 'all' ? `> ${filtreVille}` : ''}`
-                }
+                {filtrePays === 'all' ? "Visiteurs (Monde Entier)" : `Visiteurs : ${filtrePays} ${filtreVille !== 'all' ? `> ${filtreVille}` : ''}`}
               </p>
             </div>
           </div>
