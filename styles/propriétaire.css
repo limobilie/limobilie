@@ -1,0 +1,340 @@
+/* --- Mise en page principale --- */
+.owner-main {
+  min-height: 80vh;
+  padding: 140px 20px 60px;
+  background-color: #f8f9fa;
+}
+
+.container-limited {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- Formulaire Pro --- */
+.add-bien-section {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.section-header {
+  border-left: 6px solid #ff0000;
+  padding-left: 20px;
+  margin-bottom: 40px;
+}
+
+.form-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  font-size: 1.2rem;
+  margin: 30px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* --- Grille Responsive --- */
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-field label {
+  font-weight: 600;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.input-field input, 
+.input-field select, 
+.input-field textarea {
+  padding: 12px 15px;
+  border: 2px solid #edf2f7;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.input-field input:focus, 
+.input-field select:focus {
+  border-color: #ff0000;
+  outline: none;
+  background: #fff;
+}
+
+/* --- Upload Zone --- */
+.file-upload-zone {
+  border: 2px dashed #cbd5e0;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  background: #f7fafc;
+  margin-bottom: 25px;
+}
+
+.file-input {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* --- Bouton --- */
+.main-btn {
+  background: #ff0000 !important;
+  color: white;
+  padding: 18px !important;
+  font-size: 1.1rem !important;
+  border-radius: 12px !important;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .input-group {
+    grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+  }
+  
+  .owner-main {
+    padding-top: 100px;
+  }
+  
+  .add-bien-section {
+    padding: 25px 20px;
+  }
+}
+
+
+/* --- Styles de base pour la page Propriétaire --- */
+.owner-main {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-limited {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Carte d'accueil (Non connecté) --- */
+.owner-portal-card {
+  transition: transform 0.3s ease;
+}
+
+.owner-portal-card:hover {
+  transform: translateY(-5px);
+}
+
+.login-trigger-btn {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
+}
+
+.login-trigger-btn:hover {
+  background-color: #cc0000 !important;
+  transform: scale(1.05);
+}
+
+/* --- Formulaire Pro --- */
+.add-bien-section {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.section-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.form-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+/* Grilles d'inputs */
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .input-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.input-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.input-field input, 
+.input-field select, 
+.input-field textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-field input:focus, 
+.input-field select:focus, 
+.input-field textarea:focus {
+  outline: none;
+  border-color: #ff0000;
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
+}
+
+.input-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Zone d'upload de fichiers */
+.file-upload-zone {
+  border: 2px dashed #cbd5e0;
+  background-color: #f7fafc;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.file-upload-zone:hover {
+  border-color: #ff0000;
+  background-color: #fff5f5;
+}
+
+.file-input {
+  cursor: pointer;
+  color: #555;
+}
+
+/* Bannières d'information */
+.info-banner {
+  border-left: 5px solid #2196f3;
+}
+
+.legal-notice {
+  border: 1px solid #ffcccc;
+}
+
+.legal-notice input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2ecc71;
+}
+
+/* Bouton Soumettre */
+.main-btn {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.main-btn:hover {
+  background-color: #27ae60 !important;
+  transform: translateY(-2px);
+}
+
+.main-btn:active {
+  transform: translateY(0);
+}
+
+/* Loader */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+
+/* Container du groupe d'input */
+.input-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Pour le mobile */
+}
+
+/* Container individuel (Label + Input) */
+.input-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Style des Labels (Le texte au-dessus) */
+.input-field label {
+  color: #333333 !important; /* Gris foncé presque noir */
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: block;
+}
+
+/* Style des Inputs et Selects */
+.input-field input, 
+.input-field select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #000000 !important; /* Texte écrit par l'utilisateur en noir */
+  background-color: #ffffff !important; /* Fond blanc */
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+/* Changement de couleur au clic (Focus) */
+.input-field input:focus, 
+.input-field select:focus {
+  border-color: #2ecc71; /* Vert Limobilié */
+  box-shadow: 0 0 5px rgba(46, 204, 113, 0.2);
+}
+
+/* Style spécifique pour le Placeholder (le texte indicatif) */
+.input-field input::placeholder {
+  color: #999999;
+  font-style: italic;
+}
+
+/* Pour s'assurer que les options du select sont visibles sur Windows/Chrome */
+.input-field select option {
+  color: #000000;
+  background-color: #ffffff;
+}

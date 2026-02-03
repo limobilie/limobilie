@@ -5,11 +5,25 @@ import { supabase } from '@/lib/supabase'
 export default function TrackVisit() {
   useEffect(() => {
     const recordVisit = async () => {
+      // Pour éviter les doublons inutiles en mode développement (React Strict Mode)
+      if (window.sessionStorage.getItem('visited_this_session')) return;
+
       try {
-        const response = await fetch('https://ipapi.co/json/');
+        // 1. Appel de l'API avec un Timeout de 5 secondes
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const response = await fetch('https://ipapi.co/json/', { 
+          signal: controller.signal 
+        });
+        
+        clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error('API indisponible');
+        
         const data = await response.json();
         
-        // On récupère le pays et on le traduit immédiatement si c'est Ivory Coast
+        // 2. Traitement des données
         let paysMatch = data.country_name || 'Inconnu';
         if (paysMatch === 'Ivory Coast') {
           paysMatch = "Côte d'Ivoire";
@@ -17,25 +31,34 @@ export default function TrackVisit() {
         
         const villeMatch = data.city || 'Inconnu';
 
-        // Insertion dans Supabase
-        await supabase.from('visites').insert([{ 
+        // 3. Insertion dans Supabase
+        const { error } = await supabase.from('visites').insert([{ 
           pays: paysMatch, 
           ville: villeMatch 
         }]);
 
+        if (!error) {
+          window.sessionStorage.setItem('visited_this_session', 'true');
+        }
+
       } catch (error) {
-        console.error("Erreur tracking:", error);
-        // En cas d'échec de l'API de géolocalisation, on enregistre une visite anonyme
-        await supabase.from('visites').insert([{ 
-          pays: 'Inconnu', 
-          ville: 'Inconnu' 
-        }]);
+        console.warn("Tracking limité (AdBlock ou réseau) :", error.message);
+        
+        // 4. Fallback : En cas d'échec, on tente quand même un enregistrement anonyme
+        try {
+          await supabase.from('visites').insert([{ 
+            pays: 'Inconnu', 
+            ville: 'Inconnu' 
+          }]);
+          window.sessionStorage.setItem('visited_this_session', 'true');
+        } catch (dbErr) {
+          console.error("Échec critique DB:", dbErr);
+        }
       }
     }
     
-    // On ne lance le tracking qu'une seule fois par chargement de page
     recordVisit();
   }, [])
 
-  return null // Le composant reste invisible
+  return null
 }

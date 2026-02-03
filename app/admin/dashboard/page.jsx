@@ -4,12 +4,14 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
-import { PAYS_VILLES } from '@/data/countries' 
-import '@/styles/dashboard.css' 
+import { PAYS_VILLES } from '@/data/countries'
+import * as XLSX from 'xlsx'
+import '@/styles/dashboard.css'
 
 export default function Dashboard() {
   const router = useRouter()
   const [souscriptions, setSouscriptions] = useState([])
+  const [listeVisites, setListeVisites] = useState([])
   const [totalVisites, setTotalVisites] = useState(0)
   const [loading, setLoading] = useState(true)
 
@@ -18,11 +20,23 @@ export default function Dashboard() {
   const [filtrePays, setFiltrePays] = useState('all')
   const [filtreVille, setFiltreVille] = useState('all')
 
+  const exportToExcel = () => {
+    const dataToExport = listeVisites.map(v => ({
+      Pays: v.pays,
+      Ville: v.ville,
+      Date: new Date(v.date_visite).toLocaleDateString('fr-FR'),
+      Heure: new Date(v.date_visite).toLocaleTimeString('fr-FR')
+    }))
+
+    const worksheet = XLSX.utils.json_to_sheet(dataToExport)
+    const workbook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Visites")
+    XLSX.writeFile(workbook, `Visites_Limobilie_${new Date().toLocaleDateString().replace(/\//g, '-')}.xlsx`)
+  }
+
   useEffect(() => {
     async function checkAuthAndFetch() {
       setLoading(true)
-      
-      // SECURITÉ : Vérifier si l'utilisateur est connecté avant de charger les données
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) {
         router.push('/')
@@ -35,27 +49,36 @@ export default function Dashboard() {
           .select('*')
           .order('date_creation', { ascending: false })
 
-        let queryVisites = supabase
+        // REQUÊTE VISITES AVEC FILTRES ANTI-BOTS
+        let queryVisitesDetailed = supabase
           .from('visites')
-          .select('*', { count: 'exact', head: true })
+          .select('*')
+          .neq('pays', 'Inconnu')     // Exclut les pays inconnus
+          .neq('ville', 'Santa Clara') // Exclut les robots USA
+          .order('date_visite', { ascending: false })
 
+        // Filtre par Date
         if (filtreDate === 'today') {
           const today = new Date(); today.setHours(0, 0, 0, 0)
-          queryVisites = queryVisites.gte('date_visite', today.toISOString())
+          queryVisitesDetailed = queryVisitesDetailed.gte('date_visite', today.toISOString())
         } 
         else if (filtreDate === 'custom' && dateSpecifique) {
           const debut = new Date(dateSpecifique); debut.setHours(0, 0, 0, 0)
           const fin = new Date(dateSpecifique); fin.setHours(23, 59, 59, 999)
-          queryVisites = queryVisites.gte('date_visite', debut.toISOString()).lte('date_visite', fin.toISOString())
+          queryVisitesDetailed = queryVisitesDetailed.gte('date_visite', debut.toISOString()).lte('date_visite', fin.toISOString())
         }
 
-        if (filtrePays !== 'all') queryVisites = queryVisites.eq('pays', filtrePays)
-        if (filtreVille !== 'all') queryVisites = queryVisites.eq('ville', filtreVille)
+        // Filtre Pays et Ville
+        if (filtrePays !== 'all') queryVisitesDetailed = queryVisitesDetailed.eq('pays', filtrePays)
+        if (filtreVille !== 'all') queryVisitesDetailed = queryVisitesDetailed.eq('ville', filtreVille)
 
-        const resVisites = await queryVisites
+        const { data: dataVisites } = await queryVisitesDetailed
+        
         if (resSous.data) setSouscriptions(resSous.data)
-        if (resVisites.count !== null) setTotalVisites(resVisites.count)
-
+        if (dataVisites) {
+          setListeVisites(dataVisites)
+          setTotalVisites(dataVisites.length)
+        }
       } catch (err) {
         console.error("Erreur:", err)
       } finally {
@@ -70,7 +93,7 @@ export default function Dashboard() {
     if (PAYS_VILLES[valeur]) {
       setFiltrePays(valeur)
       setFiltreVille('all')
-    } else if (valeur === "") {
+    } else if (valeur === "" || valeur === "Toutes les destinations") {
       setFiltrePays('all')
       setFiltreVille('all')
     }
@@ -83,19 +106,11 @@ export default function Dashboard() {
         <div className="dashboard-content">
           <h1 className="dashboard-title">Tableau de Bord Limobilié</h1>
           
-          <div className="stats-grid">
-            <div className="stat-card">
-              <h3 className="stat-title">Souscripteurs Tontine</h3>
-              <p className="stat-number">{loading ? '...' : souscriptions.length}</p>
-              <span className="stat-hint">Total inscriptions</span>
-            </div>
-          </div>
-
-          {/* ... reste de ton code de table et filtres inchangé ... */}
+          {/* --- TABLEAU SOUSCRIPTIONS --- */}
           <div className="table-section">
             <h2 className="section-title">Liste des Souscripteurs Tontine</h2>
             <div className="table-wrapper">
-              <table className="data-table">
+              <table className="data-table bordered">
                 <thead>
                   <tr>
                     <th>Nom Complet</th>
@@ -120,9 +135,51 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* --- TABLEAU DÉTAILS DES VISITES --- */}
+          <div className="table-section" style={{ marginTop: '40px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h2 className="section-title">Détails des Visites Réelles</h2>
+              <button onClick={exportToExcel} className="btn-export-excel">
+                📥 Exporter Excel
+              </button>
+            </div>
+            
+            <div className="table-wrapper">
+              <table className="data-table bordered">
+                <thead>
+                  <tr>
+                    <th>Pays</th>
+                    <th>Ville</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loading ? (
+                    <tr><td colSpan={4} style={{ textAlign: 'center' }}>Chargement...</td></tr>
+                  ) : listeVisites.length > 0 ? (
+                    listeVisites.map((v) => (
+                      <tr key={v.id}>
+                        <td>{v.pays}</td>
+                        <td>{v.ville}</td>
+                        <td>{new Date(v.date_visite).toLocaleDateString('fr-FR')}</td>
+                        <td>{new Date(v.date_visite).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr><td colSpan={4} style={{ textAlign: 'center' }}>Aucune visite trouvée</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* --- SECTION STATISTIQUES ET FILTRES (Rétablie) --- */}
           <div className="visits-section-bottom">
             <h2 className="section-title">Statistiques des Visites</h2>
+            
             <div className="filters-bar search-mode">
+               {/* Sélecteur de Date */}
                <div className="filter-group">
                   <select className="black-select" value={filtreDate} onChange={(e) => setFiltreDate(e.target.value)}>
                     <option value="all">Toutes les dates</option>
@@ -133,6 +190,8 @@ export default function Dashboard() {
                     <input type="date" className="black-date-input" value={dateSpecifique} onChange={(e) => setDateSpecifique(e.target.value)} />
                   )}
                </div>
+
+               {/* Recherche Pays */}
                <div className="filter-group">
                   <input list="list-pays" className="black-select search-input" placeholder="🔍 Rechercher un pays..." onChange={handlePaysSearch} />
                   <datalist id="list-pays">
@@ -140,8 +199,14 @@ export default function Dashboard() {
                     {Object.keys(PAYS_VILLES).map(p => <option key={p} value={p} />)}
                   </datalist>
                </div>
+
+               {/* Recherche Ville */}
                <div className="filter-group">
-                  <input list="list-villes" className="black-select search-input" placeholder="🔍 Rechercher une ville..." disabled={filtrePays === 'all'} 
+                  <input 
+                    list="list-villes" 
+                    className="black-select search-input" 
+                    placeholder="🔍 Rechercher une ville..." 
+                    disabled={filtrePays === 'all'} 
                     onChange={(e) => {
                        const v = e.target.value;
                        if (v === "" || PAYS_VILLES[filtrePays]?.includes(v)) setFiltreVille(v === "" ? 'all' : v)
@@ -152,10 +217,11 @@ export default function Dashboard() {
                   </datalist>
                </div>
             </div>
+
             <div className="stat-card-visit">
               <p className="stat-number-large">{loading ? '...' : totalVisites}</p>
               <p className="stat-label-black">
-                {filtrePays === 'all' ? "Visiteurs (Monde Entier)" : `Visiteurs : ${filtrePays} ${filtreVille !== 'all' ? `> ${filtreVille}` : ''}`}
+                {filtrePays === 'all' ? "Visiteurs (Humains)" : `Visiteurs : ${filtrePays} ${filtreVille !== 'all' ? `> ${filtreVille}` : ''}`}
               </p>
             </div>
           </div>

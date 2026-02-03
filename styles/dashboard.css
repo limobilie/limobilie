@@ -336,3 +336,67 @@
   cursor: not-allowed;
   opacity: 0.6;
 }
+
+
+
+/* Bordures pour les tableaux du Dashboard */
+.data-table.bordered {
+  border: 2px solid #333 !important; /* Bordure extérieure */
+  border-collapse: collapse !important;
+}
+
+.data-table.bordered th,
+.data-table.bordered td {
+  border: 1px solid #ddd !important; /* Bordures intérieures */
+  padding: 12px;
+}
+
+/* Style du bouton Export Excel */
+.btn-export-excel {
+  padding: 10px 20px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-export-excel:hover {
+  background-color: #219150;
+  transform: scale(1.02);
+}
+
+
+/* Bordures pour les tableaux du Dashboard */
+.data-table.bordered {
+  border: 2px solid #333 !important; 
+  border-collapse: collapse !important;
+}
+
+.data-table.bordered th {
+  border: 1px solid #e74c3c !important; /* Bordure rouge légèrement plus claire pour séparer */
+  padding: 15px;
+  /* --- BACKGROUND ROUGE ET TEXTE BLANC --- */
+  background-color: #ff0000 !important; 
+  color: #ffffff !important; 
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.data-table.bordered td {
+  border: 1px solid #ddd !important;
+  padding: 12px;
+  color: #444;
+}
+
+/* Optionnel : Une ligne sur deux en gris très clair pour aider la lecture */
+.data-table.bordered tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

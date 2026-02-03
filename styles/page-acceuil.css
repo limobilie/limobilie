@@ -1,6 +1,6 @@
-/* ============================= */
-/* PAGE ACCUEIL GÉNÉRAL */
-/* ============================= */
+/* ============================================================ */
+/* 1. PAGE ACCUEIL GÉNÉRAL & GLOBALS */
+/* ============================================================ */
 .acceuil-page {
   width: 100%;
   overflow-x: hidden;
@@ -8,13 +8,12 @@
   background-color: #fff;
 }
 
-/* ============================= */
-/* HERO SECTION (OPTIMISÉE) */
-/* ============================= */
+/* ============================================================ */
+/* 2. HERO SECTION */
+/* ============================================================ */
 .acceuil-image {
   position: relative;
   width: 100%;
-  /* Utilisation de min-height pour garantir de l'espace sur tous les écrans */
   min-height: 65vh; 
   display: flex;
   align-items: center;
@@ -40,19 +39,18 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* Overlay légèrement plus sombre pour la lisibilité */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
   border: none !important;
 }
 
 .class-acceuil {
-  position: relative; /* Passage en relatif pour un meilleur contrôle dans le flux */
+  position: relative;
   z-index: 2;
   text-align: center;
   width: 90%;
   max-width: 1100px;
   padding: 20px;
-  /* Suppression du transform qui causait des décalages sur petits écrans */
 }
 
 .class-acceuil h1 {
@@ -83,9 +81,9 @@
   margin: 0 auto;
 }
 
-/* ============================= */
-/* PRÉSENTATION & IMPACT */
-/* ============================= */
+/* ============================================================ */
+/* 3. PRÉSENTATION & IMPACT */
+/* ============================================================ */
 .presentation-section {
   padding: 80px 5%;
   background-color: #ffffff;
@@ -149,7 +147,7 @@
 .presentation-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5; /* Ratio flexible pour éviter les hauteurs fixes bloquantes */
+  aspect-ratio: 4 / 5;
   max-height: 550px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -168,9 +166,9 @@
 
 .presentation-contact a { color: #ff0000; text-decoration: none; }
 
-/* ============================= */
-/* SECTION TERRAINS */
-/* ============================= */
+/* ============================================================ */
+/* 4. SECTION TERRAINS */
+/* ============================================================ */
 .terrains-section {
   padding: 80px 5%;
   background-color: #fff;
@@ -228,9 +226,9 @@
   line-height: 1.4; 
 }
 
-/* ============================= */
-/* FEATURES (POURQUOI NOUS) */
-/* ============================= */
+/* ============================================================ */
+/* 5. FEATURES (POURQUOI NOUS) */
+/* ============================================================ */
 .last-section-pro {
   padding: 80px 5%;
   background-color: #f4f4f4;
@@ -261,9 +259,9 @@
 .feature-card-pro h3 { font-size: 18px; margin-bottom: 10px; color: #000; font-weight: 600; }
 .feature-card-pro p { font-size: 14px; color: #555; line-height: 1.5; }
 
-/* ============================= */
-/* SOCIAL ICONS */
-/* ============================= */
+/* ============================================================ */
+/* 6. SOCIAL ICONS & WHATSAPP */
+/* ============================================================ */
 .social-icons {
   display: flex;
   gap: 15px;
@@ -289,17 +287,138 @@
 .whatsapp-number { font-size: 0.9rem; font-weight: 600; }
 
 /* ============================================================ */
-/* RESPONSIVE DESIGN */
+/* 7. AUTHENTICATION POPUP (UNIFIED & CLEANED) */
 /* ============================================================ */
 
-/* Tablettes et petits laptops */
-@media (max-width: 1100px) {
-  .presentation-container { gap: 30px; }
-  .features-grid-pro { grid-template-columns: repeat(2, 1fr); }
-  .terrains-grid { grid-template-columns: repeat(2, 1fr); }
+.auth-popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
 }
 
-/* Mobiles larges */
+.auth-popup-single {
+  background: #ffffff !important;
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.auth-popup-single h3 {
+  color: #ff0000 !important;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.auth-label, .auth-switch-text {
+  display: block;
+  color: #000000 !important;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 10px 0 5px 0;
+  text-align: left;
+}
+
+.auth-switch-text {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-switch span {
+  color: #ff0000 !important;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 5px;
+}
+
+.auth-input-field, .role-select-box {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc !important;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.auth-input-field::placeholder {
+  color: #666666 !important;
+  opacity: 1;
+}
+
+.role-select-box option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.input-row .auth-input-field {
+  flex: 1;
+}
+
+.auth-submit-btn {
+  width: 100%;
+  background: #ff0000;
+  color: white !important;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: opacity 0.3s;
+}
+
+.auth-submit-btn:disabled {
+  background: #ccc;
+}
+
+.close-popup-pro {
+  position: absolute;
+  top: 15px; right: 15px;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Custom Scrollbar for Popup */
+.auth-popup-single::-webkit-scrollbar {
+  width: 6px;
+}
+.auth-popup-single::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}
+
+/* ============================================================ */
+/* 8. RESPONSIVE DESIGN */
+/* ============================================================ */
+
+@media (max-width: 1100px) {
+  .presentation-container { gap: 30px; }
+  .features-grid-pro, .terrains-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 850px) {
   .presentation-container { grid-template-columns: 1fr; text-align: center; }
   .presentation-image { order: -1; height: 350px; aspect-ratio: 16/9; }
@@ -307,7 +426,6 @@
   .presentation-contact { justify-content: center; }
 }
 
-/* Smartphones */
 @media (max-width: 768px) {
   .acceuil-image {
     min-height: 60vh; 
@@ -323,5 +441,101 @@
 @media (max-width: 480px) {
   .features-grid-pro { grid-template-columns: 1fr; }
   .class-acceuil h1 { font-size: 1.5rem; }
-  .whatsapp-number { display: none; } /* On ne garde que l'icône sur mini écrans */
+  .whatsapp-number { display: none; }
+}
+
+
+
+.auth-form-scroll {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.form-section-title {
+  color: #ff0000;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin: 20px 0 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-row {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-popup-single {
+  width: 100%;
+  max-width: 450px; /* Un peu plus large pour le confort */
+}
+
+
+
+/* Menu de déconnexion rapide sous l'icône profil */
+.user-dropdown-nav {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.dropdown-user-title {
+  background: #f4f4f4;
+  padding: 8px 15px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.user-dropdown-nav a, .dropdown-logout-btn {
+  padding: 12px 15px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+
+.user-dropdown-nav a:hover, .dropdown-logout-btn:hover {
+  background: #f9f9f9;
+}
+
+.dropdown-logout-btn {
+  color: #ff4d4d !important;
+  border-top: 1px solid #eee !important;
+  font-weight: bold;
+}
+
+/* Bouton déconnexion dans le menu mobile */
+.logout-btn-drawer {
+  margin-top: 20px;
+  color: #ff4d4d !important;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ff4d4d;
+  border-radius: 5px;
+  justify-content: center;
 }
