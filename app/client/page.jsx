@@ -6,19 +6,12 @@ import Footer from '../components/Footer'
 import ComboSearch2 from '../components/ComboSearch2'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase' 
-import { FaSearch } from 'react-icons/fa'
 import '../../styles/client.css'
 
 export default function LouerPage() {
   const [biensDb, setBiensDb] = useState([])
   const [loading, setLoading] = useState(true)
-  const [showMobileSearch, setShowMobileSearch] = useState(false)
   const [filters, setFilters] = useState({
-    offerType: '', 
-    typeBien: '',
-    localisation: '',
-    budgetMax: '',
-    surfaceMin: '',
     searchText: ''
   })
 
@@ -52,24 +45,14 @@ export default function LouerPage() {
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters)
     setCurrentPage(1)
-    setShowMobileSearch(false) // Ferme la recherche mobile après application
   }
 
   const filteredBiens = biensDb.filter(bien => {
-    const prix = parseFloat(bien.prix) || 0
     const searchLower = filters.searchText.toLowerCase()
-    const matchSearchText = !filters.searchText || 
+    return !filters.searchText || 
       (bien.titre || '').toLowerCase().includes(searchLower) ||
       (bien.commune || '').toLowerCase().includes(searchLower) ||
       (bien.quartier || '').toLowerCase().includes(searchLower)
-
-    const matchLocalisation = !filters.localisation || 
-      (bien.commune || '').toLowerCase().includes(filters.localisation.toLowerCase())
-
-    const matchBudget = !filters.budgetMax || prix <= parseFloat(filters.budgetMax)
-    const matchType = !filters.typeBien || bien.type_bien === filters.typeBien
-
-    return matchSearchText && matchLocalisation && matchBudget && matchType
   })
 
   const totalPages = Math.ceil(filteredBiens.length / itemsPerPage)
@@ -92,14 +75,8 @@ export default function LouerPage() {
         </div>
       </div>
 
-      {/* Bouton de recherche Mobile Uniquement */}
-      <div className="mobile-search-trigger">
-        <button onClick={() => setShowMobileSearch(!showMobileSearch)}>
-          <FaSearch /> {showMobileSearch ? "Fermer la recherche" : "Rechercher un bien"}
-        </button>
-      </div>
-
-      <div className={`biens-search-container-louer ${showMobileSearch ? 'show-mobile' : ''}`}>
+      {/* Barre de recherche directe (Visible partout) */}
+      <div className="biens-search-container-louer">
         <ComboSearch2 filters={filters} onChange={handleFilterChange} />
       </div>
 
