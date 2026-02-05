@@ -133,7 +133,6 @@ export default function Header({ isDashboard = false }) {
                 </li>
                 <li><Link href="/notre-equipe" onClick={() => setMenuOpen(false)}>Notre équipe</Link></li>
                 <li><Link href="/acheter" onClick={() => setMenuOpen(false)}>Acheter</Link></li>
-                <li><Link href="/louer" onClick={() => setMenuOpen(false)}>Louer</Link></li>
                 <li><Link href="/confier-commercialisation" onClick={() => setMenuOpen(false)}>Confier la commercialisation</Link></li>
                 <li><Link href="/confier-travaux" onClick={() => setMenuOpen(false)}>Confier vos travaux</Link></li>
                 <li><Link href="/faire-gerer-bien" onClick={() => setMenuOpen(false)}>Faire gérer votre bien</Link></li>
