@@ -5,72 +5,56 @@ import { supabase } from '@/lib/supabase'
 export default function TrackVisit() {
   useEffect(() => {
     const recordVisit = async () => {
-      // Éviter les doublons en mode Strict (dev)
-      if (window.sessionStorage.getItem('visited_this_session')) return
+      if (typeof window === 'undefined' || window.sessionStorage.getItem('visited_this_session')) return;
 
       try {
-        // 1. Appel API avec timeout
-        const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 5000)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-        const response = await fetch('https://ipapi.co/json/', {
-          signal: controller.signal,
-        })
+        const response = await fetch('https://ipapi.co/json/', { 
+          signal: controller.signal 
+        });
+        
+        clearTimeout(timeoutId);
 
-        clearTimeout(timeoutId)
-
-        if (!response.ok) {
-          throw new Error('API indisponible')
-        }
-
-        const data = await response.json()
-
-        // 2. Normalisation des données
-        let paysMatch = data?.country_name || 'Inconnu'
+        if (!response.ok) throw new Error('API indisponible');
+        
+        const data = await response.json();
+        
+        let paysMatch = data.country_name || 'Inconnu';
         if (paysMatch === 'Ivory Coast') {
-          paysMatch = "Côte d'Ivoire"
+          paysMatch = "Côte d'Ivoire";
         }
+        
+        const villeMatch = data.city || 'Inconnu';
 
-        const villeMatch = data?.city || 'Inconnu'
-
-        // 3. Insertion Supabase
-        const { error: dbError } = await supabase.from('visites').insert([
-          {
-            pays: paysMatch,
-            ville: villeMatch,
-          },
-        ])
+        const { error: dbError } = await supabase.from('visites').insert([{ 
+          pays: paysMatch, 
+          ville: villeMatch 
+        }]);
 
         if (!dbError) {
-          window.sessionStorage.setItem('visited_this_session', 'true')
-        }
-      } catch (error: unknown) {
-        // ✅ Correction TypeScript (OBLIGATOIRE pour la prod)
-        if (error instanceof Error) {
-          console.warn(
-            'Tracking limité (AdBlock ou réseau) :',
-            error.message
-          )
-        } else {
-          console.warn('Tracking limité (AdBlock ou réseau)')
+          window.sessionStorage.setItem('visited_this_session', 'true');
         }
 
-        // 4. Fallback : insertion anonyme
+      } catch (error: any) { 
+        // L'astuce est le ": any" ci-dessus pour TypeScript, 
+        // ou alors utiliser error?.message si tu veux être plus propre
+        console.warn("Tracking limité (AdBlock ou réseau) :", error?.message || error);
+        
         try {
-          await supabase.from('visites').insert([
-            {
-              pays: 'Inconnu',
-              ville: 'Inconnu',
-            },
-          ])
-          window.sessionStorage.setItem('visited_this_session', 'true')
-        } catch (dbErr) {
-          console.error('Échec critique DB:', dbErr)
+          await supabase.from('visites').insert([{ 
+            pays: 'Inconnu', 
+            ville: 'Inconnu' 
+          }]);
+          window.sessionStorage.setItem('visited_this_session', 'true');
+        } catch (dbErr: any) {
+          console.error("Échec critique DB:", dbErr?.message || dbErr);
         }
       }
     }
-
-    recordVisit()
+    
+    recordVisit();
   }, [])
 
   return null
