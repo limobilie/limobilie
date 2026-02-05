@@ -1,66 +1,45 @@
 'use client'
 
-import { useState } from 'react'
+import { FaSearch, FaTimes } from 'react-icons/fa'
 import '../../styles/ComboSearch2.css'
 
-// Définition du type des props
 interface ComboSearchProps {
-  types: string[]
-  sortingOptions: string[]
-  onChange?: (filters: { type: string; sort: string }) => void
+  filters: { searchText: string };
+  onChange: (filters: any) => void;
 }
 
-export default function ComboSearch({ types, sortingOptions, onChange }: ComboSearchProps) {
-  const [selectedType, setSelectedType] = useState<string>('')   // type string
-  const [selectedSort, setSelectedSort] = useState<string>('')   // type string
+export default function ComboSearch2({ filters, onChange }: ComboSearchProps) {
+  
+  // Gestion de la saisie
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    onChange({ ...filters, searchText: value });
+  };
 
-  // Gestion du changement de type
-  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    setSelectedType(value)
-    if (onChange) onChange({ type: value, sort: selectedSort })
-  }
-
-  // Gestion du changement de tri
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    setSelectedSort(value)
-    if (onChange) onChange({ type: selectedType, sort: value })
-  }
+  // Effacer la recherche
+  const clearSearch = () => {
+    onChange({ ...filters, searchText: '' });
+  };
 
   return (
-    <div className="combo-search2">
-      <div className="combo-item2">
-        <label htmlFor="type-select" className="combo-label2">Type d'affichage</label>
-        <select
-          id="type-select"
-          value={selectedType}
-          onChange={handleTypeChange}
-          className="combo-select2"
-        >
-          <option value="">Sélectionner</option>
-          {types.map((type, index) => (
-            <option key={index} value={type}>{type}</option>
-          ))}
-        </select>
-      </div>
-      <div className="combo-item2">
-        <label htmlFor="type-select" className="combo-label2">Type d'offre</label>
-        <select
-          id="type-select"
-          value={selectedType}
-          onChange={handleTypeChange}
-          className="combo-select2"
-        >
-          <option value="">Sélectionner</option>
-          {types.map((type, index) => (
-            <option key={index} value={type}>{type}</option>
-          ))}
-        </select>
-      </div>
+    <div className="combo-search-wrapper2">
+      <div className="search-bar-modern2">
+        <FaSearch className="search-icon2" />
+        
+        <input
+          type="text"
+          placeholder="Où cherchez-vous ? (ex: Angré, Studio, 2 pièces...)"
+          value={filters.searchText || ''}
+          onChange={handleInputChange}
+          className="search-input2"
+        />
 
-     
-
+        {filters.searchText && (
+          <button className="clear-btn2" onClick={clearSearch} title="Effacer">
+            <FaTimes />
+          </button>
+        )}
+      </div>
     </div>
   )
 }

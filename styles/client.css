@@ -260,76 +260,86 @@ body {
 
 
 
+
+
+/* ================================================= */
+/* CONFIGURATION MOBILE UNIQUEMENT (768px et moins) */
+/* ================================================= */
 @media (max-width: 768px) {
-    /* 1. LA GRILLE : On force 2 colonnes égales sans minimum restrictif */
+    
+    /* 1. LA GRILLE : 2 colonnes comme sur Facebook Marketplace */
     .biens-grid {
         grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 8px; /* Espace réduit comme sur Marketplace */
-        padding: 15px 8px; /* Marges réduites sur les côtés */
+        gap: 10px !important;
+        padding: 15px 8px !important;
     }
 
-    /* 2. LA CARTE : On réduit les arrondis et les ombres pour le style mobile */
+    /* 2. LA CARTE : On fixe une hauteur pour que tout soit aligné */
     .biens-card {
-        border-radius: 10px;
+        height: 320px !important; /* Hauteur totale du cadre */
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        background: #fff;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    /* 3. L'IMAGE : On réduit la hauteur pour que les deux cartes soient harmonieuses */
+    /* 3. L'IMAGE : Elle prend 90% de la hauteur du cadre total */
     .biens-image-container { 
-        height: 140px; /* Hauteur idéale pour les écrans type A16 */
+        height: 80% !important; /* L'image domine largement */
+        width: 100%;
+        position: relative;
     }
 
-    /* 4. LES INFOS : On compacte le texte */
+    /* 4. LES INFOS : On les compacte en bas */
     .biens-info { 
-        padding: 10px; 
+        height: 20% !important;
+        padding: 8px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
     }
 
+    /* 5. DISPARITION DU BOUTON : On le cache uniquement sur mobile */
+    .btn-view-more {
+        display: none !important; /* Il disparaît du visuel mais reste dans le code */
+    }
+
+    /* 6. STYLE DU TEXTE (Prix, Titre, Loc) */
     .biens-price { 
-        font-size: 15px; 
-        margin-bottom: 4px;
+        font-size: 14px !important; 
+        font-weight: 800;
+        color: #e31e24;
+        margin: 0 !important;
     }
 
-    .biens-info h3 { 
-        font-size: 13px; 
-        height: 32px; /* Limite à 2 lignes de texte */
-        line-height: 1.2;
-        margin-bottom: 5px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+    .biens-info h3 {
+        font-size: 12px !important;
+        margin: 0 !important;
+        color: #333;
+        white-space: nowrap; /* Une seule ligne pour le titre */
         overflow: hidden;
+        text-overflow: ellipsis;
+        height: auto !important;
     }
 
     .loc-text { 
-        font-size: 11px; 
+        font-size: 10px !important; 
+        color: #777;
+        margin: 0 !important;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
-    /* 5. LE BOUTON : On le rend plus discret pour laisser place aux infos */
-    .btn-view-more { 
-        padding: 6px; 
-        font-size: 11px; 
-        border-radius: 6px;
-        margin-top: 5px;
-    }
-
-    .card-badge { 
-        font-size: 8px; 
-        padding: 2px 6px; 
-        top: 5px; 
-        left: 5px; 
-    }
-
-    /* Cache la barre de recherche par défaut */
-    .biens-search-container-louer {
-        display: none;
-    }
-    .biens-search-container-louer.show-mobile {
-        display: block;
-    }
-    .mobile-search-trigger {
-        display: block;
+    /* Badge plus discret sur l'image */
+    .card-badge {
+        font-size: 8px;
+        padding: 2px 6px;
+        top: 6px;
+        left: 6px;
     }
 }
+
+/* --- LE RESTE DU CODE (PC) NE CHANGE PAS --- */
