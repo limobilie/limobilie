@@ -7,7 +7,7 @@ import AuthModal from '@/app/components/AuthModal'
 import { 
   FaPlusCircle, FaShieldAlt, FaCamera, FaListUl, FaClock, FaCheckCircle, FaLock, FaMapMarkerAlt
 } from 'react-icons/fa'
-import '../../styles/propriétaire.css'
+import '../../styles/proprietaire.css'
 
 export default function ProprietairePage() {
   const [user, setUser] = useState(null)
