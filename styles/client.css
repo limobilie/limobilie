@@ -159,3 +159,101 @@ body {
     .modal-info-side { padding: 30px 20px; }
     .no-results { padding: 100px 20px; font-size: 20px; }
 }
+
+
+/* ... Gardez votre base existante et ajoutez/modifiez ceci ... */
+
+.loading-state {
+    text-align: center;
+    padding: 100px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* BOUTON RECHERCHE MOBILE */
+.mobile-search-trigger {
+    display: none; /* Caché sur PC */
+    padding: 20px 5% 0;
+    margin-top: -30px;
+    position: relative;
+    z-index: 15;
+}
+
+.mobile-search-trigger button {
+    width: 100%;
+    padding: 15px;
+    background: #e31e24;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(227, 30, 36, 0.3);
+}
+
+/* RESPONSIVE AJUSTEMENTS */
+
+@media (max-width: 1024px) {
+    .biens-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
+        padding: 40px 3%;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Cache la barre de recherche par défaut sur mobile sauf si activée */
+    .biens-search-container-louer {
+        display: none;
+        margin-top: 10px;
+        padding: 0 5%;
+    }
+
+    .biens-search-container-louer.show-mobile {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .mobile-search-trigger {
+        display: block; /* Affiche le bouton sur mobile */
+    }
+
+    /* GRILLE 2 PAR LIGNE SUR MOBILE */
+    .biens-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px;
+        padding: 20px 3%;
+    }
+
+    /* Ajustement des cartes pour petit écran */
+    .biens-image-container { height: 160px; }
+    .biens-info { padding: 12px; }
+    .biens-price { font-size: 16px; }
+    .biens-info h3 { font-size: 14px; height: 35px; overflow: hidden; }
+    .loc-text { font-size: 11px; }
+    .biens-specs { display: none; } /* On cache les specs pour gagner de la place */
+    .btn-view-more { padding: 8px; font-size: 12px; }
+    
+    .card-badge { 
+        font-size: 9px; 
+        padding: 4px 8px; 
+        top: 8px; 
+        left: 8px; 
+    }
+
+    /* Modale plein écran sur mobile */
+    .details-modal-content {
+        height: 100vh;
+        border-radius: 0;
+    }
+    .modal-layout-grid { grid-template-columns: 1fr; }
+    .main-display-image { height: 250px; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
