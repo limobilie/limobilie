@@ -95,11 +95,13 @@ export default function AccueilPage() {
 
           <div className="presentation-image">
             <Image
-              src="/images/agence334.png"
-              alt="Expert conseil en immobilier Abidjan et BTP"
-              fill
-              style={{ objectFit: 'cover' }}
-            />
+            src="/images/agence334.png" // Et les autres : terrain11.png, terrain222.png
+            alt="Description"
+            fill
+            // Ajoutez cette ligne :
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{ objectFit: 'cover' }}
+          />
           </div>
         </div>
       </section>
@@ -111,11 +113,13 @@ export default function AccueilPage() {
             <div className="terrain-card">
                 <Link href="/acheter">
                     <div className="terrain-image">
-                      <Image
-                        src="/images/terrain11.png"
-                        alt="Vente terrain avec ACD à Bingerville"
+                      <Image 
+                        src="/images/terrain11.png" // Adaptez le nom du fichier pour chaque ligne
+                        alt="Description du terrain"
                         fill
-                        style={{ objectFit: "cover" }}
+                        priority // Ajoutez ceci si l'image est visible dès le chargement (au-dessus de la ligne de flottaison)
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        style={{ objectFit: 'cover' }} 
                       />
                     </div>
                     <h3 style={{ color: "black" }}>Terrain à Azaguié</h3>
@@ -128,7 +132,13 @@ export default function AccueilPage() {
             <div className="terrain-card">
               <Link href="/acheter">
                 <div className="terrain-image">
-                  <Image src="/images/terrain222.png" alt="Achat terrain viabilisé Bassam Côte d'Ivoire" fill style={{ objectFit: 'cover' }} />
+                  <Image 
+                    src="/images/terrain222.png" 
+                    alt="Achat terrain viabilisé Bassam Côte d'Ivoire" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }} 
+                  />
                 </div>
                 <h3 style={{ color: 'black'}}>Terrain AZAGUIÉ AHOUA  -ROUTE D’ADZOPÉ  BORDURE DE VOIE AVEC POTEAUX</h3>
                 <p className="card-seo-text">43 LOTS APPROUVÉS DE 500 m²  À 3.500.000f CFA PAR LOT.</p>
@@ -138,7 +148,13 @@ export default function AccueilPage() {
             <div className="terrain-card">
               <Link href="/acheter">
                 <div className="terrain-image">
-                  <Image src="/images/terrain333.png" alt="Terrain résidentiel Anyama vente immobilier" fill style={{ objectFit: 'cover' }} />
+                  <Image 
+                    src="/images/terrain333.png" 
+                    alt="Terrain résidentiel Anyama vente immobilier" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }} 
+                  />
                 </div>
                 <h3 style={{ color: 'black' }}>Opportunité : Terrains en préfinancement à Yamoussoukro</h3>
                 <p className="card-seo-text">

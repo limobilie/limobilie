@@ -1,49 +1,75 @@
+/* ==========================================
+   PORTAIL PROPRIÉTAIRE - STYLE FINAL LIMOBILIÉ
+   ========================================== */
+
 /* --- Mise en page principale --- */
 .owner-main {
-  min-height: 80vh;
-  padding: 140px 20px 60px;
-  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 120px 20px 60px; /* Espace pour le header */
+  background-color: #f4f7f6;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 .container-limited {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-/* --- Formulaire Pro --- */
+/* --- Section Titre et Entête --- */
+.section-header {
+  border-left: 6px solid #ff0000;
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+.section-header h1 {
+  font-size: 1.8rem;
+  color: #1a202c;
+  margin-bottom: 5px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e6fffa;
+  color: #2c7a7b;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --- Formulaire de Publication --- */
 .add-bien-section {
   background: white;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-}
-
-.section-header {
-  border-left: 6px solid #ff0000;
-  padding-left: 20px;
-  margin-bottom: 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 .form-subtitle {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #333;
+  color: #2d3748;
   font-size: 1.2rem;
-  margin: 30px 0 15px;
+  margin: 35px 0 15px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid #edf2f7;
 }
 
-/* --- Grille Responsive --- */
+/* --- Grille et Champs d'Input --- */
 .input-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 20px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .input-field {
+  flex: 1;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -51,62 +77,174 @@
 
 .input-field label {
   font-weight: 600;
-  color: #444;
-  font-size: 0.95rem;
+  color: #4a5568;
+  font-size: 0.9rem;
 }
 
 .input-field input, 
 .input-field select, 
 .input-field textarea {
   padding: 12px 15px;
-  border: 2px solid #edf2f7;
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
   font-size: 1rem;
-  transition: all 0.3s;
+  color: #1a202c;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
 .input-field input:focus, 
-.input-field select:focus {
-  border-color: #ff0000;
-  outline: none;
-  background: #fff;
+.input-field select:focus, 
+.input-field textarea:focus {
+  border-color: #2ecc71; /* Vert Limobilié au focus */
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
 }
 
-/* --- Upload Zone --- */
-.file-upload-zone {
-  border: 2px dashed #cbd5e0;
-  padding: 20px;
-  text-align: center;
-  border-radius: 12px;
-  background: #f7fafc;
-  margin-bottom: 25px;
-}
-
-.file-input {
-  margin-top: 10px;
+/* --- Bannières d'information --- */
+.info-banner {
+  background: #ebf8ff;
+  border-left: 5px solid #3182ce;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: #2c5282;
   font-size: 0.9rem;
 }
 
-/* --- Bouton --- */
-.main-btn {
-  background: #ff0000 !important;
-  color: white;
-  padding: 18px !important;
-  font-size: 1.1rem !important;
-  border-radius: 12px !important;
-  margin-top: 20px;
+/* --- Section Mandat de Gestion (Point 5 du doc) --- */
+.legal-notice {
+  margin-top: 30px;
+  padding: 25px;
+  background: #fdf2f2;
+  border: 1px solid #feb2b2;
+  border-radius: 12px;
+}
+
+.legal-notice h3 {
+  color: #c53030;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legal-notice label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   cursor: pointer;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.legal-notice input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #2ecc71;
+  margin-top: 3px;
+}
+
+/* --- Bouton d'action --- */
+.main-btn {
+  background: #ff0000;
+  color: white;
+  padding: 18px;
+  font-size: 1.1rem;
+  border-radius: 12px;
   border: none;
   width: 100%;
   font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+
+.main-btn:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.3);
+}
+
+.main-btn:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Liste des Biens (Cards) --- */
+.mes-biens-section {
+  margin-top: 50px;
+}
+
+.biens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.bien-mini-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.bien-mini-card:hover {
+  transform: translateY(-5px);
+}
+
+.bien-img-sm {
+  display: block !important;
+  width: 100%;
+  min-height: 180px;
+  background-color: #eee; /* Pour voir la zone si l'image est absente */
+}
+
+.status-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(4px);
+}
+
+.status-tag.en_attente { background: rgba(243, 156, 18, 0.9); }
+.status-tag.valide { background: rgba(39, 174, 96, 0.9); }
+
+.bien-info-sm {
+  padding: 20px;
+}
+
+.bien-info-sm h4 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.bien-price {
+  color: #ff0000;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  display: block;
 }
 
 /* --- Mobile Responsive --- */
 @media (max-width: 768px) {
-  .input-group {
-    grid-template-columns: 1fr; /* Une seule colonne sur mobile */
-  }
-  
   .owner-main {
     padding-top: 100px;
   }
@@ -114,227 +252,446 @@
   .add-bien-section {
     padding: 25px 20px;
   }
+
+  .input-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .input-field {
+    min-width: 100%;
+  }
+
+  .biens-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 
-/* --- Styles de base pour la page Propriétaire --- */
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   STYLE PROPRIÉTAIRE - OPTIMISÉ MOBILE & LISIBILITÉ
+   ========================================== */
+
 .owner-main {
-  background-color: #f8f9fa;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  padding: 100px 15px 50px; /* Plus d'espace pour le header mobile */
+  background: #f8fafc;
+  color: #1e293b; /* Force la couleur du texte en sombre */
 }
 
 .container-limited {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
-/* --- Carte d'accueil (Non connecté) --- */
-.owner-portal-card {
-  transition: transform 0.3s ease;
-}
-
-.owner-portal-card:hover {
-  transform: translateY(-5px);
-}
-
-.login-trigger-btn {
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
-}
-
-.login-trigger-btn:hover {
-  background-color: #cc0000 !important;
-  transform: scale(1.05);
-}
-
-/* --- Formulaire Pro --- */
-.add-bien-section {
+/* --- HERO CARD (Design Accueil Pro) --- */
+.owner-hero-card {
   background: #ffffff;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 40px 20px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-top: 8px solid #ff0000;
+  margin-top: 20px;
 }
 
-.section-header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
+.hero-icon-wrapper {
+  background: #fff5f5;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.main-shield-icon {
+  font-size: 50px;
+  color: #ff0000;
+}
+
+.hero-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a; /* Bleu très foncé presque noir */
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #475569; /* Gris foncé lisible */
+  max-width: 500px;
+  margin: 0 auto 25px;
+  line-height: 1.6;
+}
+
+.hero-features {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.feat {
+  background: #f1f5f9;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-cta-btn {
+  background: #ff0000;
+  color: white;
+  border: none;
+  padding: 18px 35px;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  transition: transform 0.2s;
+}
+
+.hero-cta-btn:active {
+  transform: scale(0.98);
+}
+
+.small-disclaimer {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 20px;
+}
+
+/* --- DASHBOARD & FORM --- */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.dashboard-header h1 {
+  font-size: 1.5rem;
+  color: #0f172a;
+}
+
+.mairie-badge {
+  background: #0f172a;
+  color: gold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-bien-section {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .form-subtitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  color: #0f172a;
+  font-size: 1.1rem;
+  margin: 25px 0 15px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
 }
 
-/* Grilles d'inputs */
 .input-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .input-group {
-    grid-template-columns: 1fr;
-  }
-}
-
-.input-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 15px;
   margin-bottom: 15px;
 }
 
 .input-field label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #444;
-}
-
-.input-field input, 
-.input-field select, 
-.input-field textarea {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.input-field input:focus, 
-.input-field select:focus, 
-.input-field textarea:focus {
-  outline: none;
-  border-color: #ff0000;
-  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
-}
-
-.input-field textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* Zone d'upload de fichiers */
-.file-upload-zone {
-  border: 2px dashed #cbd5e0;
-  background-color: #f7fafc;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.file-upload-zone:hover {
-  border-color: #ff0000;
-  background-color: #fff5f5;
-}
-
-.file-input {
-  cursor: pointer;
-  color: #555;
-}
-
-/* Bannières d'information */
-.info-banner {
-  border-left: 5px solid #2196f3;
-}
-
-.legal-notice {
-  border: 1px solid #ffcccc;
-}
-
-.legal-notice input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: #2ecc71;
-}
-
-/* Bouton Soumettre */
-.main-btn {
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.main-btn:hover {
-  background-color: #27ae60 !important;
-  transform: translateY(-2px);
-}
-
-.main-btn:active {
-  transform: translateY(0);
-}
-
-/* Loader */
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 1.2rem;
-  color: #ff0000;
-  font-weight: bold;
-}
-
-
-/* Container du groupe d'input */
-.input-group {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-  flex-wrap: wrap; /* Pour le mobile */
-}
-
-/* Container individuel (Label + Input) */
-.input-field {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 250px;
-}
-
-/* Style des Labels (Le texte au-dessus) */
-.input-field label {
-  color: #333333 !important; /* Gris foncé presque noir */
-  font-weight: 600;
-  margin-bottom: 8px;
-  font-size: 14px;
   display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #475569;
 }
 
-/* Style des Inputs et Selects */
-.input-field input, 
-.input-field select {
+.input-field input, .input-field select {
   width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 16px;
-  color: #000000 !important; /* Texte écrit par l'utilisateur en noir */
-  background-color: #ffffff !important; /* Fond blanc */
-  transition: border-color 0.3s ease;
-  outline: none;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 1rem;
 }
 
-/* Changement de couleur au clic (Focus) */
-.input-field input:focus, 
-.input-field select:focus {
-  border-color: #2ecc71; /* Vert Limobilié */
-  box-shadow: 0 0 5px rgba(46, 204, 113, 0.2);
+.legal-notice-box {
+  background: #fff5f5;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #fee2e2;
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
 }
 
-/* Style spécifique pour le Placeholder (le texte indicatif) */
-.input-field input::placeholder {
-  color: #999999;
-  font-style: italic;
+.legal-notice-box label {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #b91c1c;
+  cursor: pointer;
 }
 
-/* Pour s'assurer que les options du select sont visibles sur Windows/Chrome */
-.input-field select option {
-  color: #000000;
-  background-color: #ffffff;
+.main-btn {
+  background: #ff0000;
+  color: white;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- MES BIENS --- */
+.biens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.bien-mini-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.bien-img-sm {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.status-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white;
+}
+
+.status-tag.en_attente { background: #f59e0b; }
+.status-tag.publie { background: #10b981; }
+
+.bien-info-sm { padding: 15px; }
+.bien-info-sm h4 { color: #1e293b; margin-bottom: 5px; }
+.bien-price { color: #ff0000; font-weight: 800; font-size: 1.1rem; }
+
+/* ==========================================
+   MOBILE RESPONSIVE (SMARTPHONES)
+   ========================================== */
+
+@media (max-width: 640px) {
+  .owner-main {
+    padding-top: 80px; /* Moins d'espace en haut pour les petits écrans */
+  }
+
+  .hero-title {
+    font-size: 1.4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .input-group {
+    grid-template-columns: 1fr; /* Passage sur une seule colonne */
+  }
+
+  .dashboard-header {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .mairie-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .add-bien-section {
+    padding: 15px;
+  }
+
+  .biens-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   STYLE PROPRIÉTAIRE - VISIBILITÉ TOTALE
+   ========================================== */
+
+.owner-main {
+  min-height: 100vh;
+  padding: 100px 15px 50px;
+  background-color: #f4f7f6;
+  color: #1a202c !important; /* Force le texte en noir/gris très foncé */
+}
+
+/* CARTE ACCUEIL (AVANT CONNEXION) */
+.owner-hero-card {
+  background: white;
+  padding: 40px 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-top: 6px solid #ff0000;
+}
+
+.hero-title {
+  color: #1a202c !important; /* Titre bien noir */
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 20px 0 10px;
+}
+
+.hero-subtitle {
+  color: #4a5568 !important; /* Texte bien lisible */
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* FORMULAIRE */
+.add-bien-section {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-top: 20px;
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.input-field label {
+  color: #2d3748 !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.input-field input, .input-field select, .input-field textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #1a202c;
+  background: white;
+}
+
+.full-width { grid-column: span 2; }
+
+/* CHECKBOX VISIBLE */
+.legal-notice-box {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.legal-notice-box label {
+  color: #c53030 !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.legal-notice-box input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+
+/* RESPONSIVE SMARTPHONE */
+@media (max-width: 600px) {
+  .owner-main { padding-top: 90px; }
+  .hero-title { font-size: 1.5rem; }
+  .input-group { grid-template-columns: 1fr; } /* Une seule colonne sur mobile */
+  .full-width { grid-column: span 1; }
+  .dashboard-header { flex-direction: column; text-align: center; }
+  .mairie-badge { width: 100%; justify-content: center; margin-top: 10px; }
+}
+
+
+
+/* FORCE LA VISIBILITÉ DU MODAL */
+.auth-modal-overlay, 
+[class*="AuthModal"], 
+[class*="modal-overlay"] {
+    z-index: 9999 !important; /* Passe au dessus de tout */
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Fix pour éviter que le header ne cache le bouton */
+.hero-cta-btn {
+    position: relative;
+    z-index: 10;
+    cursor: pointer !important;
 }

@@ -5,7 +5,8 @@ import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
 import AuthModal from '@/app/components/AuthModal'
 import { 
-  FaPlusCircle, FaShieldAlt, FaCamera, FaListUl, FaClock, FaCheckCircle, FaLock, FaMapMarkerAlt
+  FaPlusCircle, FaShieldAlt, FaCamera, FaListUl, FaClock, 
+  FaCheckCircle, FaLock, FaMapMarkerAlt, FaUserShield 
 } from 'react-icons/fa'
 import '../../styles/propriétaire.css'
 
@@ -17,7 +18,6 @@ export default function ProprietairePage() {
   const [showAuth, setShowAuth] = useState(false)
   const [mesBiens, setMesBiens] = useState([]) 
   
-  // Initialisation avec tous les champs de ta table
   const [bien, setBien] = useState({
     titre: '',
     description: '',
@@ -32,50 +32,41 @@ export default function ProprietairePage() {
     frais_gestion_acceptes: false
   })
 
-    // 1. Remplace ton useEffect par celui-ci
-      useEffect(() => {
-        const checkUser = async () => {
-          const { data: { session } } = await supabase.auth.getSession()
-          if (session) {
-            const role = session.user.user_metadata?.role || 'client'
-            setUser(session.user)
-            setUserRole(role)
-            if (role === 'proprietaire') fetchMesBiens(session.user.id)
-          }
-          setLoading(false)
-        }
-        checkUser()
-
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-          if (session) {
-            const role = session.user.user_metadata?.role || 'client'
-            setUser(session.user)
-            setUserRole(role)
-            if (role === 'proprietaire') fetchMesBiens(session.user.id)
-            setShowAuth(false) // Ferme le popup automatiquement après connexion
-          } else {
-            setUser(null)
-            setUserRole(null)
-          }
-        })
-
-        return () => subscription.unsubscribe()
-      }, [])
-
-      // 2. Ajoute cette petite fonction juste après le useEffect
-      const handleOpenAuth = (e) => {
-        e.preventDefault()
-        setShowAuth(true)
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (session) {
+        const role = session.user.user_metadata?.role || 'client'
+        setUser(session.user)
+        setUserRole(role)
+        if (role === 'proprietaire') fetchMesBiens(session.user.id)
       }
+      setLoading(false)
+    }
+    checkUser()
 
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        const role = session.user.user_metadata?.role || 'client'
+        setUser(session.user)
+        setUserRole(role)
+        if (role === 'proprietaire') fetchMesBiens(session.user.id)
+      } else {
+        setUser(null)
+        setUserRole(null)
+      }
+      setLoading(false)
+    })
 
+    return () => subscription.unsubscribe()
+  }, [])
 
   const fetchMesBiens = async (userId) => {
     const { data, error } = await supabase
       .from('biens_immobiliers')
       .select('*')
       .eq('proprietaire_id', userId)
-      .order('date_creation', { ascending: false }) // Utilise ta colonne date_creation
+      .order('date_creation', { ascending: false })
     if (!error) setMesBiens(data)
   }
 
@@ -119,36 +110,62 @@ export default function ProprietairePage() {
 
       if (error) throw error
       alert("🚀 Dossier transmis à la Mairie avec succès !");
-      
-      // Reset
       setBien({ titre: '', description: '', prix: '', type_bien: 'Appartement', commune: '', quartier: '', adresse_precise: '', num_lot: '', unites_locatives: '', type_document: 'ACD', frais_gestion_acceptes: false })
       fetchMesBiens(user.id)
     } catch (err) { alert(err.message) } finally { setUploading(false) }
   }
 
+  // 1. ÉTAT CHARGEMENT
   if (loading) return <div className="loader-container">Vérification de sécurité...</div>
 
+  // 2. ÉCRAN ROUGE SI CONNECTÉ MAIS PAS PROPRIÉTAIRE
+  if (user && userRole !== 'proprietaire') {
+    return (
+      <>
+        <Header isDashboard={true} /> {/* Header avec style Dashboard (souvent plus sombre ou coloré) */}
+        <main className="owner-main">
+          <div className="container-limited">
+            <div className="admin-status-screen denied">
+              <FaUserShield size={80} color="#ff0000" />
+              <h1>Accès Réservé</h1>
+              <div className="denied-info">
+                <p><strong>Utilisateur :</strong> {user.email}</p>
+                <p>Votre compte est actuellement défini comme <strong>{userRole}</strong>.</p>
+                <p>Vous n'avez pas les droits nécessaires pour accéder à l'espace Bailleur Institutionnel.</p>
+              </div>
+              <button onClick={() => window.location.href='/'} className="main-btn btn-back-home">
+                Retour à l'accueil
+              </button>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </>
+    )
+  }
+
+  // 3. RENDU NORMAL (PAS CONNECTÉ OU PROPRIÉTAIRE VALIDE)
   return (
     <>
       <Header />
       <main className="owner-main">
         <div className="container-limited">
           
-          {!user || userRole !== 'proprietaire' ? (
+          {!user ? (
             <section className="owner-hero-card">
               <div className="hero-icon-wrapper"><FaShieldAlt className="main-shield-icon" /></div>
               <h1 className="hero-title">Espace Bailleur Institutionnel</h1>
               <p className="hero-subtitle">Connectez-vous pour soumettre vos biens et bénéficier de la garantie de paiement mairie.</p>
-              <button className="hero-cta-btn" onClick={handleOpenAuth}>
-              <FaLock /> S'identifier / Créer un compte
-            </button>
+              <button className="hero-cta-btn" onClick={() => setShowAuth(true)}>
+                <FaLock /> S'identifier / Créer un compte
+              </button>
             </section>
           ) : (
             <div className="dashboard-layout">
               <header className="dashboard-header">
                 <div>
-                  <h1>Tableau de bord</h1>
-                  <p className="text-muted">Remplissez le formulaire pour publier un nouveau bien.</p>
+                  <h1>Tableau de bord Propriétaire</h1>
+                  <p className="text-muted">Gérez vos biens et vos soumissions institutionnelles.</p>
                 </div>
                 <div className="mairie-badge"><FaShieldAlt /> Compte Certifié</div>
               </header>
@@ -203,7 +220,7 @@ export default function ProprietairePage() {
 
                   <div className="input-group">
                     <div className="input-field">
-                      <label>Adresse précise (Rue, Repères)</label>
+                      <label>Adresse précise</label>
                       <input type="text" value={bien.adresse_precise} onChange={(e) => setBien({...bien, adresse_precise: e.target.value})} />
                     </div>
                     <div className="input-field">
@@ -230,7 +247,7 @@ export default function ProprietairePage() {
 
                   <div className="input-group">
                     <div className="input-field">
-                      <label>Charger le document (Juridique)</label>
+                      <label>Charger le document (PDF/Image)</label>
                       <input type="file" id="doc_propriete" accept=".pdf,image/*" required className="file-input" />
                     </div>
                     <div className="input-field">
@@ -241,7 +258,7 @@ export default function ProprietairePage() {
 
                   <div className="legal-notice-box">
                     <input type="checkbox" id="fees" required checked={bien.frais_gestion_acceptes} onChange={(e) => setBien({...bien, frais_gestion_acceptes: e.target.checked})} />
-                    <label htmlFor="fees">J'accepte le prélèvement institutionnel de 8% (Gestion) et 4% (Mairie) sur les encaissements.</label>
+                    <label htmlFor="fees">J'accepte le prélèvement institutionnel de 8% (Gestion) et 4% (Mairie) sur les loyers encaissés.</label>
                   </div>
 
                   <button type="submit" className="main-btn" disabled={uploading}>
@@ -254,7 +271,7 @@ export default function ProprietairePage() {
                 <h3 className="section-title"><FaListUl /> Historique de mes soumissions</h3>
                 <div className="biens-grid">
                   {mesBiens.length === 0 ? (
-                    <div className="no-data">Aucun bien enregistré.</div>
+                    <div className="no-data">Aucun bien enregistré pour le moment.</div>
                   ) : (
                     mesBiens.map((item) => (
                       <div key={item.id} className="bien-mini-card">
@@ -278,12 +295,7 @@ export default function ProprietairePage() {
           )}
         </div>
       </main>
-      <AuthModal 
-        key={showAuth ? 'modal-open' : 'modal-closed'} // La clé force React à réveiller le popup
-        isOpen={showAuth} 
-        onClose={() => setShowAuth(false)} 
-        forcedRole="proprietaire" 
-      />
+      <AuthModal isOpen={showAuth} onClose={() => setShowAuth(false)} forcedRole="proprietaire" />
       <Footer />
     </>
   )

@@ -1,0 +1,190 @@
+/* WRAPPER PRINCIPAL */
+.admin-main-wrapper {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  /* Augmentation du padding pour ne pas être sous le header fixe */
+  padding: 160px 20px 80px; 
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ECRANS DE STATUT */
+.admin-status-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 20px;
+  background: #1a1a1a; /* Fond sombre pour l'écran de refus */
+  color: white;
+}
+
+.spinner-icon {
+  font-size: 50px;
+  color: #ff0000;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.spinner-icon-small {
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.btn-back {
+  margin-top: 25px;
+  padding: 14px 30px;
+  background: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* HEADER PAGE */
+.admin-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.admin-title-section h1 {
+  font-size: 28px;
+  color: #1a202c;
+  font-weight: 800;
+  margin: 0;
+}
+
+.admin-title-section p {
+  color: #718096;
+  margin-top: 5px;
+}
+
+/* FILTRES */
+.filter-bar {
+  display: flex;
+  background: #edf2f7;
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.filter-bar button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #4a5568;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.filter-bar button.active {
+  background: white;
+  color: #ff0000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* TABLEAU */
+.responsive-table-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.pro-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pro-admin-table th {
+  background: #f1f5f9;
+  padding: 20px;
+  text-align: left;
+  font-size: 13px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pro-admin-table td {
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.product-cell { display: flex; align-items: center; gap: 20px; }
+.product-cell img { 
+  width: 70px; 
+  height: 70px; 
+  border-radius: 12px; 
+  object-fit: cover;
+  border: 1px solid #e2e8f0;
+}
+.product-cell h4 { margin: 0; font-size: 16px; color: #1e293b; }
+
+.price-tag { color: #ff0000; font-weight: 800; font-size: 14px; margin-top: 4px; }
+
+.btn-view-doc {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+/* ACTIONS */
+.actions-btns { display: flex; gap: 10px; }
+.actions-btns button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.2s;
+}
+
+.btn-check { background: #dcfce7; color: #166534; }
+.btn-wait { background: #fef3c7; color: #92400e; }
+.btn-cross { background: #fee2e2; color: #991b1b; }
+
+.btn-check:hover { background: #166534; color: white; }
+/* ... (autres hovers) */
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .admin-main-wrapper { padding-top: 140px; }
+  .pro-admin-table thead { display: none; }
+  .pro-admin-table tr {
+    display: block;
+    border-bottom: 12px solid #f8f9fa;
+    padding: 20px;
+  }
+  .pro-admin-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border: none;
+  }
+}

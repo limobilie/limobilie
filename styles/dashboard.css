@@ -400,3 +400,35 @@
 .data-table.bordered tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CSS ADMIN */
+
+.admin-container { padding: 40px; font-family: 'Segoe UI', sans-serif; background: #f8f9fa; min-height: 100vh; }
+.admin-header { margin-bottom: 30px; border-bottom: 2px solid #34495e; padding-bottom: 10px; }
+.admin-table-wrapper { background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+.admin-table { width: 100%; border-collapse: collapse; }
+.admin-table th { background: #34495e; color: white; padding: 15px; text-align: left; }
+.admin-table td { padding: 15px; border-bottom: 1px solid #eee; }
+.admin-thumb { width: 80px; height: 60px; object-fit: cover; border-radius: 4px; }
+.price-tag { color: #27ae60; font-weight: bold; font-size: 0.9em; }
+.doc-link { color: #3498db; text-decoration: none; display: flex; align-items: center; gap: 5px; font-weight: 500; }
+.actions-cell { display: flex; gap: 10px; }
+.btn-approve, .btn-reject { border: none; padding: 10px; border-radius: 5px; cursor: pointer; color: white; transition: 0.3s; }
+.btn-approve { background: #2ecc71; }
+.btn-approve:hover { background: #27ae60; }
+.btn-reject { background: #e74c3c; }
+.btn-reject:hover { background: #c0392b; }
