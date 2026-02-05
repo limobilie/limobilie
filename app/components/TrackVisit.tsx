@@ -5,9 +5,13 @@ import { supabase } from '@/lib/supabase'
 export default function TrackVisit() {
   useEffect(() => {
     const recordVisit = async () => {
-      if (typeof window === 'undefined' || window.sessionStorage.getItem('visited_this_session')) return;
+      // 1. Sécurité : Empêcher l'exécution côté serveur ou les doublons de session
+      if (typeof window === 'undefined' || window.sessionStorage.getItem('visited_this_session')) {
+        return;
+      }
 
       try {
+        // 2. Appel API avec Timeout pour ne pas bloquer le chargement
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000);
 
@@ -17,10 +21,11 @@ export default function TrackVisit() {
         
         clearTimeout(timeoutId);
 
-        if (!response.ok) throw new Error('API indisponible');
+        if (!response.ok) throw new Error('API Geo indisponible');
         
         const data = await response.json();
         
+        // 3. Normalisation des données
         let paysMatch = data.country_name || 'Inconnu';
         if (paysMatch === 'Ivory Coast') {
           paysMatch = "Côte d'Ivoire";
@@ -28,6 +33,7 @@ export default function TrackVisit() {
         
         const villeMatch = data.city || 'Inconnu';
 
+        // 4. Insertion dans Supabase
         const { error: dbError } = await supabase.from('visites').insert([{ 
           pays: paysMatch, 
           ville: villeMatch 
@@ -37,17 +43,20 @@ export default function TrackVisit() {
           window.sessionStorage.setItem('visited_this_session', 'true');
         }
 
-      } catch (error: any) { 
-        // L'astuce est le ": any" ci-dessus pour TypeScript, 
-        // ou alors utiliser error?.message si tu veux être plus propre
-        console.warn("Tracking limité (AdBlock ou réseau) :", error?.message || error);
+      } catch (error: any) {
+        // Gestion propre de l'erreur pour le build de production
+        console.warn("Tracking limité (AdBlock ou réseau) :", error?.message || "Erreur inconnue");
         
+        // 5. Fallback : En cas d'échec (AdBlock), on enregistre une visite anonyme
         try {
-          await supabase.from('visites').insert([{ 
+          const { error: fallbackError } = await supabase.from('visites').insert([{ 
             pays: 'Inconnu', 
             ville: 'Inconnu' 
           }]);
-          window.sessionStorage.setItem('visited_this_session', 'true');
+          
+          if (!fallbackError) {
+            window.sessionStorage.setItem('visited_this_session', 'true');
+          }
         } catch (dbErr: any) {
           console.error("Échec critique DB:", dbErr?.message || dbErr);
         }
