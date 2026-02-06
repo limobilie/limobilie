@@ -1,114 +1,196 @@
 /* ================================================= */
-/* BASE & FONTS */
+/* BASE & HEADER STABILITY */
 /* ================================================= */
-body { 
-    margin: 0; 
-    font-family: 'Inter', sans-serif; 
-    background: #f4f4f4; 
-    color: #333; 
-    scroll-behavior: smooth;
-}
+body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: #333; }
+
+
+
+.main-content { position: relative; z-index: 1; }
 
 /* ================================================= */
-/* HERO SECTION */
+/* HERO & SEARCH */
 /* ================================================= */
 .biens-hero-image { position: relative; height: 50vh; overflow: hidden; }
-.biens-hero-image::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); }
-.biens-hero-overlay { 
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-    text-align: center; color: white; z-index: 2; width: 90%; 
-}
-.biens-hero-overlay h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; margin-bottom: 10px; }
+.biens-hero-image::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); }
+.biens-hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2; width: 90%; }
 
-/* ================================================= */
-/* COMBO SEARCH CONTAINER */
-/* ================================================= */
 .biens-search-container-louer {
     position: relative;
-    z-index: 10;
-    margin-top: -60px; /* Ajusté pour bien chevaucher l'image */
+    z-index: 100;
+    margin-top: -50px;
     padding: 0 8%;
-    display: block !important; /* Force l'affichage */
 }
 
 /* ================================================= */
-/* GRILLE & CARTES (PC) */
+/* GRID & CARDS */
 /* ================================================= */
-.biens-grid { padding: 80px 8% 60px; display: grid; gap: 30px; }
-.biens-grid.gallery-view { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
-
-.biens-card {
-    background: white; border-radius: 20px; overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
-}
-.biens-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
-
-.biens-image-container { position: relative; height: 280px; }
-.card-badge { 
-    position: absolute; top: 15px; left: 15px; background: #e31e24; color: white; 
-    padding: 6px 16px; border-radius: 50px; font-size: 11px; font-weight: bold; 
-    text-transform: uppercase; z-index: 2; 
-}
-
-.biens-info { padding: 25px; }
-.biens-price { font-size: 24px; font-weight: 800; color: #e31e24; margin-bottom: 8px; }
-.biens-info h3 { font-size: 19px; margin-bottom: 10px; color: #1a1a1a; line-height: 1.3; }
-
-.btn-view-more { 
-    width: 100%; padding: 14px; border: 2px solid #e31e24; background: transparent; 
-    color: #e31e24; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; 
-}
-.btn-view-more:hover { background: #e31e24; color: white; }
+.biens-grid { padding: 60px 8%; display: grid; gap: 25px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.biens-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); cursor: pointer; transition: 0.3s; }
+.biens-card:hover { transform: translateY(-5px); }
+.biens-image-container { position: relative; height: 220px; }
+.card-badge { position: absolute; top: 10px; left: 10px; background: #e31e24; color: white; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: bold; }
+.biens-info { padding: 15px; }
+.biens-price { font-size: 20px; font-weight: bold; color: #e31e24; }
 
 /* ================================================= */
-/* CONFIGURATION MOBILE (Marketplace Style) */
+/* MODAL (POPUP) STYLE - CRUCIAL */
+/* ================================================= */
+.details-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3000 !important; /* Doit être au-dessus du Header */
+    padding: 20px;
+}
+
+.details-modal-content {
+    background: white;
+    width: 100%; max-width: 900px;
+    max-height: 90vh;
+    border-radius: 20px;
+    position: relative;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+.close-modal {
+    position: absolute; top: 15px; right: 20px;
+    font-size: 30px; border: none; background: none; cursor: pointer; z-index: 10;
+}
+
+.modal-layout-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.modal-gallery-side { position: relative; height: 450px; background: #eee; }
+.modal-info-side { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
+.modal-price { font-size: 28px; font-weight: 800; color: #e31e24; }
+
+.btn-whatsapp-full {
+    background: #25D366; color: white; border: none; padding: 15px;
+    border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px;
+}
+
+/* ================================================= */
+/* MOBILE CONFIG */
 /* ================================================= */
 @media (max-width: 768px) {
-
-
+    .biens-search-container-louer { margin-top: -30px; padding: 0 15px; }
+    .biens-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 20px 10px; }
+    .biens-card { height: auto; }
+    .biens-image-container { height: 150px; }
+    .biens-info h3 { font-size: 13px; margin: 5px 0; }
+    .biens-price { font-size: 15px; }
     
-    
-    /* 1. Force l'affichage du champ de recherche */
-    .biens-search-container-louer {
-        margin-top: -30px !important;
-        padding: 0 15px !important;
-        display: block !important;
-         top: -60px;
-    }
-
-    /* 2. Grille 2 colonnes */
-    .biens-grid {
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 10px !important;
-        padding: 20px 8px !important;
-    }
-
-    /* 3. Cartes compactes */
-    .biens-card {
-        height: 300px !important; 
-        display: flex;
-        flex-direction: column;
-        border-radius: 12px;
-    }
-
-    .biens-image-container { height: 75% !important; }
-
-    .biens-info { 
-        height: 25% !important;
-        padding: 8px !important;
-    }
-
-    .btn-view-more { display: none !important; }
-
-    .biens-price { font-size: 15px !important; }
-    .biens-info h3 { 
-        font-size: 12px !important; 
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-    }
-    .loc-text { font-size: 10px !important; }
+    /* Modal Mobile */
+    .modal-layout-grid { grid-template-columns: 1fr; }
+    .modal-gallery-side { height: 250px; }
+    .modal-info-side { padding: 20px; }
 }
 
-/* Supprimer l'ancien bouton mobile trigger */
-.mobile-search-trigger { display: none !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================ */
+/* 4. RESPONSIVE DESIGN HARMONISÉ */
+/* ============================================================ */
+
+/* Tablettes et petits écrans PC */
+@media (max-width: 1100px) {
+  .presentation-container { gap: 30px; }
+  .features-grid-pro, .terrains-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablettes portrait */
+@media (max-width: 850px) {
+  .presentation-container { grid-template-columns: 1fr; text-align: center; }
+  .presentation-image { order: -1; height: 350px; aspect-ratio: 16/9; }
+  .impact-feature-list li { display: inline-block; margin: 5px 15px; }
+  .presentation-contact { justify-content: center; }
+}
+
+/* MOBILE (Samsung A16 et autres smartphones) */
+@media (max-width: 768px) {
+  /* HEADER MOBILE : Blanc fixe total (couvre tout) */
+  .header, .header.scrolled {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    height: 150px !important;
+    padding: 0 15px !important;
+    display: flex !important;
+  }
+
+  /* ICONES ET TEXTES EN ROUGE */
+  .menu-button, .admin-access-btn {
+    color: #ff0000 !important;
+  }
+
+  .menu-button span {
+    color: #ff0000 !important;
+    font-size: 10px;
+  }
+
+  /* LOGO MOBILE CENTRÉ */
+  .logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo-class img {
+    height: 200px !important;
+    width: 200px !important;
+  }
+
+  
+
+  /* GRILLE TYPE MARKETPLACE (2 colonnes) */
+  .terrains-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 0 10px;
+  }
+
+  /* SECTIONS ET HERO MOBILE */
+  .acceuil-image {
+    min-height: 55vh; 
+    background-image: url('/images/Abidjan_de_nuit.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: 70px; /* Évite que le titre soit caché par le header blanc */
+  }
+  
+  .hero-video { display: none; }
+  
+  .presentation-section, .terrains-section, .last-section-pro { 
+    padding: 40px 15px; 
+  }
+
+  .class-acceuil h1 { font-size: 1.6rem; }
+  .class-acceuil #titre-2 { font-size: 1.2rem; }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+  .features-grid-pro { grid-template-columns: 1fr; }
+  .whatsapp-number { display: none; }
+  .class-acceuil h1 { font-size: 1.4rem; }
+}
+
