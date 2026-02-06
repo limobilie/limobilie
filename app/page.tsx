@@ -1,15 +1,43 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Link from "next/link";
 import Image from 'next/image'
+import { supabase } from '@/lib/supabase' 
 import { FaWhatsapp, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa'
 
 import '../styles/page-acceuil.css'
 
 export default function AccueilPage() {
+  const [latestBiens, setLatestBiens] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchLatest = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('biens_immobiliers')
+          .select('*')
+          .eq('statut', 'valide') 
+          .order('date_creation', { ascending: false })
+          .limit(3)
+
+        if (error) {
+          console.error("Erreur Supabase:", error.message)
+        } else {
+          setLatestBiens(data || [])
+        }
+      } catch (err) {
+        console.error("Erreur chargement accueil:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchLatest()
+  }, [])
+
   return (
     <div className="acceuil-page">
       <Header />
@@ -49,13 +77,9 @@ export default function AccueilPage() {
             </a>
           </div>
         </div>
-
-        
       </section>
 
-    
-
-      {/* PRÉSENTATION MISE À JOUR (LIMOBILIÉ IMPACT) */}
+      {/* PRÉSENTATION LIMOBILIÉ IMPACT */}
       <section className="presentation-section">
         <div className="presentation-container">
           <div className="presentation-text">
@@ -95,10 +119,9 @@ export default function AccueilPage() {
 
           <div className="presentation-image">
             <Image
-            src="/images/agence334.png" // Et les autres : terrain11.png, terrain222.png
-            alt="Description"
+            src="/images/agence334.png"
+            alt="Agence Limobilié"
             fill
-            // Ajoutez cette ligne :
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             style={{ objectFit: 'cover' }}
           />
@@ -106,7 +129,43 @@ export default function AccueilPage() {
         </div>
       </section>
 
-      {/* SECTION TERRAINS */}
+      {/* NOUVELLE SECTION : DERNIERS BIENS EN LOCATION/VENTE */}
+      <section className="terrains-section" style={{ backgroundColor: '#fdfdfd' }}>
+        <h2 style={{ color: 'black'}} className="terrains-title">Nos maisons disponibles à la location</h2>
+        <div className="terrains-grid">
+          {loading ? (
+            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Chargement des opportunités...</p>
+          ) : latestBiens.length > 0 ? (
+            latestBiens.map((bien) => (
+              <div key={bien.id} className="terrain-card">
+                {/* Redirection vers la page /client */}
+                <Link href="/client">
+                  <div className="terrain-image">
+                    <Image 
+                      src={bien.image_url || '/images/placeholder-bien.png'} 
+                      alt={bien.titre || "Annonce"}
+                      fill 
+                      unoptimized
+                      style={{ objectFit: 'cover' }} 
+                    />
+                  </div>
+                  <div style={{ padding: '15px' }}>
+                    <span style={{ color: '#ff0000', fontWeight: 'bold', fontSize: '18px' }}>
+                      {bien.prix ? parseFloat(bien.prix).toLocaleString() : 0} F CFA
+                    </span>
+                    <h3 style={{ color: "black", padding: '5px 0' }}>{bien.titre || "Sans titre"}</h3>
+                    <p style={{ color: 'gray', fontSize: '14px' }}>📍 {bien.commune}, {bien.quartier}</p>
+                  </div>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Aucun bien disponible actuellement.</p>
+          )}
+        </div>
+      </section>
+
+      {/* SECTION TERRAINS EXISTANTE */}
       <section className="terrains-section">
         <h2 style={{ color: 'black'}} className="terrains-title">Nos Terrains et Opportunités Immobilières</h2>
         <div className="terrains-grid">
@@ -114,10 +173,10 @@ export default function AccueilPage() {
                 <Link href="/acheter">
                     <div className="terrain-image">
                       <Image 
-                        src="/images/terrain11.png" // Adaptez le nom du fichier pour chaque ligne
-                        alt="Description du terrain"
-                        fill
-                        priority // Ajoutez ceci si l'image est visible dès le chargement (au-dessus de la ligne de flottaison)
+                        src="/images/terrain11.png" 
+                        alt="Terrain Azaguié"
+                        fill 
+                        priority 
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         style={{ objectFit: 'cover' }} 
                       />
@@ -134,14 +193,14 @@ export default function AccueilPage() {
                 <div className="terrain-image">
                   <Image 
                     src="/images/terrain222.png" 
-                    alt="Achat terrain viabilisé Bassam Côte d'Ivoire" 
+                    alt="Terrain Azaguié Ahoua" 
                     fill 
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectFit: 'cover' }} 
                   />
                 </div>
-                <h3 style={{ color: 'black'}}>Terrain AZAGUIÉ AHOUA  -ROUTE D’ADZOPÉ  BORDURE DE VOIE AVEC POTEAUX</h3>
-                <p className="card-seo-text">43 LOTS APPROUVÉS DE 500 m²  À 3.500.000f CFA PAR LOT.</p>
+                <h3 style={{ color: 'black'}}>Terrain AZAGUIÉ AHOUA - ROUTE D’ADZOPÉ</h3>
+                <p className="card-seo-text">43 LOTS APPROUVÉS DE 500 m² À 3.500.000f CFA PAR LOT.</p>
               </Link>
             </div>
 
@@ -150,16 +209,16 @@ export default function AccueilPage() {
                 <div className="terrain-image">
                   <Image 
                     src="/images/terrain333.png" 
-                    alt="Terrain résidentiel Anyama vente immobilier" 
+                    alt="Terrain Yamoussoukro" 
                     fill 
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectFit: 'cover' }} 
                   />
                 </div>
-                <h3 style={{ color: 'black' }}>Opportunité : Terrains en préfinancement à Yamoussoukro</h3>
+                <h3 style={{ color: 'black' }}>Terrains à Yamoussoukro</h3>
                 <p className="card-seo-text">
                   Investissez dans des lots viabilisés au cœur de la capitale politique. 
-                  Terrains plats, sécurisés et prêts pour une mise en valeur immédiate.
+                  Sécurisés et prêts pour mise en valeur.
                 </p>
               </Link>
             </div>
