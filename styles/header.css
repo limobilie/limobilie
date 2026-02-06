@@ -203,27 +203,35 @@
     display: none;
   }
 
-  /* Réduire la largeur du conteneur du logo (fond blanc) */
+  /* HEADER MOBILE : Blanc fixe total (couvre tout) */
+  .header, .header.scrolled {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    height: 150px !important;
+    padding: 0 15px !important;
+    display: flex !important;
+  }
+
+  /* ICONES ET TEXTES EN ROUGE */
+  .menu-button, .admin-access-btn {
+    color: #ff0000 !important;
+  }
+
+  .menu-button span {
+    color: #ff0000 !important;
+    font-size: 10px;
+  }
+
+  /* LOGO MOBILE CENTRÉ */
   .logo-container {
-    width: 240px;             /* largeur du fond blanc */
-    padding: 10px;            /* padding si nécessaire */
-    background-color: #ffffff; /* fond blanc conservé */
-  }
-
-  /* Centrer le logo à l’intérieur du fond blanc */
-  .logo-class {
+    flex: 1;
     display: flex;
-    justify-content: center;  /* centre horizontalement l’image */
-    align-items: center;      /* centre verticalement si nécessaire */
-    width: 100%;              /* prend toute la largeur du conteneur */
+    justify-content: center;
   }
 
-  /* Ajuste la taille du logo Image */
   .logo-class img {
-    width: auto;              /* garde les proportions */
-    max-width: 100%;          /* ne dépasse pas le conteneur */
-    height: auto;
-    padding-right: 50px;
+    height: 200px !important;
+    width: 200px !important;
   }
 }
 
