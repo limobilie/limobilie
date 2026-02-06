@@ -82,18 +82,17 @@ export default function LouerPage() {
   return (
     <div className="biens-page">
       <Header />
-      <main className="main-content">
+      <main className="main-cclient">
         <div className="biens-hero-image">
           <Image src="/images/acheter.png" alt="Louer" fill style={{ objectFit: 'cover' }} priority unoptimized />
-          <div className="biens-hero-overlay">
-            <h1>Trouvez votre prochain chez-vous</h1>
-            <p>Dites simplement : "Je veux un studio à Cocody"</p>
+          <div className="client-hero">
+            <h1>Trouvez le cadre de vie idéal pour votre famille à Abidjan.</h1>
           </div>
         </div>
 
         <div className="biens-search-container-louer">
           <div className="search-voice-wrapper">
-            <ComboSearch2 filters={appliedFilters} onChange={handleFilterSubmit} />
+            <ComboSearch2 className="search-voice-wrapper2" filters={appliedFilters} onChange={handleFilterSubmit} />
             <button 
               onClick={startVoiceSearch} 
               className={`voice-search-btn ${isListening ? 'is-active' : ''}`}

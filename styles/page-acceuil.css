@@ -576,7 +576,7 @@
     background-image: url('/images/Abidjan_de_nuit.jpg');
     background-size: cover;
     background-position: center;
-    margin-top: 70px; /* Évite que le titre soit caché par le header blanc */
+    margin-top: 145px; /* Évite que le titre soit caché par le header blanc */
   }
   
   .hero-video { display: none; }
@@ -585,8 +585,8 @@
     padding: 40px 15px; 
   }
 
-  .class-acceuil h1 { font-size: 1.6rem; }
-  .class-acceuil #titre-2 { font-size: 1.2rem; }
+  .class-acceuil h1 { font-size: 1.7rem; }
+  .class-acceuil h2 { font-size: 1.6rem; }
 }
 
 /* Très petits écrans */

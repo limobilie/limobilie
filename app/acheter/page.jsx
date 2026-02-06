@@ -53,10 +53,10 @@ export default function BiensPage() {
   }
 
   return (
-    <div className="biens-page">
+    <div className="achete-page">
       <Header />
 
-      <div className="biens-hero-image">
+      <div className="achete-hero-image">
         <Image src="/images/acheter.png" alt="Biens" fill style={{ objectFit: 'cover' }} priority />
         <div className="biens-hero-overlay">
           <h1>Biens immobiliers</h1>

@@ -12,20 +12,20 @@ body {
 /* ================================================= */
 /* HERO SECTION */
 /* ================================================= */
-.biens-hero-image { 
+.achete-hero-image { 
     position: relative; 
     height: 50vh; 
     overflow: hidden; 
 }
 
-.biens-hero-image::after { 
+.achete-hero-image::after { 
     content: ''; 
     position: absolute; 
     inset: 0; 
     background: rgba(0, 0, 0, 0.5); 
 }
 
-.biens-hero-overlay { 
+.achete-hero-overlay { 
     position: absolute; 
     top: 50%; 
     left: 50%; 
@@ -36,7 +36,7 @@ body {
     width: 90%; 
 }
 
-.biens-hero-overlay h1 { 
+.achete-hero-overlay h1 { 
     font-size: clamp(32px, 5vw, 52px); 
     font-weight: 800; 
     margin-bottom: 10px; 
@@ -387,7 +387,7 @@ body {
         grid-template-columns: 1fr;
      }
 
-     .biens-hero-overlay { 
+     .achete-hero-overlay { 
        top: auto;
         bottom: 80px; /* Positionné en bas */
         left: 20px;
@@ -395,11 +395,11 @@ body {
         text-align: left; /* Aligné à gauche */
         width: calc(100% - 40px);
     }
-    .biens-hero-overlay h1 { 
+    .achete-hero-overlay h1 { 
         font-size: 32px;
     padding-top: 90px;
     }
-    .biens-hero-overlay p { 
+    .achete-hero-overlay p { 
       font-size: 14px;
     color: white;
     }

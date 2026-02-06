@@ -5,14 +5,14 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: 
 
 
 
-.main-content { position: relative; z-index: 1; }
+.main-cclient{ position: relative; z-index: 1; }
 
 /* ================================================= */
 /* HERO & SEARCH */
 /* ================================================= */
 .biens-hero-image { position: relative; height: 50vh; overflow: hidden; }
 .biens-hero-image::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); }
-.biens-hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2; width: 90%; }
+.client-hero { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 2; width: 90%; }
 
 .biens-search-container-louer {
     position: relative;
@@ -21,6 +21,60 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: 
     padding: 0 8%;
 }
 
+
+
+
+/* IA VOCALE STYLES */
+.search-voice-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* On ajuste ComboSearch pour qu'il prenne la place restante */
+.search-voice-wrapper > div:first-child {
+    flex: 1;
+}
+
+.voice-search-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #e31e24; /* Rouge Limobilié */
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+   
+}
+
+.voice-search-btn:hover {
+    transform: scale(1.05);
+    background: #bc181d;
+}
+
+.voice-search-btn.is-active {
+    background: #333;
+    animation: pulse-ring 1.5s infinite;
+}
+
+.voice-status-tag {
+    text-align: center;
+    color: #e31e24;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    animation: fadeIn 0.5s ease;
+}
 /* ================================================= */
 /* GRID & CARDS */
 /* ================================================= */
@@ -54,6 +108,25 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: 
     animation: fadeIn 0.3s ease;
 }
 
+
+.client-hero {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  max-width: 1100px;
+  padding: 20px;
+}
+
+.client-hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #ff0000;
+  line-height: 1.2;
+}
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
 .close-modal {
@@ -87,22 +160,6 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: 
     .modal-gallery-side { height: 250px; }
     .modal-info-side { padding: 20px; }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -158,8 +215,22 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: 
     height: 200px !important;
     width: 200px !important;
   }
+   
 
-  
+  .client-hero {
+    /* On ajoute de l'espace en haut pour faire descendre tout le contenu */
+    padding-top: 50px; 
+    /* padding-bottom: 20px; (Optionnel: pour équilibrer le bas) */
+}
+
+.client-hero h1 {
+    font-size: 1.7rem;
+    font-family: 'Montserrat', sans-serif;
+    
+    /* Si tu veux descendre UNIQUEMENT le titre et rien d'autre : */
+    margin-top: 20px; 
+}
+
 
   /* GRILLE TYPE MARKETPLACE (2 colonnes) */
   .terrains-grid {
@@ -170,7 +241,7 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: 
 
   /* SECTIONS ET HERO MOBILE */
   .acceuil-image {
-    min-height: 55vh; 
+    min-height: 60vh; 
     background-image: url('/images/Abidjan_de_nuit.jpg');
     background-size: cover;
     background-position: center;
@@ -196,56 +267,6 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: 
 
 
 
-/* IA VOCALE STYLES */
-.search-voice-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: white;
-    padding: 8px;
-    border-radius: 50px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* On ajuste ComboSearch pour qu'il prenne la place restante */
-.search-voice-wrapper > div:first-child {
-    flex: 1;
-}
-
-.voice-search-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    background: #e31e24; /* Rouge Limobilié */
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.voice-search-btn:hover {
-    transform: scale(1.05);
-    background: #bc181d;
-}
-
-.voice-search-btn.is-active {
-    background: #333;
-    animation: pulse-ring 1.5s infinite;
-}
-
-.voice-status-tag {
-    text-align: center;
-    color: #e31e24;
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 10px;
-    animation: fadeIn 0.5s ease;
-}
 
 @keyframes pulse-ring {
     0% { box-shadow: 0 0 0 0 rgba(227, 30, 36, 0.7); }
