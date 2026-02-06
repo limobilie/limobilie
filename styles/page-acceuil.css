@@ -439,7 +439,11 @@
 }
 
 
-
+/* Décalage de l'icône de connexion vers la gauche */
+.admin-access-btn {
+    margin-right: 20px !important; /* Ajuste le chiffre (20px, 30px...) selon ton besoin */
+    transition: all 0.3s ease;
+}
 
 
 .auth-form-scroll {
@@ -568,9 +572,11 @@
   }
 
   /* ICONES ET TEXTES EN ROUGE */
-  .menu-button, .admin-access-btn {
-    color: #ff0000 !important;
-  }
+  /* Décalage de l'icône de connexion vers la gauche */
+.admin-access-btn {
+    margin-right: 20px !important; /* Ajuste le chiffre (20px, 30px...) selon ton besoin */
+    transition: all 0.3s ease;
+}
 
   .menu-button span {
     color: #ff0000 !important;
