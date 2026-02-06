@@ -571,12 +571,9 @@
     display: flex !important;
   }
 
-  /* ICONES ET TEXTES EN ROUGE */
-  /* Décalage de l'icône de connexion vers la gauche */
-.admin-access-btn {
-    margin-right: 20px !important; /* Ajuste le chiffre (20px, 30px...) selon ton besoin */
-    transition: all 0.3s ease;
-}
+  .admin-access-btn {
+        margin-right: 15px !important;
+    }
 
   .menu-button span {
     color: #ff0000 !important;
