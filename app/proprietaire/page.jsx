@@ -135,7 +135,7 @@ export default function ProprietairePage() {
         <div className="container-limited">
           
           {!user || userRole !== 'proprietaire' ? (
-            <section className="owner-hero-card">
+            <section className="pro-hero-card">
               <div className="hero-icon-wrapper"><FaShieldAlt className="main-shield-icon" /></div>
               <h1 className="hero-title">Espace Bailleur Institutionnel</h1>
               <p className="hero-subtitle">Connectez-vous pour soumettre vos biens et bénéficier de la garantie de paiement mairie.</p>

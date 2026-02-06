@@ -243,38 +243,6 @@
   display: block;
 }
 
-/* --- Mobile Responsive --- */
-@media (max-width: 768px) {
-  .owner-main {
-    padding-top: 100px;
-  }
-  
-  .add-bien-section {
-    padding: 25px 20px;
-  }
-
-  .input-group {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .input-field {
-    min-width: 100%;
-  }
-
-  .biens-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
-
-
-
-
-
 
 
 /* ==========================================
@@ -294,14 +262,14 @@
 }
 
 /* --- HERO CARD (Design Accueil Pro) --- */
-.owner-hero-card {
+.pro-hero-card {
   background: #ffffff;
   padding: 40px 20px;
   border-radius: 24px;
   text-align: center;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   border-top: 8px solid #ff0000;
-  margin-top: 20px;
+  margin-top: 120px;
 }
 
 .hero-icon-wrapper {
@@ -519,6 +487,41 @@
 .bien-info-sm h4 { color: #1e293b; margin-bottom: 5px; }
 .bien-price { color: #ff0000; font-weight: 800; font-size: 1.1rem; }
 
+
+
+
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .owner-main {
+    padding-top: 100px;
+  }
+  
+  .add-bien-section {
+    padding: 25px 20px;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .input-field {
+    min-width: 100%;
+  }
+
+  .biens-grid {
+    grid-template-columns: 1fr;
+    
+  }
+
+   .dashboard-header {
+    text-align: center;
+    justify-content: center;
+    margin-top: 70px;
+  }
+}
+
 /* ==========================================
    MOBILE RESPONSIVE (SMARTPHONES)
    ========================================== */
@@ -579,18 +582,19 @@
 .owner-main {
   min-height: 100vh;
   padding: 100px 15px 50px;
-  background-color: #f4f7f6;
+  background-color: #cfcfcf;
   color: #1a202c !important; /* Force le texte en noir/gris très foncé */
 }
 
 /* CARTE ACCUEIL (AVANT CONNEXION) */
-.owner-hero-card {
+.-hero-card {
   background: white;
   padding: 40px 20px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   border-top: 6px solid #ff0000;
+  
 }
 
 .hero-title {
