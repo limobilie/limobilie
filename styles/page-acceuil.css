@@ -562,6 +562,27 @@
 
 /* MOBILE (Samsung A16 et autres smartphones) */
 @media (max-width: 768px) {
+
+  /* Force le bouton du menu burger en rouge */
+  .menu-button {
+    color: #ff0000 !important;
+  }
+
+  /* Si ton menu burger est fait de barres (span), on les cible ici */
+  .menu-button span, 
+  .menu-button i, 
+  .menu-button svg {
+    color: #ff0000 !important;
+    background-color: #ff0000 !important; /* Si ce sont des barres div/span */
+    fill: #ff0000 !important; /* Si c'est un SVG */
+  }
+
+  /* Au cas où l'icône est une image ou un composant spécifique */
+  .hamburger-icon, .burger-icon {
+    color: #ff0000 !important;
+  }
+
+  
   /* HEADER MOBILE : Blanc fixe total (couvre tout) */
   .header, .header.scrolled {
     background-color: #ffffff !important;
