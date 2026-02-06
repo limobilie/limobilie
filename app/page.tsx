@@ -11,7 +11,7 @@ import { FaWhatsapp, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa'
 import '../styles/page-acceuil.css'
 
 export default function AccueilPage() {
-  const [latestBiens, setLatestBiens] = useState([])
+  const [latestBiens, setLatestBiens] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -61,16 +61,15 @@ export default function AccueilPage() {
           <h2>Vente · Location · Gestion Immobilière · Aménagement · Conseils</h2>
 
           <div className="social-icons">
-            <a href="https://youtube.com/@limobilie?si=Q_G4FCcjsH08d3xi" target="_blank" rel="noopener noreferrer" className="youtube" aria-label="YouTube">
+            <a href="https://youtube.com/@limobilie?si=Q_G4FCcjsH08d3xi" target="_blank" rel="noopener noreferrer">
               <FaYoutube size={28} />
             </a>
-            <a href="https://www.facebook.com/share/1DEKHno3b9/" target="_blank" rel="noopener noreferrer" className="facebook" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1DEKHno3b9/" target="_blank" rel="noopener noreferrer">
               <FaFacebook size={28} />
             </a>
-            <a href="https://www.instagram.com/limobilie?igsh=MWVnbjhsMHBid2Noag==" target="_blank" rel="noopener noreferrer" className="instagram" aria-label="Instagram">
+            <a href="https://www.instagram.com/limobilie?igsh=MWVnbjhsMHBid2Noag==" target="_blank" rel="noopener noreferrer">
               <FaInstagram size={28} />
             </a>
-
             <a href="https://wa.me/2250545935673" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
               <FaWhatsapp size={28} />
               <span className="whatsapp-number">+225 0545935673</span>
@@ -84,171 +83,53 @@ export default function AccueilPage() {
         <div className="presentation-container">
           <div className="presentation-text">
             <h2>Votre Agence Immobilière de Confiance en Côte d’Ivoire</h2>
-            
-            <p>
-              Au-delà de l’investissement, <strong>LIMOBILIÉ</strong> a créé <strong>LIMOBILIÉ Impact</strong>, 
-              un programme d’aide sociale intégré à chaque vente de terrain.
-            </p>
-            
-            <p>
-              Grâce à ce programme, une partie de chaque transaction est consacrée à des actions sociales concrètes, 
-              notamment le soutien aux <strong>enfants atteints de cancer</strong>, en partenariat avec 
-              la <strong>TÉDIE ANGE FOUNDATION (TAF)</strong>.
-            </p>
-
-            <p>
-              LIMOBILIÉ exerce dans le <strong>Grand Abidjan</strong> ainsi qu’à <strong>Yamoussoukro</strong>, 
-              et propose des lots sécurisés, disposant de documents administratifs transparents, incluant :
-            </p>
-            
-            <ul className="impact-feature-list">
-              <li>Approbation administrative</li>
-              <li>ACD (Arrêté de Concession Définitive)</li>
-            </ul>
-
-            <p className="impact-conclusion">
-              👉 <strong>Acheter un terrain devient ainsi un acte utile et responsable</strong>, 
-              qui contribue à sauver des vies tout en sécurisant votre avenir foncier.
-            </p>
-
-            <div className="presentation-contact">
-              <span style={{ color: 'black', fontWeight: 'bold' }}>📞 Service Client :</span>
-              <a style={{color: 'red'}} href="tel:2250545935673">+225 05 45 93 56 73</a>
-            </div>
+            <p>Au-delà de l’investissement, <strong>LIMOBILIÉ</strong> a créé <strong>LIMOBILIÉ Impact</strong>.</p>
           </div>
 
           <div className="presentation-image">
             <Image
-            src="/images/agence334.png"
-            alt="Agence Limobilié"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            style={{ objectFit: 'cover' }}
-          />
+              src="/images/agence334.png"
+              alt="Agence Limobilié"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              style={{ objectFit: 'cover' }}
+            />
           </div>
         </div>
       </section>
 
-      {/* NOUVELLE SECTION : DERNIERS BIENS EN LOCATION/VENTE */}
-      <section className="terrains-section" style={{ backgroundColor: '#fdfdfd' }}>
-        <h2 style={{ color: 'black'}} className="terrains-title">Nos maisons disponibles à la location</h2>
+      {/* MAISONS À LOUER */}
+      <section className="terrains-section">
+        <h2 className="terrains-title">Nos maisons disponibles à la location</h2>
         <div className="terrains-grid">
           {loading ? (
-            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Chargement des opportunités...</p>
+            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Chargement...</p>
           ) : latestBiens.length > 0 ? (
             latestBiens.map((bien) => (
               <div key={bien.id} className="terrain-card">
-                {/* Redirection vers la page /client */}
                 <Link href="/client">
                   <div className="terrain-image">
-                    <Image 
-                      src={bien.image_url || '/images/placeholder-bien.png'} 
-                      alt={bien.titre || "Annonce"}
-                      fill 
+                    <Image
+                      src={bien.image_url || '/images/placeholder-bien.png'}
+                      alt={bien.titre || 'Annonce'}
+                      fill
                       unoptimized
-                      style={{ objectFit: 'cover' }} 
+                      style={{ objectFit: 'cover' }}
                     />
                   </div>
                   <div style={{ padding: '15px' }}>
-                    <span style={{ color: '#ff0000', fontWeight: 'bold', fontSize: '18px' }}>
+                    <strong style={{ color: '#ff0000' }}>
                       {bien.prix ? parseFloat(bien.prix).toLocaleString() : 0} F CFA
-                    </span>
-                    <h3 style={{ color: "black", padding: '5px 0' }}>{bien.titre || "Sans titre"}</h3>
-                    <p style={{ color: 'gray', fontSize: '14px' }}>📍 {bien.commune}, {bien.quartier}</p>
+                    </strong>
+                    <h3>{bien.titre}</h3>
+                    <p>📍 {bien.commune}, {bien.quartier}</p>
                   </div>
                 </Link>
               </div>
             ))
           ) : (
-            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Aucun bien disponible actuellement.</p>
+            <p style={{ gridColumn: '1/-1', textAlign: 'center' }}>Aucun bien disponible</p>
           )}
-        </div>
-      </section>
-
-      {/* SECTION TERRAINS EXISTANTE */}
-      <section className="terrains-section">
-        <h2 style={{ color: 'black'}} className="terrains-title">Nos Terrains et Opportunités Immobilières</h2>
-        <div className="terrains-grid">
-            <div className="terrain-card">
-                <Link href="/acheter">
-                    <div className="terrain-image">
-                      <Image 
-                        src="/images/terrain11.png" 
-                        alt="Terrain Azaguié"
-                        fill 
-                        priority 
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        style={{ objectFit: 'cover' }} 
-                      />
-                    </div>
-                    <h3 style={{ color: "black" }}>Terrain à Azaguié</h3>
-                    <p style={{color: 'black'}} className="card-seo-text">
-                      LOTS APPROUVÉS  DE 500 m² à 3.000.000f CFA PAR LOT.
-                    </p>
-                </Link>
-            </div>
-
-            <div className="terrain-card">
-              <Link href="/acheter">
-                <div className="terrain-image">
-                  <Image 
-                    src="/images/terrain222.png" 
-                    alt="Terrain Azaguié Ahoua" 
-                    fill 
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    style={{ objectFit: 'cover' }} 
-                  />
-                </div>
-                <h3 style={{ color: 'black'}}>Terrain AZAGUIÉ AHOUA - ROUTE D’ADZOPÉ</h3>
-                <p className="card-seo-text">43 LOTS APPROUVÉS DE 500 m² À 3.500.000f CFA PAR LOT.</p>
-              </Link>
-            </div>
-
-            <div className="terrain-card">
-              <Link href="/acheter">
-                <div className="terrain-image">
-                  <Image 
-                    src="/images/terrain333.png" 
-                    alt="Terrain Yamoussoukro" 
-                    fill 
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    style={{ objectFit: 'cover' }} 
-                  />
-                </div>
-                <h3 style={{ color: 'black' }}>Terrains à Yamoussoukro</h3>
-                <p className="card-seo-text">
-                  Investissez dans des lots viabilisés au cœur de la capitale politique. 
-                  Sécurisés et prêts pour mise en valeur.
-                </p>
-              </Link>
-            </div>
-        </div>
-      </section>
-
-      {/* SECTION POURQUOI NOUS CHOISIR */}
-      <section className="last-section-pro">
-        <h2 style={{ color: 'black'}} className="last-section-title">Pourquoi choisir notre expertise immobilière ?</h2>
-        <div className="features-grid-pro">
-          <div className="feature-card-pro">
-            <span>🏠</span>
-            <h3 style={{ color: 'black'}}>Biens de Qualité</h3>
-            <p>Des terrains sécurisés et des appartements sélectionnés selon des critères rigoureux de fiabilité.</p>
-          </div>
-          <div className="feature-card-pro">
-            <span>🧑‍💼</span>
-            <h3 style={{ color: 'black'}}>Accompagnement Pro</h3>
-            <p>De l'achat du terrain à la remise des clés, nous gérons toutes les étapes de votre projet.</p>
-          </div>
-          <div className="feature-card-pro">
-            <span>📍</span>
-            <h3 style={{ color: 'black'}}>Expertise Locale</h3>
-            <p>Une présence forte sur le marché d'Abidjan pour dénicher les meilleures pépites foncières.</p>
-          </div>
-          <div className="feature-card-pro">
-            <span>🏗️</span>
-            <h3 style={{ color: 'black'}}>BTP et Design</h3>
-            <p>Un service d'aménagement intérieur et de construction pour un projet clé en main.</p>
-          </div>
         </div>
       </section>
 
